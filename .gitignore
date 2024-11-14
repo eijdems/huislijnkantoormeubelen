@@ -45,6 +45,15 @@ atlassian*
 !/pub/media/customer/.htaccess
 /pub/media/downloadable/*
 /pub/media/productattachments/*
+/pub/media/amasty/*
+/pub/media/customer/*
+/pub/media/email/*
+/pub/media/downloadable/*
+/pub/media/import/*
+/pub/media/theme_customization/*
+/pub/media/weltpixel/*
+/pub/media/sitemap/*
+/pub/media/custom_options/*
 !/pub/media/downloadable/.htaccess
 /pub/media/favicon/*
 /pub/media/import/*
