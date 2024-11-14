@@ -1,0 +1,133 @@
+<?php
+/**
+ * FME Extensions
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the fmeextensions.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.fmeextensions.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category FME
+ * @package FME_Productattachments
+ * @copyright Copyright (c) 2019 FME (http://fmeextensions.com/)
+ * @license https://fmeextensions.com/LICENSE.txt
+ */
+?>
+<?php
+
+$objectManager = $this->getObjectManager();
+
+$request = $objectManager->get('\Magento\Framework\App\Request\Http');
+$checkModule = $request->getFullActionName();
+if ($checkModule == 'catalog_product_view') {
+    //echo "catalog_product_view";
+?>
+<?php $_helper = $this->helper("FME\Productattachments\Helper\Data"); ?>
+<?php
+$blockName = $block->getLayout()->createBlock('FME\Productattachments\Block\Productattachments');
+$this->_storeManager=$objectManager->create('Magento\Store\Model\StoreManagerInterface');
+?>
+<?php foreach ($_helper->getAllCategories() as $category) : ?>
+    <?php
+    $hasData = $blockName->getProductRelatedAttachments(null, $category->getCategoryId());
+    //echo '<pre>';print_r($hasData->getData());exit;
+    ?>
+    <?php if (count($hasData) > 0) : ?>
+    <h4 style="font-weight: 400"><?php /** @noEscape */ //echo trim($category->getCategoryName()) ?></h4>
+    <div class="pa_attachments">
+      <ul>  
+            <?php //fetch collection by category id  ?>
+            <?php foreach ($blockName->getProductRelatedAttachments(null, $category->getCategoryId()) as $item) : ?>
+            <?php
+              $userArray=explode(',', $item['customer_group_id']);
+              //print_r($userArray);
+              $session=$objectManager->create('Magento\Customer\Model\Session');
+            if ($session->isLoggedIn()) {
+                $customerGroup=$session->getCustomer()->getGroupId();
+            } else {
+                $customerGroup = 0;
+            }
+              $requestInterface = $objectManager->get('Magento\Framework\App\RequestInterface');
+              $session->setMyRefence($requestInterface->getFullActionName());
+            ?>
+                <?php //if ($item->getDownloadLink() != ''):
+                 $ext = pathinfo($item['filename'], PATHINFO_EXTENSION);
+                 $icon = $blockName->getnewicon($item['file_type']);
+                if ($icon) {
+                     $item['file_icon'] = $icon;
+                } else {
+                }
+                if (in_array($customerGroup, $userArray)) {
+                ?>
+
+              <li>
+                <?php
+                // check if file is attached
+                if ($item['file_size'] > 0) {
+                    //check download limit
+                    if ($item['limit_downloads'] != "" && $item['limit_downloads'] != 0) {
+                        if ((int)$item['downloads'] >= (int)$item['limit_downloads']) {
+                           /** @noEscape */ echo '<a href="javascript:;" onclick="alert(\'You can not download because this attachment excceds the number of download\');">' . $item['file_icon'] . '&nbsp;<b>' . $item['title'] . '</b></a>  Size: (' . $item['file_size'] . ')';
+                        } else {
+                            if (($ext == 'pdf' || $ext == 'PDF') && $blockName->ispro_pdflink()) {
+                                echo '<a class="downloadlink" id="'.$item['productattachments_id'].'" counter="' . $this->_storeManager->getStore()->getUrl('productattachments') . 'index/counter?id=' . $item['productattachments_id'] . '" href="' . $item['download_link'] . '">' . $item['file_icon'] . '&nbsp;<b>' . $item['title'] . '</b></a>  Size: (' . $item['file_size'] . ')';
+                            } else {
+                                echo '<a class="downloadlink" id="'.$item['productattachments_id'].'" counter="' . $this->_storeManager->getStore()->getUrl('productattachments') . 'index/counter?id=' . $item['productattachments_id'] . '" href="' . $this->_storeManager->getStore()->getUrl('productattachments') . 'index/download?id=' . $item['productattachments_id'] . '">' . $item['file_icon'] . '&nbsp;<b>' . $item['title'] . '</b></a>  Size: (' . $item['file_size'] . ')';
+                            }
+                        }
+                    } else {
+                        if (($ext == 'pdf' || $ext == 'PDF') && $blockName->ispro_pdflink()) {
+                            echo '<a class="downloadlink" id="'.$item['productattachments_id'].'" counter="' . $this->_storeManager->getStore()->getUrl('productattachments') . 'index/counter?id=' . $item['productattachments_id'] . '" href="' . $item['download_link'] . '">' . $item['file_icon'] . '&nbsp;<b>' . $item['title'] . '</b></a>  Size: (' . $item['file_size'] . ')';
+                        } else {
+                            echo '<a class="downloadlink" id="'.$item['productattachments_id'].'" counter="' . $this->_storeManager->getStore()->getUrl('productattachments') . 'index/counter?id=' . $item['productattachments_id'] . '" href="' . $this->_storeManager->getStore()->getUrl('productattachments') . 'index/download?id=' . $item['productattachments_id'] . '">' . $item['file_icon'] . '&nbsp;<b>' . $item['title'] . '</b></a>  Size: (' . $item['file_size'] . ')';
+                        }
+                    }
+
+                    if ($blockName->_config->getValue('productattachments/general/show_counter')) {
+                       /** @noEscape */ echo '&nbsp;&nbsp;' . __('Downloads: ' . '<span id="item_counter_'.$item['productattachments_id'].'">'. $item['downloads'].'</span>');
+                    }
+                } else {
+                    /** @noEscape */ echo '<b>' . $item['title'] . '</b>';
+                }
+                ?>
+
+                <?php if ($blockName->_config->getValue('productattachments/productattachments/showcontent')) : ?>
+                        <?php if (isset($item['content']) && $item['content'] != '') : ?>
+                          <br /><?php /** @noEscape */  //echo $item['content']; ?><br />
+                        <?php endif; ?>
+                <?php endif; ?>
+              </li>
+                <?php if ($item->getLinkUrl() != '') : ?>
+                    <?php
+                    $linkTitle = 'Go To';
+                    if ($item->getLinkTitle() != '') {
+                        $linkTitle = trim($item->getLinkTitle());
+                    }
+                    ?>
+                  <li>
+                      <a href="<?php /** @noEscape */  echo $item->getLinkUrl() ?>">
+                          <img src="<?php /** @noEscape */  echo $blockName->getViewFileUrl('FME_Productattachments::images/link.jpg') ?>" width="18"/>&nbsp;<?php echo __($linkTitle) ?>
+                      </a>
+                  </li>
+                <?php endif; ?> 
+                <?php if ($item->getEmbedVideo() != '') : ?>
+                    <?php $vidTitle = trim($item->getVideoTitle()); ?>
+                  <li>
+                      <a href="<?php /** @noEscape */  echo $item->getEmbedVideo(); ?>" rel="prettyPhoto" title="<?php echo $vidTitle ?>">
+                          <img src="<?php /** @noEscape */  echo $blockName->getViewFileUrl('FME_Productattachments::images/videoicon.jpeg') ?>"/>&nbsp;<?php echo ($vidTitle != '') ? $vidTitle : ''; ?>
+                      </a>
+                  </li>
+                <?php endif; ?>
+                <?php } ?>
+            <?php endforeach; ?>
+      </ul>
+    </div>
+    <?php endif; ?>
+<?php endforeach; ?>
+<?php } ?>

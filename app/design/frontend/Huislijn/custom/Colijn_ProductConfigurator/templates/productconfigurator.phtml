@@ -1,0 +1,417 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var \Colijn\ProductConfigurator\Block\Product $block
+ */
+?>
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$formKey = $objectManager->get('Magento\Framework\Data\Form\FormKey');
+
+$sku = $block->getSku();
+$addtoUrl = false;
+$url = $block->getIoneUrl();
+$schema = $block->getSchema();
+$version = $block->getVersion();
+$branch = $block->getBranch();
+$assetPath = $block->getAssetPath();
+$languageCode = $block->getLanguageCode();
+$currencyCode = $block->getCurrencyCode();
+$arEnabled = $block->getArEnabled();
+$showFloor = $block->getShowFloor();
+$showPrice = $block->getShowPrice();
+$onlyTwod = $block->getOnlyTwod();
+$showButton = $block->getShowButton();
+$showButtonText = $block->getShowButtonText();
+$cartButtonText = $block->getCartButtonText();
+$useRenders = $block->getUseRenders();
+$imageContainer = $block->getImageContainer();
+$showDropdown = $block->getShowDropdown();
+$showMeasurements = $block->getShowMeasurements();
+$product = $block->getProduct();
+if ($block->getCustomCamera()) {
+	$customCamera = $product->getResource()->getAttribute('custom_camera')->getFrontend()->getValue($product);
+}
+if ($block->getCustomBackground()) {
+	$customBackground = $product->getResource()->getAttribute('custom_background')->getFrontend()->getValue($product);
+}
+$customColor = $block->getCustomColor();
+$useCustomCss = $block->getUseCss();
+$customCss = $block->getCustomCss();
+
+$assetUrl = $block->getViewFileUrl('Colijn_ProductConfigurator');
+
+/*$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$customerSession = $objectManager->get('Magento\Customer\Model\Session');*/
+//var_dump($customerSession->isLoggedIn());die("hello");
+
+$blockObj= $block->getLayout()->createBlock('Emizen\Download\Block\Customsession');
+$customerSession = $blockObj->getSession();
+
+$custGrpid = $customerSession->getCustomerGroupId();
+
+?>
+
+<?php if ($customColor !== ''): ?>
+<style>
+.co-summary-line:hover {border: 1px solid <?php echo $customColor ?>;}.highlighted{box-shadow: none !important;border: 1px solid <?php echo $customColor ?> !important;}.check {background-color: <?php echo $customColor ?> !important;}
+.configurator-image .animated-wrapper i:before {color: <?php echo $customColor ?>;}.twod .force-render, button.addtocart, button.addtocart:hover, button.btn-config, button.btn-config:hover, #ExpandIcon, span.open-config {background: <?php echo $customColor ?> !important;}
+</style>
+<?php endif; ?>
+<?php if ($useCustomCss): ?>
+<style>
+<?php echo $customCss ?>
+</style>
+<?php endif; ?>
+<?php if ($sku): ?>
+	<?php if ($showButton && $customerSession->isLoggedIn()): ?>
+		<div class="config-button-wrapper">
+			<?php if ($showButtonText !== ''): ?>
+				<button class="btn btn-config" id="btn_config"><?php echo $showButtonText ?></button>
+			<?php else: ?>
+				<button class="btn btn-config" id="btn_config">Configureren</button>
+			<?php endif; ?>
+		</div>
+		<div class="extra-content-button" style="font-size: 18px; margin-top: 15px; "><?php echo __("Voorraadproducten zijn aangeduid middels een groene stip bij de opties tijdens het samenstellen van het product.");?></div>
+	<?php endif; ?>
+	<?php if($onlyTwod): ?>
+		<threed-configurator id="threedconfigurator" <?php if ($onlyTwod): ?>style="display:none"<?php endif; ?>></threed-configurator>
+		<div class="selections" <?php if ($showButton): ?>style="display:none;"<?php endif; ?>>
+			<threed-selections id=selector></threed-selections>
+		</div>
+		<div id="SelectionFinish" style="display:none;">
+			<div class="quantity" <?php if ($showButton): ?>style="display:none;"<?php endif; ?>>
+				<div class="btn btn-minus">-</div>
+				<input type="text" id="conf_qty" name="conf_qty" value="1">
+				<div class="btn btn-plus">+</div>
+			</div>
+			<button id="CartIcon" <?php if ($showButton): ?>style="display:none;"<?php endif; ?> class="btn addtocart" onclick="addToCart()" title="In Winkelwagen">
+				<?php echo __('In winkelwagen'); ?>
+			</button>
+		</div>
+	<?php else: ?>
+    	<script>
+		    require(['jquery', 'jquery/ui'], function($){
+			    $("#threedconfigurator").appendTo(".product.media");
+			    $( ".gallery-placeholder" ).remove();
+		    });
+	    </script>
+        <div class="configurator-image active threed" id="threedconfigurator">
+			<div class="mobile mobile_name"><span id="mobile_name"></span></div>
+			<threed-configurator></threed-configurator>
+            <?php if($useRenders): ?>
+                <div class="animated-wrapper">
+                    <button class="animated_3d">
+                        <span>back to 3D</span>
+                        <i class="to-3d"></i>
+                    </button>
+                    <button class="animated_2d">
+                        <i class="to-2d"></i>
+                        <span>watch in 2D</span>
+                    </button>
+                </div>
+                <div class="product-placeholder">
+                    <div class="image-wrapper">
+                        <img id="render_img" src="" />
+                    </div>
+                    <div id="loading-gif">
+                        <img src="<?php echo $this->getViewFileUrl('Colijn_ProductConfigurator::images/loading.gif'); ?>"/>
+                    </div>
+                    <div class="render-wait">
+                        <div id="wait_row"></div>
+                    </div>
+                </div>
+                <div class="force-render">
+                    <span id="RenderIcon" onclick="getRenderImage()" class="getrender" title="Get render">
+                    </span>
+                </div>
+             <?php endif; ?>
+			<div class="force-expand fixedElement" id="scroller-anchor">
+				<span id="ExpandIcon" class="getexpand" onclick="getExpandView()" title="Get expand">
+				</span>
+				<span id="ScrollGesture">scroll</span>
+			</div>
+		</div>
+		<div class="selections" id="selections" <?php if ($showButton): ?>style="display:none;"<?php endif; ?>>
+			<div class="mobile mobile-selections-header" id="mobheader" onclick="getMobileSelections()">
+				<span class="open-text">Configure</span>
+				<span class="open-config"></span>
+			</div>
+			<threed-selections id=selector></threed-selections>
+		</div>
+        <div id="SelectionFinish" style="display:none;">
+			<div class="quantity" <?php if ($showButton): ?>style="display:none;"<?php endif; ?>>
+				<div class="btn btn-minus">-</div>
+				<input type="text" id="conf_qty" name="conf_qty" value="1">
+				<div class="btn btn-plus">+</div>
+			</div>
+			<button <?php if ($showButton): ?>style="display:none;"<?php endif; ?> id="CartIcon" class="btn addtocart" onclick="addToCart()" title="In Winkelwagen">
+				<?php if ($cartButtonText !== ''): ?>
+					<?php echo $cartButtonText ?>
+				<?php else: ?>
+					<?php echo __('Add to cart'); ?>
+				<?php endif; ?>
+			</button>
+		</div>
+	<?php endif; ?>
+<script>
+	var rotation = -1;
+	connectorSettings = {
+		url: "<?php echo $url ?>",
+		schema: "<?php echo $schema ?>",
+		version: "<?php echo $version ?>",
+		assetPath: "https://cdn.ione360.com/content43/",
+        <?php if ($assetPath && $assetPath !== ''): ?>
+            threeDAssetPath: "https://cdn.ione360.com/<?php echo $assetPath ?>/",
+        <?php else: ?>
+            threeDAssetPath: "https://cdn.ione360.com/content43/",
+        <?php endif; ?>
+        ajaxUrl: "<?php echo $url ?>",
+		languageCode: "<?php echo $languageCode ?>",
+		currencySymbol: "<?php echo $currencyCode ?>",
+		<?php if ($block->getCustomCamera()): ?>
+			cameraConfig: '<?php echo $customCamera ?>',
+		<?php endif; ?>
+		<?php if ($block->getCustomBackground()): ?>
+		sceneBackground: '<?php echo $customBackground ?>',
+		<?php endif; ?>
+		assetIndex: "index.json",
+		options: {
+			showStandaloneARButton: <?php echo $arEnabled ?>,
+			arEnabled: <?php echo $arEnabled ?>,
+			useStandaloneFloors: <?php echo $showFloor ?>,
+			inlineAnswers: <?php echo $showDropdown ?>,
+			showAsConfigured: <?php echo $showPrice ?>,
+			show3DWatermark: true,
+            showMeasurementsButton: <?php echo $showMeasurements ?>,
+			useNewRender: true
+		},
+        <?php if($useRenders): ?>
+            newRenderParameters: {
+                host: "https://render.colijn-it.nl",
+                port: 443,
+                iterations: 1000,
+                hdriIntensity: 1.5,
+                imageWidth: 800,
+                imageHeight: 600,
+                websocket: "wss://render1.colijn-it.nl:8083"
+            }
+        <?php endif; ?>
+	}
+	requirejs(['jquery', 'bundleconfig', 'domReady!'], function($){});
+	document.addEventListener('DOMContentLoaded', function(){
+		let sku = '<?php echo $sku ?>';
+		if (sku === '') {
+			console.error('no sku provided!');
+		}
+		document.getElementById('selector').setAttribute('sku', sku);
+		document.getElementById('selector').setAttribute('settings', JSON.stringify(connectorSettings));
+		<?php if ($onlyTwod): ?>
+			document.getElementById('selector').addEventListener('onImageReceived', function (event) {
+				document.getElementsByClassName("<?php echo $imageContainer ?>")[0].src = event.detail;
+			});
+		<?php endif; ?>
+		<?php if($useRenders): ?>
+
+			document.getElementById('selector').addEventListener('onReadyToRender', function (event) {
+				require(['jquery', 'jquery/ui'], function($){
+					console.log('start readyrender');
+					var addTo = true;
+					if (rotation == -1) {
+						var addTo = false;
+					}
+					if (event.detail) {
+						document.getElementById("loading-gif").style.display = "block";
+						document.getElementById('selector').renderImage();
+					}
+					rotation++;
+					if(addTo) {
+						if (rotation == 0) {
+							document.getElementById("wait_row").style.display = "none";
+						} else {
+							document.getElementById("wait_row").style.display = "flex";
+						}
+						var newSpan = document.createElement('span');
+						newSpan.setAttribute('class', 'rotate loading');
+						document.getElementById("wait_row").appendChild(newSpan);
+						$('.loading').attr('data-before', 'queue: ' + rotation);
+					}
+					var count = $("#wait_row").children("span").length;
+					console.log('rotate: ' + rotation);
+				});
+			});
+			document.getElementById('selector').addEventListener('onRenderImageReceived', function (event) {
+				require(['jquery', 'jquery/ui'], function($){
+					console.log('start onRenderImageReceived');
+					console.log(event.detail);
+					document.getElementById("render_img").src = event.detail;
+					rotation--;
+					var thumb = document.createElement("img");
+					thumb.id = "thumb";
+					thumb.src = event.detail;
+					document.getElementById("wait_row").querySelector(':scope > .loading').appendChild(thumb);
+					var elem = $("#wait_row").children(".loading").first();
+					var elem2 = $("#wait_row").children(".active").first();
+					elem.removeClass('loading');
+					elem.addClass('active');
+					elem2.removeClass('active');
+					console.log('rotate: ' + rotation);
+					$('.loading').attr('data-before', 'queue: ' + rotation);
+					if (rotation == 0) {
+						document.getElementById("loading-gif").style.display = "none";
+						document.getElementById("wait_row").style.display = "none";
+					} else {
+						document.getElementById("wait_row").style.display = "flex";
+					}
+				});
+			});
+			document.getElementById('selector').addEventListener('onRenderUpdateImageReceived', function (event) {
+				console.log(event.detail);
+				if(event.detail) {
+					const data = event.detail;
+					if (data.image) {
+						image = data.image;
+						document.getElementById("render_img").src = image;
+					}
+					document.getElementById("loading-gif").style.display = "none";
+				}
+			});
+		<?php endif; ?>
+		document.getElementById('selector').addEventListener('onArticleCreated', function(article) {
+			//console.log(article.detail);
+			const detail = event.detail;
+			const jsonObj = JSON.parse(event.detail);
+			console.log(jsonObj);
+			require(['jquery', 'jquery/ui'], function($){
+				var data = [];
+				data.push({name: 'form_key', value: '<?php echo $formKey->getFormKey();?>'});
+				if (jsonObj.selectorData) {
+					data.push({name: 'article', value: JSON.stringify(jsonObj.selectorData, null, 2)});
+				} else {
+					data.push({name: 'article', value: detail});
+				}
+				//data.push({name: 'article', value: article.detail});
+                data.push({name: 'quantity', value: $('#SelectionFinish input[name="conf_qty"]').val()});
+				data.push({name: 'reference', value: '<?php echo $sku ?>'});
+				data.push({name: 'image', value: $('.fotorama__active img').attr('src')});
+				$.ajax({
+					type: 'POST',
+					url: '/productconfigurator/product/addtocart',
+					data: data,
+					success: function (response) {
+					console.log(response);
+						if(response.validation == true){
+							$('#product_addtocart_form').attr('action', response.form_data.action);
+							$('#product_addtocart_form').attr('data-product-sku', response.form_data.sku)
+							$('#product_addtocart_form input[name="product"]').val(response.form_data.data.product);
+							$('#product_addtocart_form input[name="item"]').val(response.form_data.data.item);
+							$('#product_addtocart_form input[name="qty"]').val(response.form_data.data.qty);
+							$('#product_addtocart_form input[name*="bundle_option"]').remove();
+							let bundleOptions = response.form_data.options['bundle_option'];
+							if(bundleOptions) {
+								Object.keys(bundleOptions).forEach(function(id) {
+									const value = bundleOptions[id];
+									let elem = $('<input type="hidden">');
+									elem.prop('name', 'bundle_option[' + id + ']');
+									elem.prop('value', value);
+									$('#product_addtocart_form').append(elem);
+								});
+							}
+							$('#product_addtocart_form').submit();
+						}
+					}
+				});
+			});
+		});
+
+	}, false);
+    document.getElementById('selector').addEventListener('onAnswersAvailable', function (event) {
+		require(['jquery', 'jquery/ui'], function($){
+			if (event.detail == false) {
+				$('#SelectionFinish').show();
+				$('body').removeClass("hide-scroll");
+                //$('#btn_config').hide();
+			} else {
+				$('#SelectionFinish').hide();
+			}
+		});
+    })
+	function addToCart() {
+		document.getElementById('selector').addToCart();
+	}
+    <?php if($useRenders): ?>
+	function getRenderImage() {
+			require(['jquery', 'jquery/ui'], function($){
+				document.getElementById("loading-gif").style.display = "block";
+				document.getElementById('selector').forceRenderImage();
+				rotation++;
+				var newSpan = document.createElement('span');
+				newSpan.setAttribute('class', 'rotate loading');
+				document.getElementById("wait_row").appendChild(newSpan);
+				$('.loading').attr('data-before', 'queue: ' + rotation);
+		});
+	}
+    <?php endif; ?>
+	function getExpandView() {
+		 document.getElementById("maincontent").classList.toggle("expanded");
+	}
+	function getMobileSelections() {
+		 document.getElementById("selections").classList.toggle("expanded");
+	}
+
+</script>
+<script>
+    require([
+        'jquery'
+    ], function($){
+		$("#btn_config").click(function() {
+			$('.selections').show();
+			$('.btn-config').hide();
+			$('.addtocart').show();
+            $('.quantity').show();
+            $('body').addClass("hide-scroll");
+		});
+		<?php if($useRenders): ?>
+			$(".animated_2d").click(function() {
+				$('.configurator-image').addClass('twod');
+				$('.configurator-image').removeClass('threed');
+			});
+			$(".animated_3d").click(function() {
+				$('.configurator-image').removeClass('twod');
+				$('.configurator-image').addClass('threed');
+			});
+		<?php endif; ?>
+		$(".btn-plus").click(function(){
+			var input = $(this).prev('input[name="conf_qty"]');
+			var value = parseInt(input.val());
+			input.val(value + 1);
+		});
+
+		$(".btn-minus").click(function(){
+			var input = $(this).next('input[name="conf_qty"]');
+			var value = parseInt(input.val());
+			if (value > 1) {
+				input.val(value - 1);
+			}
+		});
+		var custGroup = "<?php echo $custGrpid; ?>";
+		if (custGroup != 2) {
+			$('#CartIcon').prop('disabled', true);
+			$('.minicart-wrapper').hide();
+		}
+    });
+</script>
+<script type="text/x-magento-init">
+{
+	"#product_addtocart_form_custom": {
+		"Magento_Catalog/js/validate-product": {}
+	}
+}
+</script>
+<?php endif; ?>

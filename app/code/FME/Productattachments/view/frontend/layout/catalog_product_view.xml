@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!--
+/**
+* FME Extensions
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the fmeextensions.com license that is
+* available through the world-wide-web at this URL:
+* https://www.fmeextensions.com/LICENSE.txt
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade this extension to newer
+* version in the future.
+*
+* @category FME
+* @package FME_Productattachments
+* @copyright Copyright (c) 2019 FME (http://fmeextensions.com/)
+* @license https://fmeextensions.com/LICENSE.txt
+*/
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+
+        <css src="FME_Productattachments::css/prettyPhoto.css"/>
+
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <referenceContainer name="product.info.social">
+                <block class="Magento\Catalog\Block\Product\View"
+                    name="product.productattachments.config"
+                    template="FME_Productattachments::addtocart-view.phtml"
+                    before="-" ifconfig="productattachments/productattachments/showunderaddto">
+                    <block name="example-view-model" class="Magento\Framework\View\Element\Template" template="Aureatelabs_ModuleName::test.phtml">
+                    </block>
+                    <arguments>
+                        <argument name="view_model"
+                            xsi:type="object">FME\Productattachments\ViewModel\Productattachments</argument>
+                        </arguments>
+                    </block>
+                </referenceContainer>
+                <referenceBlock name="product.info.details">
+                    <block class="FME\Productattachments\Block\Productattachments" name="pattachments.tab" as="pattachments" template="FME_Productattachments::productattachments.phtml" ifconfig="productattachments/productattachments/enabled" group="detailed_info" after="reviews.tab">
+                        <arguments>
+                            <argument name="title" xsi:type="helper" helper="FME\Productattachments\Helper\Data::getProductPageTabTitle">
+                                <param name="title">Product Attachments</param>
+                            </argument>
+                        </arguments>
+                        <block name="attachments" as="attachments" class="FME\Productattachments\Block\Productattachments" template="FME_Productattachments::items/attachments.phtml"/>
+                    </block>
+                </referenceBlock>
+
+            </referenceContainer>
+            <referenceContainer name="footer">
+
+                <block class="FME\Productattachments\Block\Listattachments" name="footer.productattachments.config" before="copyright" template="FME_Productattachments::listfooter.phtml" ifconfig="productattachments/productattachments/showinfooter"/>
+
+            </referenceContainer> 
+            <referenceBlock name="pattachments.tab" display="false" />
+
+        </body>
+    </page>

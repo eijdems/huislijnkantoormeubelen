@@ -1,0 +1,32 @@
+{
+    "name": "amasty/module-shopby-subscription-package-pro",
+    "description": "Shopby Subscription Package Pro by Amasty",
+    "require": {
+        "php": ">=7.3",
+        "amasty/base": ">=1.14.7",
+        "amasty/module-shopby-pro": ">=2.22.0"
+    },
+    "suggest": {
+        "amasty/module-shopby-hyva-compatibility": "Install module-shopby-hyva-compatibility module to activate the integration with Hyva Theme",
+        "amasty/module-shop-by-base-hyva-compatibility": "Install module-shop-by-base-hyva-compatibility module to activate the integration Base module with Hyva Theme",
+        "amasty/module-shop-by-brand-hyva-compatibility": "Install module-shop-by-brand-hyva-compatibility module to activate the integration Brand module with Hyva Theme",
+        "amasty/module-shopby-grouped-options-hyva": "Install module-shop-by-brand-hyva-compatibility module to activate the integration Grouper Options module with Hyva Theme",
+        "amasty/module-shop-by-filter-highlight": "Install this package in order to use custom filter highlight color functionality",
+        "amasty/shop-by-redirect": "Install this package to enable 301 redirect for SEO-optimized Urls functionality",
+        "amasty/module-shopby-setting-export-entity": "Install this package for Export compatibility",
+        "amasty/module-shopby-setting-import-entity": "Install this package for Import compatibility",
+        "amasty/shop-by-brand-widget": "Install this package in order to manage Slider Widget Brands."
+    },
+    "homepage": "https://amasty.com/",
+    "type": "magento2-module",
+    "version": "2.23.2",
+    "license": "proprietary",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Amasty\\ShopbySubscriptionPackagePro\\": ""
+        }
+    }
+}

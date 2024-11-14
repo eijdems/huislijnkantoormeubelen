@@ -1,0 +1,124 @@
+.row.file_download {
+	display: flex;
+	margin-top: 50px;
+	@media (max-width: 767px) { 
+		display: block;
+	}
+	#custom-accordion {
+		width: 25%;
+		padding-right: 30px;
+		.main_category {
+			line-height: 26px;
+			font-size: 18px;
+			padding: 5px 8px;
+			background: #ffffff;
+			color: #333;
+			display: block;
+			text-decoration: none;
+			font-family: 'Ubuntu', sans-serif;
+			border-bottom: 1px dashed #ccc;
+			text-transform: capitalize;
+			[data-role="trigger"] {
+				position: relative;
+				padding: 5px 0;
+				&::after {
+					position: absolute;
+					right: 0;
+					top: 4px;
+					content: "[+]";
+					color: #333;
+					width: 23px;
+					height: 23px;
+					font-size: 15px;
+				}
+			}
+			&.active {
+				>[data-role="trigger"] {
+					&::after {
+						content: "[-]";
+						letter-spacing: 3px;
+					}
+				}
+			}
+			.sub_category {
+				padding-left: 20px;
+				&.active {
+					>[data-role="trigger"] {
+						&::after {
+							content: "[-]";
+							letter-spacing: 3px;
+						}
+					}
+				}
+				.sub_parent {
+					padding-left: 20px;
+					height: 300px;
+  					overflow-y: auto;
+					.prodcut-item {
+						a {
+							font-size: 16px;
+							font-weight: 400;
+							color: #333;
+							display: block;
+							font-family: 'Ubuntu', sans-serif;
+							padding: 5px 0;
+						}
+					}
+				}
+			}
+		}
+		@media (max-width: 767px) {  
+			width: 100%;
+  			padding-right: 0;
+		}
+	}
+	.file_attach {
+		width: 75%;
+		.download_heading {
+			font-size: 36px;
+			font-family: 'Ubuntu', sans-serif;
+			border-bottom: 1px solid #ddd;
+			padding: 0 0 20px;
+			@media (max-width: 767px) {
+				font-size: 20px;
+				padding: 0 0 10px;
+			}
+		}
+		.file_type_main {
+			border-bottom: 1px solid #ddd;
+  			padding: 25px 0;
+			.file_name {
+				display: inline-block;
+				margin: 0px 10px;
+				a {
+					font-size: 18px;
+					font-weight: 400;
+					color: #333;
+					display: block;
+					font-family: 'Ubuntu', sans-serif;
+					padding: 5px 0;
+					img {
+						width: auto;
+						max-width: 100px;
+						@media (max-width: 767px) {
+							max-width: 70px;
+						}
+					}
+				}
+			}
+			.file_type_name {
+				font-size: 24px;
+				font-family: 'Ubuntu', sans-serif;
+				text-transform: capitalize;
+				margin-bottom: 20px;
+				@media (max-width: 767px) { 
+					font-size: 16px;
+				}
+			}
+		}
+		@media (max-width: 767px) { 
+			width: 100%;
+  			margin-top: 20px;
+		}
+	}
+}

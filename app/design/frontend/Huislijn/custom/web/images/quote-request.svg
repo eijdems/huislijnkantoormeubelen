@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 28.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#272727;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+</style>
+<g id="Quote_request">
+	<g id="Quote_Request">
+		<path class="st0" d="M278.3,482.6l-47,9.4l9.4-47c3.1-15.5,10.7-29.7,21.9-40.9l172.9-172.9l56.6,56.6L319.1,460.7
+			C308,471.9,293.7,479.5,278.3,482.6z"/>
+		<line class="st0" x1="380" y1="173.6" x2="380" y2="140"/>
+		<path class="st0" d="M260,20H60c-22.1,0-40,17.9-40,40v392c0,22.1,17.9,40,40,40h89.7"/>
+		<path class="st0" d="M380,140h-80c-22.1,0-40-17.9-40-40V20L380,140z"/>
+	</g>
+	<line class="st0" x1="100" y1="212" x2="300" y2="212"/>
+	<line class="st0" x1="100" y1="292" x2="261.6" y2="292"/>
+	<line class="st0" x1="100" y1="372" x2="186" y2="372"/>
+</g>
+</svg>

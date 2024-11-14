@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+  
+    <body>
+        <referenceContainer name="product.info.main">
+                <block before="product.info.price" class="Magento\Catalog\Block\Product\View" name="custom.desc" template="Magento_Catalog::custom_desc.phtml" />        
+            </referenceContainer>
+    	<referenceBlock name="product.info.details">
+			<block class="Magento\Catalog\Block\Product\View" name="stofgroepen.tab" template="Magento_Catalog::stofgroepen.phtml" group="detailed_info" >
+				<arguments>
+					<argument translate="true" name="title" xsi:type="string">Materialen</argument>
+					<argument name="css_class" xsi:type="string">stofgroepen</argument>
+                    <argument name="sort_order" xsi:type="string">40</argument>
+				</arguments>
+			</block>
+			<block class="Magento\Catalog\Block\Product\View" name="lakkleuren.tab" template="Magento_Catalog::lakkleuren.phtml" group="detailed_info" >
+				<arguments>
+					<argument translate="true" name="title" xsi:type="string">Productinformatie</argument>
+					<argument name="css_class" xsi:type="string">lakkleuren</argument>
+                    <argument name="sort_order" xsi:type="string">35</argument>
+				</arguments>
+			</block>
+			<block class="Magento\Catalog\Block\Product\View" name="afbeeldingen.tab" template="Magento_Catalog::afbeeldingen.phtml" group="detailed_info" >
+				<arguments>
+					<argument translate="true" name="title" xsi:type="string">Afbeeldingen</argument>
+					<argument name="css_class" xsi:type="string">afbeeldingen</argument>
+                    <argument name="sort_order" xsi:type="string">42</argument>
+				</arguments>
+			</block>
+			<block class="Magento\Catalog\Block\Product\View" name="dwg.tab" template="Magento_Catalog::dwg.phtml" group="detailed_info" >
+				<arguments>
+					<argument translate="true" name="title" xsi:type="string">3D DWG Files</argument>
+					<argument name="css_class" xsi:type="string">dwg_files</argument>
+                    <argument name="sort_order" xsi:type="string">43</argument>
+				</arguments>
+			</block>
+            <block class="Magento\Catalog\Block\Product\View" name="duurzaamheid.tab" template="Magento_Catalog::duurzaamheid.phtml" group="detailed_info" >
+                <arguments>
+                    <argument translate="true" name="title" xsi:type="string">Duurzaamheid</argument>
+                    <argument name="css_class" xsi:type="string">duurzaamheid</argument>
+                    <argument name="sort_order" xsi:type="string">50</argument>
+                </arguments>
+            </block>
+		</referenceBlock>
+        <referenceBlock name="view.addto.compare" remove="true"/>
+        <referenceBlock name="view.addto.wishlist" remove="true" />
+        <referenceBlock name="reviews.tab" remove="true" />
+        <referenceBlock name="product.attributes" remove="true" />
+        <referenceBlock name="product.info.extrahint.qtyincrements" remove="true" />
+        
+        <!-- <referenceBlock name="product.info.addtocart.additional" remove="true" /> -->
+        
+        <referenceBlock name="product.info.review" remove="true" />
+        <!-- <referenceBlock name="product.info.review" remove="true" /> -->
+        <move element="page.main.title" destination="product.info.main" before="-" />
+        <move element="product.info.stock.sku" destination="product.info.main" after="page.main.title" />
+        <move element="product.info.overview" destination="product.info.main" after="product.info.stock.sku" />
+        <move element="product.info.extrahint.configurator" destination="product.info.main" after="product.info.price" />
+    <referenceBlock name="product.info.description" remove="true" />
+    <referenceContainer name="product.info.overview" remove="true"/>
+
+
+    </body>
+
+</page>

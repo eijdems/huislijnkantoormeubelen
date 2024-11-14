@@ -1,0 +1,83 @@
+.contact-index-index {
+    /*main#maincontent {
+        max-width: 900px;
+        padding: 20px 15px;
+        margin: 0 auto;
+    }*/
+    .page-title {
+        margin-bottom: 20px;
+        margin-top: 40px;
+    }
+    .contact {
+        .legend {
+            span {
+                margin-right: 5px;
+                font-size: 20px;
+                font-weight: bold;
+                color: #661d28;
+            }
+        }
+    }
+
+    .columns {
+        .contact-usf {
+            display: flex;
+            gap: 0 50px;
+            @media (max-width: @screen-md-ipad){
+                flex-wrap: wrap;
+            }
+            .form.contact {
+                width: 50%;
+                max-width: inherit;
+                background: #f9f9f9;
+                padding: 30px 30px;
+                @media (max-width: @screen-md-ipad){
+                    width: 100%;
+                }
+                label {
+                    span {
+                        font-weight: normal;
+                        font-size: 16px;
+                    }
+                }
+
+                input,
+                textarea {
+                    border: none;
+                    border-bottom: 1px solid #ccc;
+                    box-shadow: none;
+                    padding-left: 0;
+                    font-size: 16px;
+                    resize: none;
+                }
+
+                .action.submit {
+                    background: #661d28;
+                    font-size: 18px;
+                    color: #fff;
+                    float: none;
+                    padding: 14px 30px;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    border-color: #661d28;
+                }
+            }
+            .contact-map {
+                width: 50%;
+                background: #f9f9f9;
+                padding: 30px 30px;
+                z-index: 1;
+                @media (max-width: @screen-md-ipad){
+                    width: 100%;
+                }
+                iframe {
+                    width: 100%;
+                    height: 360px;
+                }
+                .mgz-element-inner {
+                    padding-top: 0;
+                }
+            }
+        }   
+    }
+}

@@ -1,0 +1,28 @@
+<div class="account-dd">
+	<div class="account-ddown mv-account" id="mv-redirect"></div>
+	</div>
+</div>
+<script>
+    require(['jquery'], function ($) {
+        $('ul.header.links').insertAfter('.mv-account');
+        $("#mv-redirect").click(function(){
+			$("ul.header.links").toggleClass("active");
+		});
+		$('.custom_menu').on('click', function () {
+			$(".hamburg_menu").toggleClass('active');
+			$(this).toggleClass("show");
+			$('body').toggleClass("show");
+		});
+    });
+    require([ "jquery" ], function($){
+		$(window).scroll(function () {
+		    if( $(window).scrollTop() > $('.page-wrapper').offset().top && !($('.page-wrapper').hasClass('sticky'))){
+		    	$('.page-wrapper').addClass('sticky');
+		    } else if ($(window).scrollTop() == 0){
+		    	$('.page-wrapper').removeClass('sticky');
+		    }
+		});
+	});
+</script>
+
+

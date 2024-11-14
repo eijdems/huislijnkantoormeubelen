@@ -1,0 +1,8 @@
+<?php
+	$product = $block->getProduct();
+	$description_huilijn = $product['description_huilijn'];
+	$blockObj= $block->getLayout()->createBlock('Emizen\Download\Block\Customsession');
+	$customerSession = $blockObj->getSession();
+	if ($customerSession->isLoggedIn()) { ?>
+		<div class="description_huilijn"><?php echo $description_huilijn; ?></div>
+	<?php } ?>

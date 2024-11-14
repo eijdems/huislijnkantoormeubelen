@@ -1,0 +1,66 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+
+<script type="text/javascript">
+    require.config({
+        paths: {
+            'lightbox': 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min'
+        },
+        shim: {
+            'lightbox': {
+                deps: ['jquery'],
+                exports: 'lightbox'
+            }
+        }
+    });
+
+    require(['jquery', 'lightbox'], function ($, lightbox) {
+        $(document).ready(function() {
+            lightbox.option({
+                'resizeDuration': 200,
+                'wrapAround': true
+            });
+        });
+    });
+</script>
+
+<?php
+    $product = $block->getProduct();
+    $pId = $product['entity_id'];
+    $_helper = $this->helper('FME\Productattachments\Helper\Data'); 
+    $attachmentData = $_helper->getProductAttachmentsById($pId);
+
+    // Filter attachments by category ID
+    $categoryId = 5; // specify the category ID you want to filter by
+    $filteredAttachments = array_filter($attachmentData, function($attachment) use ($categoryId) {
+        return $attachment['cat_id'] == $categoryId;
+    });
+
+    $countAtt = count($filteredAttachments);
+
+    if ($countAtt > 0) {
+        foreach ($filteredAttachments as $attachment) {
+            $fileType = $attachment['file_type'];
+            if ($fileType == "jpg" || $fileType == "jpeg" || $fileType == "png" ) { ?>
+                <div class="img-attachment">
+                    <a href="<?php echo $attachment['download_link']; ?>" data-lightbox="gallery" data-title="<?php echo $attachment['title']; ?>">
+                        <img src="<?php echo $attachment['download_link']; ?>" alt="<?php echo $attachment['title']; ?>">
+                        <span class="attach-text"><?php echo $attachment['title']; ?></span>
+                    </a>
+                </div>
+            <?php } else { ?>
+                <div class="img-dwg">
+                    <a href="<?php echo $attachment['download_link']; ?>" target="_blank">
+                        <?php 
+                        $blockObj= $block->getLayout()->createBlock('FME\Productattachments\Block\Productattachments');
+                        $fileIcon =  $blockObj->getnewicon($attachment['file_type']);
+                        //echo "<pre>";
+                        //print_r($attachment);
+                        echo $fileIcon."  ".$attachment['title']; ?>
+                    </a>
+                </div>
+            <?php }
+        }
+    } else {
+        echo "coming soon...";
+    }
+?>

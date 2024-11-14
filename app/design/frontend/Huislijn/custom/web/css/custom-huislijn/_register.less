@@ -1,0 +1,86 @@
+.customer-account-create {
+  #form-validate {
+    display: flex;
+    width: 100%;
+    min-width: auto;
+    max-width: 100%;
+    flex-wrap: wrap;
+    gap: 0 70px;
+    .fieldset.create {
+      width: 47.5%;
+      background: #fafafa;
+      padding: 20px;
+      @media (min-width: @screen-sm-laptop) and (max-width: @screen-xl-laptop) {
+        width: 46.9%;
+      }
+      @media (min-width: @screen-lg-ipad) and (max-width: @screen-xl-ipad) {
+        width: 46.4%;
+      }
+      @media (min-width: @screen-ipad) and (max-width: @screen-md-ipad) {
+        width: 45.2%;
+      }
+      @media (max-width: @screen-mobile) {
+        width: 100%;
+      }
+      input {
+        box-shadow: 0px 0px 6px -2px #9b9b9b;
+        -webkit-box-shadow: 0px 0px 6px -2px #9b9b9b;
+        border-bottom: 0;
+      }
+      .legend {
+        span {
+          font-weight: 500;
+          font-size: 1.8rem;
+        }
+      }
+    }
+    .fieldset.additional_info {
+      display: none;
+    }
+  }
+}
+
+.customer-account-forgotpassword {
+  #form-validate {
+    display: flex;
+    width: 100%;
+    min-width: auto;
+    max-width: 100%;
+    flex-wrap: wrap;
+    gap: 0 70px;
+    .fieldset {
+      width: 50%;
+      background: #fafafa;
+      padding: 20px;
+      input {
+        box-shadow: 0px 0px 6px -2px #9b9b9b;
+        -webkit-box-shadow: 0px 0px 6px -2px #9b9b9b;
+        border-bottom: 0;
+      }
+    }
+    .actions-toolbar {
+      width: 100%;
+    }
+  }
+}
+
+.customer-account-login {
+  #login-form {
+    .fieldset {
+      input {
+        box-shadow: 0px 0px 6px -2px #9b9b9b;
+        -webkit-box-shadow: 0px 0px 6px -2px #9b9b9b;
+        border-bottom: 0;
+      }
+    }
+  }
+}
+
+.actions-toolbar {
+  button {
+    &:hover {
+      background: #661d28 !important;
+      border-color: #661d28 !important;
+    }
+  }
+}

@@ -1,0 +1,197 @@
+<?php
+/**
+ * FME Extensions
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the fmeextensions.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.fmeextensions.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category FME
+ * @package FME_Productattachments
+ * @copyright Copyright (c) 2019 FME (http://fmeextensions.com/)
+ * @license https://fmeextensions.com/LICENSE.txt
+ */
+
+/** @var \Magento\Sales\Block\Order\Items $block */
+?>
+<?php
+$blockName = $block->getLayout()->createBlock('FME\Productattachments\Block\Productattachments');
+
+$viewModel = $block->getData('view_model');
+$object_manager = $viewModel->getObjectManager();
+
+
+$this->_storeManager=$object_manager->create('Magento\Store\Model\StoreManagerInterface');
+$order = $block->getOrder();
+?>
+<div class="table-wrapper order-items">
+    <table class="data table table-order-items" id="my-orders-table" summary="<?= $block->escapeHtmlAttr(__('Items Ordered')) ?>">
+        <caption class="table-caption"><?= $block->escapeHtml(__('Items Ordered')) ?></caption>
+        <thead>
+            <?php if ($block->isPagerDisplayed()) : ?>
+                <tr>
+                    <td colspan="5" data-block="order-items-pager-top" class="order-pager-wrapper order-pager-wrapper-top">
+                        <?= $block->getPagerHtml() ?>
+                    </td>
+                </tr>
+            <?php endif ?>
+            <tr>
+                <th class="col name"><?= $block->escapeHtml(__('Product Name')) ?></th>
+                <?php if ($blockName->_config->getValue('productattachments/orderview/orderviewenabled')) : ?>
+                    <th class="col attachment"><?php if ($blockName->_config->getValue('productattachments/orderview/orderviewtitle') != '') {
+                        echo $blockName->_config->getValue('productattachments/orderview/orderviewtitle');
+                                               } else {
+    echo $block->escapeHtml(__('Product Attachment'));
+} ?></th>
+                <?php endif; ?>
+                <th class="col sku"><?= $block->escapeHtml(__('SKU')) ?></th>
+                <th class="col price"><?= $block->escapeHtml(__('Price')) ?></th>
+                <th class="col qty"><?= $block->escapeHtml(__('Qty')) ?></th>
+                <th class="col subtotal"><?= $block->escapeHtml(__('Subtotal')) ?></th>
+            </tr>
+        </thead>
+        <?php $items = $block->getItems(); ?>
+        <?php $giftMessage = ''?>
+        <?php $productAttachment = [] ?>
+        <?php foreach ($items as $item) :
+            if ($item->getParentItem()) :
+                continue;
+            endif;
+            ?>
+            <tbody>
+                <?= $block->getItemHtml($item) ?>
+                <?php $productAttachment[$item->getId()]=$this->helper('FME\Productattachments\Helper\Data')->getProductAttachmentsById($item->getProductId()); ?>
+                <?php if ($this->helper(\Magento\GiftMessage\Helper\Message::class)->isMessagesAllowed('order_item', $item) && $item->getGiftMessageId()) : ?>
+                    <?php $giftMessage = $this->helper(\Magento\GiftMessage\Helper\Message::class)->getGiftMessageForEntity($item); ?>
+                    <tr>
+                        <td class="col options" colspan="5">
+                            <a href="#"
+                               id="order-item-gift-message-link-<?= (int) $item->getId() ?>"
+                               class="action show"
+                               aria-controls="order-item-gift-message-<?= (int) $item->getId() ?>"
+                               data-item-id="<?= (int) $item->getId() ?>">
+                                <?= $block->escapeHtml(__('Gift Message')) ?>
+                            </a>
+                            <?php $giftMessage = $this->helper(\Magento\GiftMessage\Helper\Message::class)->getGiftMessageForEntity($item); ?>
+                            <div class="order-gift-message" id="order-item-gift-message-<?= (int) $item->getId() ?>" role="region" aria-expanded="false" tabindex="-1">
+                                <a href="#"
+                                   title="<?= $block->escapeHtmlAttr(__('Close')) ?>"
+                                   aria-controls="order-item-gift-message-<?= (int) $item->getId() ?>"
+                                   data-item-id="<?= (int) $item->getId() ?>"
+                                   class="action close">
+                                    <?= $block->escapeHtml(__('Close')) ?>
+                                </a>
+                                <dl class="item-options">
+                                    <dt class="item-sender"><strong class="label"><?= $block->escapeHtml(__('From')) ?></strong><?= $block->escapeHtml($giftMessage->getSender()) ?></dt>
+                                    <dt class="item-recipient"><strong class="label"><?= $block->escapeHtml(__('To')) ?></strong><?= $block->escapeHtml($giftMessage->getRecipient()) ?></dt>
+                                    <dd class="item-message"><?= /* @noEscape */ $this->helper(\Magento\GiftMessage\Helper\Message::class)->getEscapedGiftMessage($item) ?></dd>
+                                </dl>
+                            </div>
+                        </td>
+                    </tr>
+                <?php endif ?>
+            </tbody>
+        <?php endforeach; ?>
+        <tfoot>
+            <?php if ($block->isPagerDisplayed()) : ?>
+                <tr>
+                    <td colspan="5" data-block="order-items-pager-bottom" class="order-pager-wrapper order-pager-wrapper-bottom">
+                        <?= $block->getPagerHtml() ?>
+                    </td>
+                </tr>
+            <?php endif ?>
+            <?= $block->getChildHtml('order_totals') ?>
+        </tfoot>
+    </table>
+</div>
+<?php if ($giftMessage) : ?>
+<script type="text/x-magento-init">
+    {
+        "a.action.show, a.action.close": {
+            "giftMessage": {}
+        }
+    }
+</script>
+<?php endif; ?>
+<script>
+    require(["underscore", "jquery", "jquery/ui"], function(_, $) {
+        $(document).ready(function() {
+            var resultArray =[];
+            $("#my-orders-table tbody").find('tr').filter(function() {
+                console.log($(this).attr('id').trim());
+                var rawArray = $(this).attr('id').trim().split('-');
+                resultArray.push(rawArray[3]);
+            });
+            var colenable='<?php echo $blockName->_config->getValue('productattachments/orderview/orderviewenabled'); ?>';
+            if (colenable == 1) {
+                var coltitle='<?php echo $blockName->_config->getValue('productattachments/orderview/orderviewtitle'); ?>';
+                var orderstatus='<?php echo $blockName->_config->getValue('productattachments/orderview/orderviewstatus'); ?>';
+                if (orderstatus != '' || orderstatus.lenght != 0) {
+                    var orderstatusarray=orderstatus.split(',');
+                    var currentorderstatus='<?php echo $order->getStatus(); ?>';
+                    if($.inArray(currentorderstatus, orderstatusarray) !== -1) {
+                        var productattachments = '<?php if (isset($productAttachment) && !empty($productAttachment)) {
+                            echo addslashes(json_encode($productAttachment));
+                                                  } ?>';
+                        var productattachment = $.parseJSON(productattachments);
+                        $.each(productattachment, function(index, value) {
+                            $("#order-item-row-"+index).each(function () {
+                                $(this).find('td:eq(0)').after('<td class="col attachment"></td>');
+                            });
+                            var html='';
+                            $.each(value, function(index1, value1) {
+                                var dlink='<?php echo $this->_storeManager->getStore()->getUrl('productattachments') . 'index/download?id='; ?>'+value1.productattachments_id;
+                                html='<a class="downloadlink" id="'+value1.productattachments_id+'" href="'+dlink+'">'+value1.file_icon+'&nbsp;<b>'+value1.title+'</b></a>  Size: (' +value1.file_size+ ')';
+                                if (value1.link_url != '' || value1.link_url.lenght != 0) {
+                                    var linkimg='<?php /** @noEscape */  echo $blockName->getViewFileUrl('FME_Productattachments::images/link.jpg') ?>';
+                                    if (value1.link_title != null) {
+                                        html+='<br><a href="'+value1.link_url+'"><img src="'+linkimg+'" width="18"/>&nbsp;<b>'+value1.link_title+'</b></a>';
+                                    } else {
+                                        html+='<br><a href="'+value1.link_url+'"><img src="'+linkimg+'" width="18"/>&nbsp;<b>Productattachment Link</b></a>';
+                                    }
+                                }
+                                $("#order-item-row-"+index).each(function () {
+                                    $(this).find('td:eq(1)').append(html);
+                                });
+                            });
+                        });
+                    }
+                } else {
+                    var productattachments = '<?php if (isset($productAttachment) && !empty($productAttachment)) {
+                        echo addslashes(json_encode($productAttachment));
+                                              } ?>';
+                    //console.log(productattachments);
+                    var productattachment = $.parseJSON(productattachments);
+                    $.each(productattachment, function(index, value) {
+                        $("#order-item-row-"+index).each(function () {
+                            $(this).find('td:eq(0)').after('<td class="col attachment"></td>');
+                        });
+                        var html='';
+                        $.each(value, function(index1, value1) {
+                            var dlink='<?php echo $this->_storeManager->getStore()->getUrl('productattachments') . 'index/download?id='; ?>'+value1.productattachments_id;
+                            html='<a class="downloadlink" id="'+value1.productattachments_id+'" href="'+dlink+'">'+value1.file_icon+'&nbsp;<b>'+value1.title+'</b></a>  Size: (' +value1.file_size+ ')';
+                            if (value1.link_url != '' || value1.link_url.lenght != 0) {
+                                var linkimg='<?php /** @noEscape */  echo $blockName->getViewFileUrl('FME_Productattachments::images/link.jpg') ?>';
+                                if (value1.link_title != null) {
+                                    html+='<br><a href="'+value1.link_url+'"><img src="'+linkimg+'" width="18"/>&nbsp;<b>'+value1.link_title+'</b></a>';
+                                } else {
+                                    html+='<br><a href="'+value1.link_url+'"><img src="'+linkimg+'" width="18"/>&nbsp;<b>Productattachment Link</b></a>';
+                                }
+                            }
+                            $("#order-item-row-"+index).each(function () {
+                                $(this).find('td:eq(1)').append(html);
+                            });
+                        });
+                    });
+                }
+            }
+        });
+    });
+</script>

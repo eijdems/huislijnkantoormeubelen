@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<!--
+/**
+* FME Extensions
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the fmeextensions.com license that is
+* available through the world-wide-web at this URL:
+* https://www.fmeextensions.com/LICENSE.txt
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade this extension to newer
+* version in the future.
+*
+* @category FME
+* @package FME_Productattachments
+* @copyright Copyright (c) 2019 FME (http://fmeextensions.com/)
+* @license https://fmeextensions.com/LICENSE.txt
+*/
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+  <table name="productattachments_cats" resource="default" engine="innodb" comment="Category Table">
+    <column xsi:type="int" name="category_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Category Id"/>
+    <column xsi:type="text" name="category_name" nullable="false" comment="Category Name"/>
+    <column xsi:type="text" name="category_image" nullable="false" comment="Category Image"/>
+    <column xsi:type="text" name="category_url_key" nullable="true" comment="Category Url"/>
+    <column xsi:type="int" name="status" padding="11" unsigned="false" nullable="false" identity="false" default="0" comment="Status"/>
+    <column xsi:type="int" name="parent_category_id" padding="11" unsigned="false" nullable="false" identity="false" default="0" comment="Parent Id"/>
+    <column xsi:type="int" name="category_order" padding="11" unsigned="false" nullable="false" identity="false" default="0" comment="Order"/>
+    <column xsi:type="text" name="path" nullable="false" comment="path column"/>
+    <column xsi:type="int" name="level" padding="11" unsigned="false" nullable="false" identity="false" default="0" comment="category level column"/>
+    <column xsi:type="int" name="children_counts" padding="11" unsigned="false" nullable="false" identity="false" default="0" comment="child count column"/>
+    <column xsi:type="smallint" name="is_visible_front" padding="6" unsigned="false" nullable="false" identity="false" default="1" comment="visible on front page column"/>
+    <column xsi:type="smallint" name="is_visible_prod" padding="6" unsigned="false" nullable="false" identity="false" default="1" comment="visible on product page column"/>
+    <column xsi:type="text" name="meta_title" nullable="false" comment="meta title column"/>
+    <column xsi:type="text" name="meta_desc" nullable="false" comment="meta desc column"/>
+    <column xsi:type="text" name="meta_keywords" nullable="false" comment="meta keywords column"/>
+    <column xsi:type="datetime" name="created_at" on_update="false" nullable="false" default="NULL" comment="created at column"/>
+    <column xsi:type="datetime" name="updated_at" on_update="false" nullable="false" default="NULL" comment="updated at column"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="category_id"/>
+    </constraint>
+  </table>
+  <table name="productattachments" resource="default" engine="innodb" comment="Attachment Table">
+    <column xsi:type="int" name="productattachments_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Productattachments Id"/>
+    <column xsi:type="text" name="title" nullable="false" comment="Title"/>
+    <column xsi:type="text" name="filename" nullable="false" comment="File Name"/>
+    <column xsi:type="text" name="file_icon" nullable="true" comment="File Icon"/>
+    <column xsi:type="text" name="file_type" nullable="true" comment="File Type"/>
+    <column xsi:type="text" name="file_size" nullable="true" comment="File Size"/>
+    <column xsi:type="text" name="download_link" nullable="true" comment="Download Link"/>
+    <column xsi:type="text" name="block_position" nullable="true" comment="Block Position"/>
+    <column xsi:type="text" name="link_url" nullable="true" comment="Link Url"/>
+    <column xsi:type="text" name="link_title" nullable="true" comment="Link Title"/>
+    <column xsi:type="text" name="embed_video" nullable="true" comment="Video Embed"/>
+    <column xsi:type="text" name="video_title" nullable="true" comment="Video Title"/>
+    <column xsi:type="int" name="downloads" padding="11" unsigned="false" nullable="false" identity="false" default="0" comment="Downlaod Counter"/>
+    <column xsi:type="text" name="content" nullable="true" comment="Content"/>
+    <column xsi:type="smallint" name="status" padding="6" unsigned="false" nullable="false" identity="false" default="0" comment="Status"/>
+    <column xsi:type="text" name="cmspage_id" nullable="true" comment="CMS Pages"/>
+    <column xsi:type="text" name="customer_group_id" nullable="true" comment="Customer Groups"/>
+    <column xsi:type="int" name="limit_downloads" padding="11" unsigned="false" nullable="true" identity="false" comment="Downlaod Limit"/>
+    <column xsi:type="int" name="cat_id" padding="11" unsigned="false" nullable="true" identity="false" comment="Category Id"/>
+    <column xsi:type="timestamp" name="created_time" on_update="false" nullable="true" comment="Created Time"/>
+    <column xsi:type="timestamp" name="update_time" on_update="false" nullable="true" comment="Updated Time"/>
+    <column xsi:type="text" name="product_names" nullable="true" comment="Product name"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="productattachments_id"/>
+    </constraint>
+  </table>
+  <table name="productattachments_store" resource="default" engine="innodb" comment="Store Table">
+    <column xsi:type="int" name="productattachments_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Productattachment Id"/>
+    <column xsi:type="int" name="store_id" padding="11" unsigned="false" nullable="false" identity="false" default="0" comment="Store Id"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="productattachments_id"/>
+      <column name="productattachments_id"/>
+      <column name="store_id"/>
+    </constraint>
+    <index referenceId="PRODUCTATTACHMENTS_STORE_STORE_ID" indexType="btree">
+      <column name="store_id"/>
+    </index>
+  </table>
+  <table name="productattachments_products" resource="default" engine="innodb" comment="Store Table">
+    <column xsi:type="int" name="product_related_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Related Id"/>
+    <column xsi:type="int" name="productattachments_id" padding="11" unsigned="false" nullable="true" identity="false" comment="Attachments Id"/>
+    <column xsi:type="int" name="product_id" padding="11" unsigned="false" nullable="true" identity="false" comment="Product Id"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="product_related_id"/>
+    </constraint>
+  </table>
+  <table name="productattachments_category_store" resource="default" engine="innodb" comment="Store Table">
+    <column xsi:type="int" name="category_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Category Id"/>
+    <column xsi:type="int" name="store_id" padding="11" unsigned="false" nullable="false" identity="false" default="0" comment="Store Id"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="category_id"/>
+      <column name="category_id"/>
+      <column name="store_id"/>
+    </constraint>
+    <index referenceId="PRODUCTATTACHMENTS_CATEGORY_STORE_STORE_ID" indexType="btree">
+      <column name="store_id"/>
+    </index>
+  </table>
+  <table name="productattachments_cms" resource="default" engine="innodb" comment="Product attachemnts cms Table">
+    <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Id"/>
+    <column xsi:type="int" name="productattachments_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Productattachments Id"/>
+    <column xsi:type="int" name="cms_id" padding="10" unsigned="true" nullable="false" identity="false" comment="CMS Id"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="id"/>
+    </constraint>
+    <constraint xsi:type="foreign" referenceId="FK_DFDEBB3EC077720C60B525AE58F7CC70" table="productattachments_cms" column="productattachments_id" referenceTable="productattachments" referenceColumn="productattachments_id" onDelete="CASCADE"/>
+  </table>
+  <table name="productattachments_extensions" resource="default" engine="innodb" comment="Product attachemnts Extensions Table">
+    <column xsi:type="int" name="extension_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Id"/>
+    <column xsi:type="text" name="type" nullable="false" comment="Extension type"/>
+    <column xsi:type="text" name="icon" nullable="false" comment="Extension icon"/>
+    <column xsi:type="int" name="status" padding="10" unsigned="true" nullable="false" identity="false" comment="status"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="extension_id"/>
+    </constraint>
+  </table>
+  <table name="productattachments_category" resource="default" engine="innodb" comment="Productattachments Category Table">
+    <column xsi:type="int" name="c_id" padding="10" unsigned="true" nullable="false" identity="true" comment="ID"/>
+    <column xsi:type="int" name="cats_id" padding="11" unsigned="false" nullable="true" identity="false" comment="Category ID"/>
+    <column xsi:type="int" name="productattachments_id" padding="11" unsigned="false" nullable="true" identity="false" comment="Productattachments ID"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="c_id"/>
+    </constraint>
+  </table>
+  <table name="productattachments_downloadlogs" resource="default" engine="innodb" comment="Productattachments Downloadlogs Table">
+    <column xsi:type="int" name="download_id" padding="10" unsigned="true" nullable="false" identity="true" comment="ID"/>
+    <column xsi:type="int" name="attachmentid" padding="11" unsigned="false" nullable="true" identity="false" comment="Attachment ID"/>
+    <column xsi:type="int" name="storeid" padding="11" unsigned="false" nullable="true" identity="false" comment="Store ID"/>
+    <column xsi:type="text" name="storename" nullable="false" comment="Store Name"/>
+    <column xsi:type="text" name="downloadpage" nullable="false" comment="Download Page"/>
+    <column xsi:type="timestamp" name="created_time" on_update="false" nullable="true" comment="Created Time"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="download_id"/>
+    </constraint>
+  </table>
+</schema>

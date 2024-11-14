@@ -1,0 +1,100 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// phpcs:disable Magento2.Templates.ThisInTemplate
+
+/** @var $block \Magento\Sales\Block\Order\Email\Items */
+?>
+<?php $_order = $block->getOrder() ?>
+<?php if ($_order) : ?>
+    <?php $_items = $_order->getAllItems(); ?>
+    <table class="email-items">
+        <thead>
+            <tr>
+                <th class="item-info">
+                    <?= $block->escapeHtml(__('Items')) ?>
+                </th>
+                <th class="item-qty">
+                    <?= $block->escapeHtml(__('Qty')) ?>
+                </th>
+                <th class="item-price">
+                    <?= $block->escapeHtml(__('Price')) ?>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php 
+            $displayed_data = [];
+            foreach ($_items as $_item) : ?>
+                <?php if (!$_item->getParentItem()) : ?>
+                    <?= $block->getItemHtml($_item) ?>
+                    <?php echo "<pre>";
+                    print_r($_item->debug());
+                    ?>
+                    <tr>
+                        <td colspan="3">
+                            <div class="custom_additional_data">
+                                <?php 
+                                    // Assuming $product_options needs to be defined or fetched for each $_item
+                                    $product_options = $_item->getProductOptions(); // Modify according to actual method used
+                                    if (!empty($product_options)) {
+                                        foreach ($product_options as $prodd) {
+                                            if (isset($prodd['additional_data'])) {
+                                                // Check if this additional_data has already been displayed
+                                                $additional_data = $prodd['additional_data'];
+
+                                                // If this data has not been displayed yet, show it
+                                                if (!in_array($additional_data, $displayed_data)) {
+                                                    // Mark this additional_data as displayed
+                                                    $displayed_data[] = $additional_data;
+
+                                                    // Output the additional data title and content
+                                                    echo '<strong>Additional Data:</strong><br>';
+
+                                                    // Break the additional_data by semicolon and insert <br> between each part
+                                                    $data_parts = explode(';', $additional_data);
+                                                    foreach ($data_parts as $part) {
+                                                        // Trim any extra spaces and add a line break after each part
+                                                        echo trim($part) . '<br>';
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                ?>
+                            </div>
+                        </td>
+                    </tr>
+                <?php endif; ?>
+            <?php endforeach; die;?>
+        </tbody>
+
+        <tfoot class="order-totals">
+            <?= $block->getChildHtml('order_totals') ?>
+        </tfoot>
+    </table>
+    <?php if ($this->helper(\Magento\GiftMessage\Helper\Message::class)
+            ->isMessagesAllowed('order', $_order, $_order->getStore())
+        && $_order->getGiftMessageId()
+    ) : ?>
+        <?php $_giftMessage = $this->helper(\Magento\GiftMessage\Helper\Message::class)
+            ->getGiftMessage($_order->getGiftMessageId()); ?>
+        <?php if ($_giftMessage) : ?>
+            <br />
+            <table class="message-gift">
+                <tr>
+                    <td>
+                        <h3><?= $block->escapeHtml(__('Gift Message for this Order')) ?></h3>
+                        <strong><?= $block->escapeHtml(__('From:')) ?></strong> <?= $block->escapeHtml($_giftMessage->getSender()) ?>
+                        <br /><strong><?= $block->escapeHtml(__('To:')) ?></strong> <?= $block->escapeHtml($_giftMessage->getRecipient()) ?>
+                        <br /><strong><?= $block->escapeHtml(__('Message:')) ?></strong>
+                        <br /><?= $block->escapeHtml($_giftMessage->getMessage()) ?>
+                    </td>
+                </tr>
+            </table>
+        <?php endif; ?>
+    <?php endif; ?>
+<?php endif; ?>

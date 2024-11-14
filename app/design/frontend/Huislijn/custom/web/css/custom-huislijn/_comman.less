@@ -1,0 +1,143 @@
+body{
+    font-family:'Roboto';letter-spacing:1px;
+    h1,h2,h3,h4,h5,h6 {
+        font-family:'Ubuntu';
+    }
+}
+
+.page-title-wrapper {
+        h1 {
+            color: #6e1f26;
+            font-size: 36px;
+            font-weight:400;
+            text-align: left;
+            @media (max-width: 768px){
+            	font-size: 24px;
+            }
+        }
+    }
+
+    .husial-tel {
+        padding-left:60px;
+        max-width: 1920px;
+        margin: 0 auto;
+        display: none;
+        p {
+           margin-bottom: 0;
+           display: inline-block;
+           @media (max-width: 768px) {           
+            display: block;
+           }
+            a{
+                display: inline-block;
+                font-size: 18px;
+                color: #6e1f26;
+                font-family: 'Ubuntu';
+                letter-spacing: 1px;
+                &:last-child{
+                    @media (min-width: 481px) { 
+                        padding-left: 20px;
+                    }
+                    @media (max-width: 480px) { 
+                        padding-left: 10px;
+                    }
+                }
+                @media (max-width: 480px) { 
+                    font-size: 12px;
+                }
+            }
+        }
+        @media (max-width: 1440px) {           
+            padding:0 0 20px 70px;       
+        }
+        @media (max-width: 1300px) {           
+            padding:10px 0 10px 20px;       
+        }
+        @media (max-width: 768px) {           
+            padding: 4px 15px;       
+        }
+        
+    }
+
+
+    .page-wrapper{min-height: auto}
+
+
+    // breadcrumbs css
+     .breadcrumbs {
+        max-width: 1920px;
+        padding: 0 60px;
+        margin: 0 auto;
+        @media (max-width: 1440px) {           
+            padding:0 0 20px 70px;       
+        }
+        @media (max-width: 1300px) {           
+            padding:10px 0 10px 20px;       
+        }
+        @media (max-width: 768px) {           
+            padding: 4px 15px;       
+        }
+        .items {
+            .item {
+                a {
+                    color: #6c6c6c;
+                    font-size: 14px;
+                    font-weight:300;
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+
+                strong {
+                    font-size: 14px;
+                    color: #661d28;
+                    font-weight: 300;
+                }
+
+                &:not(:last-child) {
+                    &:after {
+                        content: '|';
+                        margin: 0 7px;
+                    }
+                }
+            }
+        }
+    }
+
+    .modal-popup.confirm {
+        z-index: 99999 !important;
+        .action-secondary.action-dismiss {
+            border-radius: 0;
+        }
+        .action-primary.action-accept {
+            background: #661d28;
+            border-color: #661d28;
+            border-radius: 0;
+        }
+    }
+    .modals-overlay {
+        z-index: 9999 !important;
+    }
+
+    .actions-toolbar .action.primary.continue {
+        background: #661d28;
+        opacity: 1 !important;
+        height: auto;
+        padding: 10px 35px;
+        font-size: 15px;
+        color: #fff;
+        border-radius: 0;
+        border-color: #661d28;
+    }
+    .checkout-success .order-number, .cart-empty a {
+        color: #661d28;
+        text-decoration: underline;
+    }   
+    .cms-page-view {
+        .breadcrumbs {
+            margin: 0 0 20px;
+        }
+    }
+    body .magezon-builder {
+        z-index: auto;
+    }

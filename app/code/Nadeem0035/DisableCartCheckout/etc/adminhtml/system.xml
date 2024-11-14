@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="nadeem0035" translate="label" sortOrder="200">
+            <label>ND ZONE</label>
+        </tab>
+        <section id="nadeem0035" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Disable Cart/Checkout</label>
+            <tab>nadeem0035</tab>
+            <resource>Nadeem0035_DisableCartCheckout::config_disable_cart_checkout</resource>
+            <group id="settings" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Cart/Checkout Options</label>
+                <field id="disable_cart_checkout" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Disable entire cart and checkout functionality?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

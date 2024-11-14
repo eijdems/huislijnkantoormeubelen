@@ -1,0 +1,21 @@
+{
+  "name": "huislijn/custom",
+  "description": "huislijn custom",
+  "require": {
+    "dmatthew/magento2-attribute-description": "^0.2.3",
+    "php": "~7.3.0|~8.1",
+    "magento/theme-frontend-blank": "*",
+    "magento/framework": "102.0.*"
+  },
+  "type": "magento2-theme",
+    "version": "100.0.1",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ]
+  }
+}

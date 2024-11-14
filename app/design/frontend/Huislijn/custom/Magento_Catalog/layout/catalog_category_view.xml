@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+     <body>
+        <move element="category.view.container" destination="content" before="-" />
+        <move element="page.main.title" destination="category.view.container" before="-" />
+        <referenceBlock name="category.product.addto.compare" remove="true"/>
+        <referenceBlock name="category.product.addto.wishlist" remove="true" />
+        <referenceBlock name="category.description" remove="true" />
+        
+        <!-- <referenceBlock name="category.product.addto" remove="true"/> --> <!-- This is used only for remove add to cart if something wrong remove false-->
+    </body>
+</page>
+
+

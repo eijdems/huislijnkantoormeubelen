@@ -1,0 +1,132 @@
+<?php
+	$objectManager 	= \Magento\Framework\App\ObjectManager::getInstance();
+	$categoryModel 	= $objectManager->get(\Magento\Catalog\Model\Category::class);
+	$rootCategoryId = 2; // Replace with the desired root category ID
+	$rootCategory 	= $categoryModel->load($rootCategoryId);
+	$categories 	= $rootCategory->getChildrenCategories();
+?>
+<div class="row file_download">
+	<div id="custom-accordion" class ="col-sm-3" data-mage-init='{"accordion": { "openedState": "active", "collapsible": true, "active": "false", "multipleCollapsible": false }}'> <?php 
+		foreach ($categories as $category) { ?>
+		    <div data-role="collapsible" class="main_category">
+		        <div data-role="trigger">
+		            <span><?php echo $category->getName(); ?></span>
+		        </div>
+		        <?php 
+		        $subcategories = $category->getChildrenCategories();
+	   			if ($subcategories && count($subcategories) > 0) { ?>
+			        <div data-role="content">
+			            <div id="nested-accordion" class="nes_category" data-mage-init='{"accordion": { "openedState": "active", "collapsible": true, "active": "false", "multipleCollapsible": false }}'>
+			            	<?php foreach ($subcategories as $subcategory) { ?>
+				                <div data-role="collapsible" class="sub_category">
+				                    <div data-role="trigger">
+				                        <span><?php echo $subcategory->getName(); ?></span>
+				                    </div>
+				                    <div data-role="content">
+				                        <div class="sub_parent">
+				                        	<?php $categorysFactory = $objectManager->get('\Magento\Catalog\Model\CategoryFactory');
+				                        	$categoryss 			= $categorysFactory->create()->load($subcategory->getId());
+				                        	$productCollection 		= $categoryss->getProductCollection()->addAttributeToSelect('*');
+	                						foreach ($productCollection as $product) { ?>
+					                           <div class="prodcut-item id_<?php echo $product->getId(); ?>"><a href="<?php echo $block->getBaseUrl();?>download?product_id=<?php echo $product->getId(); ?>">
+					                           	<?php echo $product->getName(); ?></a>
+					                           </div> 
+					                        <?php } ?>
+				                        </div>
+				                    </div>
+				                </div>
+				            <?php } ?>
+			            </div>
+			        </div>
+			    <?php } ?>
+		    </div>
+		<?php } ?>
+	</div>
+	<div class="col-sm-9 file_attach">
+    	<?php 
+	    	$objectManager 		= \Magento\Framework\App\ObjectManager::getInstance();  
+			$request 			= $objectManager->get('Magento\Framework\App\Request\Http');  
+			if ($request->getParam('product_id')) {
+				$pid 			= $request->getParam('product_id');
+		    	$attachmentData = $block->atttachmentdata($pid);
+		    	/*echo "<pre>";
+		    	print_r($attachmentData);
+		    	die;
+		    	$count = count($attachmentData);*/
+				if ($attachmentData) { ?>
+					<div class="download_heading"><?php echo $attachmentData[0]['product_names']; ?></div>
+					<div class="file_type_main">
+						<div class="file_type_name"><?php echo __("PNG Sfeerafbeelding"); ?></div>
+						<?php  foreach ($attachmentData as $attachmentDatas) { ?>
+	                        <?php if ($attachmentDatas['file_type'] == "png") : ?> 
+	                        	<div class="file_name"><a href="<?= $attachmentDatas['download_link']; ?>" target="_blank">
+                                	<?php // echo $attachmentDatas['filename']; ?> <span><img src="<?= $attachmentDatas['download_link']; ?>"></span></a> 
+                                </div>
+	                        <?php endif;
+	                    } ?>
+                    </div>
+					<div class="file_type_main">
+						<div class="file_type_name"><?php echo __("jpg/jpeg Productafbeeldingen"); ?></div>
+						<?php foreach ($attachmentData as $attachmentDatas) { ?>
+	                        <?php if ($attachmentDatas['file_type'] == "jpg" || $attachmentDatas['file_type'] == "jpeg") : ?> 
+	                        	<div class="file_name"><a href="<?= $attachmentDatas['download_link']; ?>" target="_blank">
+                                	<?php // echo $attachmentDatas['filename']; ?> <img src="<?= $attachmentDatas['download_link']; ?>"></a> 
+                                </div>
+	                        <?php endif; 
+	                    } ?>
+                    </div>
+					<div class="file_type_main">
+						<div class="file_type_name"><?php echo __("pdf bestanden"); ?></div>
+						<?php  foreach ($attachmentData as $attachmentDatas) { ?>
+	                        <?php if ($attachmentDatas['file_type'] == "pdf" || $attachmentDatas['file_type'] == "html") : ?> 
+	                        	<div class="file_name"><a href="<?= $attachmentDatas['download_link']; ?>" target="_blank">
+                                	<?php // echo $attachmentDatas['filename']; ?> <span><?= $attachmentDatas['file_icon']; ?></span></a> 
+                                </div>
+	                        <?php endif; 
+	                    } ?>
+                    </div>
+					<div class="file_type_main">
+						<div class="file_type_name"><?php echo __("csv bestanden"); ?></div>
+						<?php foreach ($attachmentData as $attachmentDatas) { ?>
+	                        <?php if ($attachmentDatas['file_type'] == "csv") : ?> 
+	                        	<div class="file_name"><a href="<?= $attachmentDatas['download_link']; ?>" target="_blank">
+                                	<?php // echo $attachmentDatas['filename']; ?> <span><?= $attachmentDatas['file_icon']; ?></span></a> 
+                                </div>
+	                        <?php endif; 
+	                    } ?>
+                    </div>
+					<div class="file_type_main">
+						<div class="file_type_name"><?php echo __("xls/xlsx bestanden"); ?></div>
+						<?php foreach ($attachmentData as $attachmentDatas) { ?>
+	                        <?php if ($attachmentDatas['file_type'] == "xls" || $attachmentDatas['file_type'] == "xlsx") : ?> 
+	                        	<div class="file_name"><a href="<?= $attachmentDatas['download_link']; ?>" target="_blank">
+                                	<?php // echo $attachmentDatas['filename']; ?> <span><?= $attachmentDatas['file_icon']; ?></span></a> 
+                                </div>
+	                        <?php endif; 
+	                    } ?>
+                    </div>
+					<div class="file_type_main">
+						<div class="file_type_name"><?php echo __("zip bestanden"); ?></div>
+						<?php foreach ($attachmentData as $attachmentDatas) { ?>
+	                        <?php if ($attachmentDatas['file_type'] == "zip") : ?> 
+	                        	<div class="file_name"><a href="<?= $attachmentDatas['download_link']; ?>" target="_blank">
+                                	<?php // echo $attachmentDatas['filename']; ?> <span><?= $attachmentDatas['file_icon']; ?></span></a> 
+                                </div>
+	                        <?php endif;
+	                    } ?>
+                    </div>
+                    <div class="file_type_main">
+                    	<div class="file_type_name"><?php echo __("dwg bestanden"); ?></div>
+						<?php foreach ($attachmentData as $attachmentDatas) { ?>
+	                        <?php if ($attachmentDatas['file_type'] == "dwg") : ?> 
+	                        	<div class="file_name"><a href="<?= $attachmentDatas['download_link']; ?>" target="_blank">
+                                	<?php // echo $attachmentDatas['filename']; ?> <span><?= $attachmentDatas['file_icon']; ?></span></a> 
+                                </div>
+	                        <?php endif; 
+	                    } ?>
+                    </div>
+				<?php }
+			}
+		?>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+{
+    "name": "amasty/product-attachment-lite",
+    "description": "Product Attachments Lite by Amasty",
+    "require": {
+        "php": ">=7.3.0",
+        "amasty/product-attachment": "*",
+        "amasty/base": ">=1.14.7"
+    },
+    "type": "magento2-module",
+    "version": "3.1.1",
+    "license": [
+        "proprietary"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Amasty\\ProductAttachmentLite\\": ""
+        }
+    }
+}
