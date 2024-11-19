@@ -12,7 +12,7 @@
 <?php 
    
 //if ($_product->isSaleable()) :?>
-<div class="box-tocart" style="display:none;">
+<div class="box-tocart">
     <div class="fieldset">
         <?php if ($block->shouldRenderQuantity()) :?>
         <div class="field qty">
@@ -34,12 +34,12 @@
         <?php endif; ?>
         <!-- <div class="offer-button"><?php echo __("Offerte-aanvragen"); ?></div> -->
         <div class="actions">
-            <!-- <button type="submit"
+            <button type="submit"
                     title="<?= $block->escapeHtmlAttr($buttonTitle) ?>"
                     class="action primary tocart"
                     id="product-addtocart-button" disabled>
-                <span><?= $block->escapeHtml($buttonTitle) ?></span>
-            </button> -->
+                <span><?php echo "In winkelwagen/offerteaanvraag"//$block->escapeHtml($buttonTitle) ?></span>
+            </button>
             <?= $block->getChildHtml('', true) ?>
         </div>
     </div>
