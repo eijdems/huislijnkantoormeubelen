@@ -41,27 +41,12 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
                         <?= $block->escapeHtml($block->getProductName()) ?>
                     <?php endif; ?>
                 </strong>
-                <?php $configuration = $product->getConfiguration();
+                <?php $configuration = is_string($product->getConfiguration()) ? $product->getConfiguration() : '';
                 $configuration = str_replace(';', '<br/>', $configuration); ?>
                 <?php if ($configuration && $configuration !== ''): ?>
                 <div class="configuration-text">
                 <?php echo $configuration ?>
                 </div>      
-                <?php endif; ?>
-                <?php if ($_options = $block->getOptionList()): ?>
-                    <dl class="item-options">
-                        <?php foreach ($_options as $_option): ?>
-                            <?php $_formatedOptionValue = $block->getFormatedOptionValue($_option) ?>
-                            <dt><?= $block->escapeHtml($_option['label']) ?></dt>
-                            <dd>
-                                <?php if (isset($_formatedOptionValue['full_view'])): ?>
-                                        <?= $block->escapeHtml($_formatedOptionValue['full_view'], ['span', 'a']) ?>
-                                    <?php else: ?>
-                                        <?= $block->escapeHtml($_formatedOptionValue['value'], ['span', 'a']) ?>
-                                <?php endif; ?>
-                            </dd>
-                        <?php endforeach; ?>
-                    </dl>
                 <?php endif; ?>
                 <?php if ($messages = $block->getMessages()): ?>
                     <?php foreach ($messages as $message): ?>
