@@ -11639,7 +11639,7 @@ target=""_blank"">DevDocs' Release Information</a>.,module,Magento_ReleaseNotifi
 "Invoice for your %store_name order","Factuur voor uw %store_name bestelling",module,Magento_Sales
 "Your Invoice #%invoice_id for Order #%order_id","Uw factuur #%invoice_id voor bestelling #%order_id",module,Magento_Sales
 "Update to your %store_name invoice","Update van uw %store_name factuur",module,Magento_Sales
-"Your %store_name order confirmation","Uw %store_name bestelbevestiging",module,Magento_Sales
+"Your %store_name order confirmation","Uw %store_name aanvraag",module,Magento_Sales
 "%customer_name,","%customer_name,",module,Magento_Sales
 "Once your package ships we will send you a tracking number.","Zodra we uw pakket verzenden, sturen wij u een Track- en Tracenummer.",module,Magento_Sales
 "Your Order <span class=""no-link"">#%increment_id</span>","Uw bestelling <span class=""no-link"">#%increment_id</span>",module,Magento_Sales
@@ -15182,7 +15182,7 @@ formElements/*[name(.)=../../@formElement]/settings/title,module,Magento_Ui
 "View past orders","Offertes aanvragen",theme,frontend/Magento/luma
 "Footer","onderschrift",theme,frontend/Magento/luma
 "Credit memo for your %store_name order","Creditfactuur voor uw %store_name bestelling",theme,frontend/Magento/luma
-"Thank you for your order from %store_name.","Bedankt voor uw bestelling bij %store_name.",theme,frontend/Magento/luma
+"Thank you for your order from %store_name.","Bedankt voor uw aanvraag bij %store_name.",theme,frontend/Magento/luma
 "You can check the status of your order by <a href=""%account_url"">logging into your account</a>.","U kunt de status van uw bestelling controleren door in te <a href=""%account_url"">loggen op uw account</a>.",theme,frontend/Magento/luma
 "If you have questions about your order, you can email us at <a href=""mailto:%store_email"">%store_email</a>.","Indien u vragen heeft over uw bestelling kunt u ons e-mailen op <a href=""mailto:%store_email"">%store_email</a>.",theme,frontend/Magento/luma
 "Your Credit Memo #%creditmemo_id for Order #%order_id","Uw creditfactuur #%creditmemo_id voor bestelling #%order_id",theme,frontend/Magento/luma
@@ -15193,7 +15193,7 @@ formElements/*[name(.)=../../@formElement]/settings/title,module,Magento_Ui
 "Invoice for your %store_name order","Factuur voor uw %store_name bestelling",theme,frontend/Magento/luma
 "Your Invoice #%invoice_id for Order #%order_id","Uw factuur #%invoice_id voor bestelling #%order_id",theme,frontend/Magento/luma
 "Update to your %store_name invoice","Update van uw %store_name factuur",theme,frontend/Magento/luma
-"Your %store_name order confirmation","Uw %store_name bestelbevestiging",theme,frontend/Magento/luma
+"Your %store_name order confirmation","Uw %store_name aanvraag",theme,frontend/Magento/luma
 "%customer_name,","%customer_name,",theme,frontend/Magento/luma
 "Once your package ships we will send you a tracking number.","Zodra we uw pakket verzenden, sturen wij u een Track- en Tracenummer.",theme,frontend/Magento/luma
 "Your Order <span class=""no-link"">#%increment_id</span>","Uw bestelling <span class=""no-link"">#%increment_id</span>",theme,frontend/Magento/luma
