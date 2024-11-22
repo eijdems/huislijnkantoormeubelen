@@ -359,6 +359,7 @@ return [
         'Colijn_Transactions' => 1,
         'Colijn_Variants' => 1,
         'Deved_DisableRegistration' => 1,
+        'Emizen_CheckoutCustomField' => 1,
         'Emizen_Customsearch' => 1,
         'Emizen_Download' => 1,
         'Emizen_ExportCatalog' => 1,

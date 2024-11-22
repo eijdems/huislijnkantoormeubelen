@@ -1,0 +1,30 @@
+<div class="custom_checkout_box">
+  <div class="field reference-number">
+      <label for="reference_number" class="label">
+          <span>Referentienummer</span>
+      </label>
+      <div class="control">
+        <input type="text" name="reference_number" id="reference_number" 
+                 data-bind="value: referenceNumber, event: {keyup: onReferenceNumberChange}" />
+      </div>
+  </div>
+
+  <div class="custom_field_quote">
+      <span>
+          <input type="radio" 
+                 name="customCheckbox" 
+                 value="quote" 
+                 data-bind="checked: CheckVals, attr: {required: true}" /> 
+          Dit is een offerteaanvraag
+      </span>
+
+      <span>
+          <input type="radio" 
+                 name="customCheckbox" 
+                 value="order" 
+                 data-bind="checked: CheckVals, attr: {required: true}" /> 
+          Dit is een bestelling
+      </span>
+      <div data-bind="validation: { message: 'Please select an option', validate: required }"></div>
+  </div>
+</div>

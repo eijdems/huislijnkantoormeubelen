@@ -48,6 +48,62 @@
 			display: none;
 		}
 	}
+	#checkout-step-payment {
+		#co-payment-form {
+			.fieldset {
+				position: relative;
+				.custom_checkout_box {
+				    position: absolute;
+				    right: 0;
+				    bottom: 86px;
+				    width: 40%;
+				    margin-bottom: 0;
+				    @media (min-width: @screen-ipad) and (max-width: @screen-xl-ipad) {
+				    	width: 34%;
+				    }
+				    @media (min-width: @screen-ipad) and (max-width: @screen-md-ipad) {
+				    	bottom: 76px;
+    					width: 100%;
+				    }
+				    @media (max-width: @screen-mobile) {
+			            width: 100%;
+			            bottom: 80px;
+			        }
+				    .field.reference-number {
+					    margin-bottom: 10px;
+					    @media (min-width: @screen-ipad) and (max-width: @screen-md-ipad) {
+					    	margin-bottom: 5px;
+					    }
+					    @media (max-width: @screen-mobile) {
+							margin-bottom: 5px;
+						}
+					    label.label {
+						    font-size: 15px;
+						    font-weight: 500;
+						}
+					}
+					.custom_field_quote {
+						color: #333;
+						font-size: 15px;
+						display: flex;
+						gap: 0 15px;
+						span {
+							input {
+								margin-right: 3px;
+							}
+						}
+						@media (min-width: @screen-ipad) and (max-width: @screen-xl-ipad) { 
+							font-size: 11px;
+    						gap: 0 8px;
+						}
+						@media (max-width: @screen-mobile) {
+							font-size: 13px;
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 .totals.shipping.excl {
@@ -57,6 +113,21 @@
 	.step-title,
 	#checkout-shipping-method-load {
 		display: none;
+	}
+}
+.checkout-payment-method {
+	.payment-option._collapsible {
+		.payment-option-title {
+		    padding-bottom: 50px;
+		    margin-bottom: 20px;
+		    padding-top: 30px;
+		    @media (min-width: @screen-ipad) and (max-width: @screen-md-ipad) {
+		    	padding-bottom: 80px;
+		    }
+		    @media (max-width: @screen-mobile) {
+		    	padding-bottom: 80px;
+		    }
+		}
 	}
 }
 #block-summary #co-shipping-method-form,
