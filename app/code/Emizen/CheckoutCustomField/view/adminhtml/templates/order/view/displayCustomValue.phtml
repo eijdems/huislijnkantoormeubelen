@@ -2,6 +2,11 @@
 <?php 
 $CheckValue = $block->getAgree(); 
 echo ($CheckValue) ? 'Yes' : 'No'; 
-
+//echo get_class($block);
 ?>
 </h4>
+<?php
+if ($block->getReferenceNumber()) { ?>
+	<p> Referentienummer : <?php echo $block->getReferenceNumber(); ?></p>
+
+<?php } ?>
