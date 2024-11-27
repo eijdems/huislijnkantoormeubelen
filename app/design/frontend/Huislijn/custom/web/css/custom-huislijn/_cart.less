@@ -39,6 +39,15 @@
 			font-weight: 500;
 			border-color: #661d28;
 		}
+		#block-shipping {
+			display: none;
+		}
+		div#cart-totals {
+		    border: none;
+		    tr.totals.sub {
+			    display: none;
+			}
+		}
 	}
 }
 
@@ -104,6 +113,45 @@
 			}
 		}
 	}
+	.opc-summary-wrapper {
+		.opc-block-summary {
+			.totals.sub {
+				display: none;
+			}
+		}
+	}
+	.new-address-popup {
+		.action.action-show-popup {
+			background: #661d28;
+			opacity: 1 !important;
+			height: auto;
+			padding: 12px 24px;
+			font-size: 15px;
+			color: #fff;
+			border-radius: 0;
+			border-color: #661d28;
+		}
+	}
+	.new-shipping-address-modal, .shipping-address-items {
+		.action.primary.action-save-address, .action.action-select-shipping-item {
+			background: #661d28;
+			opacity: 1 !important;
+			height: auto;
+			padding: 12px 15px;
+			font-size: 15px;
+			color: #fff;
+			border-radius: 0;
+			border-color: #661d28;
+		}
+		.action.edit-address-link {
+			color: #661d28;
+		}
+		.modal-footer {
+			.action.secondary.action-hide-popup {
+		  		color: #661d28;
+		  	}
+		}
+	}
 }
 
 .totals.shipping.excl {
@@ -127,6 +175,12 @@
 		    @media (max-width: @screen-mobile) {
 		    	padding-bottom: 80px;
 		    }
+		}
+	}
+	.actions-toolbar {
+		.action.primary.checkout {
+			background: #661d28;
+			border-color: #661d28;
 		}
 	}
 }
