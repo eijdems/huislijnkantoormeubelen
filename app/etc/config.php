@@ -366,6 +366,7 @@ return [
         'Emizen_Pdfuploadcms' => 1,
         'Experius_WysiwygDownloads' => 1,
         'FME_Productattachments' => 1,
+        'Ict_Orderdelete' => 1,
         'Mageplaza_Core' => 1,
         'Mageplaza_Smtp' => 1,
         'Magezon_Core' => 1,

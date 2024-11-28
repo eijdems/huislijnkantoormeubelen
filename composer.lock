@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a5a0e19666adf8d528a419d4980dbcea",
+    "content-hash": "035147c5d5d2155b9211b244ff7f050e",
     "packages": [
         {
             "name": "2tvenom/cborencode",
@@ -2806,6 +2806,32 @@
                 }
             ],
             "time": "2024-07-18T11:15:46+00:00"
+        },
+        {
+            "name": "ict/orderdelete",
+            "version": "3.1.4",
+            "dist": {
+                "type": "zip",
+                "url": "https://repo.magento.com/archives/ict/orderdelete/ict-orderdelete-3.1.4.0.zip",
+                "shasum": "43dc15a9f3ddd0e42a9a7bb0cf3c394f324eeaa6"
+            },
+            "require": {
+                "php": "~7.3.0|~7.4.0|~8.1.0|~8.2.0|~8.3.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Ict\\Orderdelete\\": ""
+                }
+            },
+            "license": [
+                "OSL-3.0",
+                "AFL-3.0"
+            ],
+            "description": "Order Delete"
         },
         {
             "name": "justinrainbow/json-schema",
