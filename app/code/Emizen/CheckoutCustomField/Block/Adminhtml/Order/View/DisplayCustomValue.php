@@ -18,4 +18,10 @@ class DisplayCustomValue extends \Magento\Backend\Block\Template
 
         return $order->getAgree();
     }
+    public function getReferenceNumber(){
+        $orderId = $this->getRequest()->getParam('order_id');
+        $order = $this->orderInterface->load($orderId);
+
+        return $order->getReferenceNumber();
+    }
 }
