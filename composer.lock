@@ -882,11 +882,11 @@
         },
         {
             "name": "colijn/transactions",
-            "version": "2.3.32",
+            "version": "2.3.33",
             "dist": {
                 "type": "zip",
-                "url": "https://webshop.colijn-it.nl/composer/packages/colijn-transactions-2.3.32.zip",
-                "shasum": "8268471097469d189520bbab412446c980595904"
+                "url": "https://webshop.colijn-it.nl/composer/packages/colijn-transactions-2.3.33.zip",
+                "shasum": "7668c5ce1b90cacdfdccbbef436bf0f5e683958e"
             },
             "require": {
                 "colijn/main": "^2.0.0",
