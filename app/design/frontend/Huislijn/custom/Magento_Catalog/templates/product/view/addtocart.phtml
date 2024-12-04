@@ -10,7 +10,11 @@
 <?php $buttonTitle = __('Add to Cart'); ?>
 <!-- <div class="custom_price_render"><span><?php echo __("Totaalprijs samengestelde product"); ?></span><span class="c_prijs"><?php echo $block->getProductPrice($_product); ?></span></div> -->
 <?php 
-   
+$blockObj= $block->getLayout()->createBlock('Emizen\Download\Block\Customsession');
+$customerSession = $blockObj->getSession();
+
+$custGrpid = $customerSession->getCustomerGroupId();
+
 //if ($_product->isSaleable()) :?>
 <div class="box-tocart">
     <div class="fieldset">
@@ -60,6 +64,13 @@
                 qty_field.val(++current_qty_value);
             });
         });
+        var custGroup = "<?php echo $custGrpid; ?>";
+        console.log(custGroup);
+        if (custGroup != 2) {
+            $('#product-addtocart-button').prop('disabled', true).css('pointer-events', 'none');
+            $('#product-addtocart-button')[0].style.setProperty('opacity', '0.5', 'important');
+            $('.minicart-wrapper').hide();
+        }
     });
 </script>
 <?php //endif; ?>
