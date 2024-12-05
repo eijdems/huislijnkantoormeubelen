@@ -20,5 +20,33 @@ require(['jquery', 'Magento_Customer/js/customer-data'], function ($, customerDa
                 $('.show_after_login').hide();
             }
         });
+        // Toggle 'active' class on both click and hover
+        $('.over_menu').on('mouseenter', function () {
+            console.log('mouseenter');
+            $(this).addClass('hovered'); // Use a different class for hover behavior
+        }).on('mouseleave', function () {
+            $(this).removeClass('hovered');
+        });
+
+        // Handle click event to toggle the active class
+        $('.cusom_click').on('click', function (e) {
+            e.preventDefault(); // Stop link redirection
+            let parentMenu = $(this).closest('.over_menu');
+            
+            // Toggle the active class
+            if (parentMenu.hasClass('active')) {
+                parentMenu.removeClass('active');
+            } else {
+                $('.over_menu').removeClass('active'); // Close other menus
+                parentMenu.addClass('active');
+            }
+        });
+
+        // Close the submenu when clicking outside
+        $(document).on('click', function (e) {
+            if (!$(e.target).closest('.over_menu').length) {
+                $('.over_menu').removeClass('active');
+            }
+        });
     });
 });
