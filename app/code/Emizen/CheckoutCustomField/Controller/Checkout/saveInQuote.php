@@ -37,10 +37,44 @@ class saveInQuote extends Action
     {   
         $checkVal = (int)$this->getRequest()->getParam('checkVal');
         $referenceNumber = $this->getRequest()->getParam('reference_number'); // Retrieve the reference number
+        $uploadedFileNames = []; // Array to store filenames of uploaded files
+
+        if (isset($_FILES['uploadedFiles']) && is_array($_FILES['uploadedFiles']['name'])) {
+            $files = $_FILES['uploadedFiles'];
+
+            // Define a directory for saving the uploaded files
+            $targetDir = BP . '/pub/media/upload/';
+            if (!is_dir($targetDir)) {
+                mkdir($targetDir, 0755, true);
+            }
+
+            foreach ($files['name'] as $key => $name) {
+                if ($files['error'][$key] === UPLOAD_ERR_OK) {
+                    // Create a unique filename to prevent conflicts
+                    $fileName = uniqid() . '_' . basename($name);
+                    $targetFilePath = $targetDir . $fileName;
+
+                    // Move the uploaded file to the target directory
+                    if (move_uploaded_file($files['tmp_name'][$key], $targetFilePath)) {
+                        $uploadedFileNames[] = $fileName; // Store each filename
+                    } else {
+                        $this->messageManager->addErrorMessage(__('Failed to upload file: %1', $name));
+                    }
+                }
+            }
+        }
+
         $quoteId = $this->checkoutSession->getQuoteId();
         $quote = $this->quoteRepository->get($quoteId);
         $quote->setAgree($checkVal);
         $quote->setReferenceNumber($referenceNumber); 
+
+        if (!empty($uploadedFileNames)) {
+            // Store only the filenames as a JSON array or custom format
+            $quote->setCustomFile(json_encode($uploadedFileNames)); // Assuming `custom_file` is a field in the quote
+        }
+
         $quote->save();
     }
+
 }

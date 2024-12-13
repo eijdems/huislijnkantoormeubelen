@@ -313,6 +313,15 @@ $custGrpid = $customerSession->getCustomerGroupId();
 							$('#product_addtocart_form input[name="item"]').val(response.form_data.data.item);
 							$('#product_addtocart_form input[name="qty"]').val(response.form_data.data.qty);
 							$('#product_addtocart_form input[name*="bundle_option"]').remove();
+							$('#product_addtocart_form input[name*="additional_data"]').remove();
+							let additionalInfo = response.form_data.data.additional;
+							if (additionalInfo) {
+									let value = additionalInfo;
+									let elem = $('<input type="hidden">');
+									elem.prop('name', 'additional_data');
+									elem.prop('value', value);
+									$('#product_addtocart_form').append(elem);
+							}
 							let bundleOptions = response.form_data.options['bundle_option'];
 							if(bundleOptions) {
 								Object.keys(bundleOptions).forEach(function(id) {

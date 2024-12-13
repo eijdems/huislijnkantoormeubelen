@@ -13,7 +13,7 @@
                                             <item name="children" xsi:type="array">
                                                 <item name="payment" xsi:type="array">
                                                     <item name="children" xsi:type="array">
-                                                        <item name="afterMethods" xsi:type="array">
+                                                        <item name="payments-list" xsi:type="array">
                                                             <item name="children" xsi:type="array">
                                                                 <item name="custom-checkbox" xsi:type="array">
                                                                     <item name="component" xsi:type="string">Emizen_CheckoutCustomField/js/checkout/customJs</item>

@@ -323,9 +323,9 @@ a:hover {
                         padding: 0 5px;
                     }
 
-                    @media(min-width: @screen-ipad) and (max-width: @screen-md-ipad) {
+                    @media(min-width: @screen-ipad) and (max-width: @screen-sm-laptop) {
                         font-size: 13px;
-                        padding: 8px;
+                        padding: 8px 15px 8px 8px;
                     }
 
                     @media (max-width: @screen-mobile) {
@@ -444,6 +444,9 @@ a:hover {
                         @media (max-width: @screen-xl-ipad) {
                             font-size: 1.6rem;
                         }
+                        @media (min-width: @screen-ipad) and (max-width: @screen-sm-laptop) {
+                            font-size: 12px;
+                        }
                     }
                     &.hovered {
                         .submenu_custom {
@@ -481,6 +484,14 @@ a:hover {
                                 background: #6e1f26;
                                 position: relative;
                                 display:block;
+                            }
+                        }
+                    }
+
+                    a {
+                        .ui-menu-icon.ui-icon.ui-icon-caret-1-e.cusom_click {
+                            @media (min-width: @screen-ipad) and (max-width: @screen-sm-laptop) {
+                                right: 0;
                             }
                         }
                     }

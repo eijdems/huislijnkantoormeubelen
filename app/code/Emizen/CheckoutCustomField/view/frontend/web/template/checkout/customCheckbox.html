@@ -8,7 +8,27 @@
                  data-bind="value: referenceNumber, event: {keyup: onReferenceNumberChange}" />
       </div>
   </div>
-
+  <div class="field cimage_upload">
+      <label for="upload_image" class="label">
+          <span>Bestand uploaden</span>
+      </label>
+      <div class="control">
+          <input type="file" name="upload_image[]" id="upload_image" 
+                 accept="image/*, .xls, .doc, .dwg, .pdf" 
+                 data-bind="event: { change: onImageUpload }" multiple />
+                 <span class="image-type-text">(jpg, png, xls, doc, dwg, pdf)</span>
+      </div>
+      <div id="file-list" class="file-list">
+          <!-- Render each file in the uploadedFiles observable array -->
+          <div data-bind="foreach: uploadedFiles">
+              <div>
+                  <span data-bind="text: name"></span> <!-- Display the file name -->
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="new-row-checkout">
   <div class="custom_field_quote">
       <span>
           <input type="radio" 
@@ -28,3 +48,4 @@
       <div data-bind="validation: { message: 'Please select an option', validate: required }"></div>
   </div>
 </div>
+

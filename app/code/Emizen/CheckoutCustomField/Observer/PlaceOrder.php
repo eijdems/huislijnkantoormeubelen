@@ -42,6 +42,14 @@ class PlaceOrder implements ObserverInterface
         $order->setAgree($quote->getAgree());  // Set the 'agree' field
         $order->setReferenceNumber($quote->getReferenceNumber());  // Set the 'reference_number' field
         
+        // Retrieve and save the uploaded file (custom_file)
+        $uploadedFile = $quote->getCustomFile();  // Get the uploaded file path or URL from the quote
+
+        if ($uploadedFile) {
+            // Set the uploaded file path on the order
+            $order->setCustomFile($uploadedFile);  // Set the 'custom_file' field
+        }
+
         // Save the updated order
         $order->save();
     }

@@ -3030,7 +3030,7 @@ Time in seconds between the widget updates.,module,Magento_CatalogWidget
 "Something went wrong while processing your order. Please try again later.","Er ging iets mis tijdens het verwerken van uw bestelling. Probeer het later nog eens.",module,Magento_Checkout
 "An unspecified error occurred. Please contact us for assistance.","An unspecified error occurred. Please contact us for assistance.",module,Magento_Checkout
 "%1 doesn't extend \Magento\Checkout\CustomerData\ItemInterface","%1 breidt \Magento\Checkout\CustomerData\ItemInterface niet uit",module,Magento_Checkout
-"Payment Method","Betaalmethode",module,Magento_Checkout
+"Payment Method","Factuuradres",module,Magento_Checkout
 "Payment Page","Betaalpagina",module,Magento_Checkout
 "Incorrect CAPTCHA","Incorrect CAPTCHA",module,Magento_Checkout
 "Please provide CAPTCHA code and try again","Please provide CAPTCHA code and try again",module,Magento_Checkout
@@ -3107,7 +3107,7 @@ Time in seconds between the widget updates.,module,Magento_CatalogWidget
 "Items","Producten",module,Magento_Checkout
 "Total:","Totaal:",module,Magento_Checkout
 "Billing Address:","Factuuradres:",module,Magento_Checkout
-"Shipping Address:","Bezorgadres:",module,Magento_Checkout
+"Shipping Address:","Afleveradres:",module,Magento_Checkout
 "Shipping Method:","Verzendmethode:",module,Magento_Checkout
 "Payment Method:","Betaalmethode:",module,Magento_Checkout
 "Date & Time:","Datum & Tijd:",module,Magento_Checkout
@@ -3148,8 +3148,8 @@ Time in seconds between the widget updates.,module,Magento_CatalogWidget
 "Carrier Title","Carrier Title",module,Magento_Checkout
 "Ship To:","Verzenden naar:",module,Magento_Checkout
 "edit","bewerken",module,Magento_Checkout
-"Shipping Address","Bezorgadres",module,Magento_Checkout
-"New Address","Nieuw Adres",module,Magento_Checkout
+"Shipping Address","Afleveradres",module,Magento_Checkout
+"New Address","Nieuw Adres aanmaken",module,Magento_Checkout
 "Shipping Methods","Shipping Methods",module,Magento_Checkout
 "Next","Next",module,Magento_Checkout
 "Sorry, no quotes are available for this order at this time","Sorry, no quotes are available for this order at this time",module,Magento_Checkout
@@ -6594,7 +6594,7 @@ Email template chosen based on theme fallback when ""Default"" option is selecte
 "[WEBSITE]","[WEBSITE]",module,Magento_GiftRegistry
 "[STORE VIEW]","[WINKELAANZICHT]",module,Magento_GiftRegistry
 "None","Geen",module,Magento_GiftRegistry
-"New Address","Nieuw Adres",module,Magento_GiftRegistry
+"New Address","Nieuw Adres aanmaken",module,Magento_GiftRegistry
 "Edit Gift Registry","Bewerk verlanglijst",module,Magento_GiftRegistry
 "Create Gift Registry","Creëer verlanglijst",module,Magento_GiftRegistry
 "State/Province","Staat/Provincie",module,Magento_GiftRegistry
@@ -7203,7 +7203,7 @@ Email template chosen based on theme fallback when ""Default"" option is selecte
 "Are you sure you want to place order and pay?","Weet u het zeker dat u deze order wil plaatsen en betalen?",module,Magento_InstantPurchase
 "Shipping Address","Bezorgadres",module,Magento_InstantPurchase
 "Billing Address","Factuuradres",module,Magento_InstantPurchase
-"Payment Method","Betaalmethode",module,Magento_InstantPurchase
+"Payment Method","Factuuradres",module,Magento_InstantPurchase
 "Shipping Method","Bezorgmethode",module,Magento_InstantPurchase
 "Enabled","Ingeschakeld",module,Magento_InstantPurchase
 "Button Text","Knoptekst",module,Magento_InstantPurchase
@@ -7913,7 +7913,7 @@ it will make no affect on Price filter.",module,Magento_LayeredNavigation
 "Loading...","Loading...",module,Magento_Multishipping
 "Billing Address","Factuuradres",module,Magento_Multishipping
 "Change","Verander",module,Magento_Multishipping
-"Payment Method","Betaalmethode",module,Magento_Multishipping
+"Payment Method","Factuuradres",module,Magento_Multishipping
 "Go to Review Your Order","Ga naar Valideer uw bestelling",module,Magento_Multishipping
 "Back to Shipping Information","Terug naar verzendinformatie",module,Magento_Multishipping
 "Other items in your order","Andere items in uw bestelling",module,Magento_Multishipping
@@ -8346,7 +8346,7 @@ You can set a new expiration date if you wish.","Vervaldatum voor de offerte %qu
 " and update the shipping address."," and update the shipping address.",module,Magento_NegotiableQuote
 "The shipping address specified on the quote was deleted from your Address Book. ","The shipping address specified on the quote was deleted from your Address Book. ",module,Magento_NegotiableQuote
 "To proceed with the checkout, update the shipping address.","To proceed with the checkout, update the shipping address.",module,Magento_NegotiableQuote
-"New Address","New Address",module,Magento_NegotiableQuote
+"New Address","New Address aanmaken",module,Magento_NegotiableQuote
 "Your shipping address is locked. To change your shipping address, go ","Your shipping address is locked. To change your shipping address, go ",module,Magento_NegotiableQuote
 "Shipping Methods","Shipping Methods",module,Magento_NegotiableQuote
 "Next","Next",module,Magento_NegotiableQuote
@@ -9181,7 +9181,7 @@ If field is empty default value localhost will be saved.","IPs toegangslijst ges
 "Order Status","Bestelling Status",module,Magento_Paypal
 "View Order","Bestelling bekijken",module,Magento_Paypal
 "Back to Billing Agreements","Terug naar incasso-overeenkomsten",module,Magento_Paypal
-"Payment Method","Betaalmethode",module,Magento_Paypal
+"Payment Method","Factuuradres",module,Magento_Paypal
 "View","Bekijk",module,Magento_Paypal
 "There are no billing agreements yet.","Er zijn (nog) geen incasso-overeenkomsten.",module,Magento_Paypal
 "New Billing Agreement","Nieuwe incasso-overeenkomst",module,Magento_Paypal
@@ -10722,7 +10722,7 @@ target=""_blank"">DevDocs' Release Information</a>.,module,Magento_ReleaseNotifi
 "Return Date: ","Retourdatum",module,Magento_Rma
 "Order # ","Ordernr.",module,Magento_Rma
 "Ordered: ","Besteld: ",module,Magento_Rma
-"Shipping Address:","Bezorgadres:",module,Magento_Rma
+"Shipping Address:","Afleveradres:",module,Magento_Rma
 "Return Address:","Retouradres",module,Magento_Rma
 "Condition","conditie",module,Magento_Rma
 "Qty","Aantal",module,Magento_Rma
@@ -10973,7 +10973,7 @@ target=""_blank"">DevDocs' Release Information</a>.,module,Magento_ReleaseNotifi
 "Are you sure you want to cancel this order?","Weet u zeker dat u deze bestelling wilt annuleren?",module,Magento_Sales
 "Cancel","Annuleer",module,Magento_Sales
 "Billing Address","Factuuradres",module,Magento_Sales
-"Payment Method","Betaalmethode",module,Magento_Sales
+"Payment Method","Factuuradres",module,Magento_Sales
 "Order Comment","Notities bestelling",module,Magento_Sales
 "Coupons","Kortingsbonnen",module,Magento_Sales
 "Please select a customer","Selecteer een klant",module,Magento_Sales
@@ -11827,7 +11827,7 @@ target=""_blank"">DevDocs' Release Information</a>.,module,Magento_ReleaseNotifi
 "Customer Name","Naam klant",module,Magento_SalesArchive
 "Email","E-mail",module,Magento_SalesArchive
 "Customer Group","Klantengroep",module,Magento_SalesArchive
-"Payment Method","Betaalmethode",module,Magento_SalesArchive
+"Payment Method","Factuuradres",module,Magento_SalesArchive
 "Shipping Information","Bezorg Informatie",module,Magento_SalesArchive
 "Subtotal","Subtotaal",module,Magento_SalesArchive
 "Shipping & Handling","Verzending en verwerking",module,Magento_SalesArchive
@@ -15187,7 +15187,7 @@ formElements/*[name(.)=../../@formElement]/settings/title,module,Magento_Ui
 "If you have questions about your order, you can email us at <a href=""mailto:%store_email"">%store_email</a>.","Indien u vragen heeft over uw bestelling kunt u ons e-mailen op <a href=""mailto:%store_email"">%store_email</a>.",theme,frontend/Magento/luma
 "Your Credit Memo #%creditmemo_id for Order #%order_id","Uw creditfactuur #%creditmemo_id voor bestelling #%order_id",theme,frontend/Magento/luma
 "Billing Info","Factuuradres",theme,frontend/Magento/luma
-"Payment Method","Betaalmethode",theme,frontend/Magento/luma
+"Payment Method","Factuuradres",theme,frontend/Magento/luma
 "Update to your %store_name credit memo","Update van uw %store_name creditfactuur",theme,frontend/Magento/luma
 "Your order #%increment_id has been updated with a status of <strong>%order_status</strong>.","Uw bestelling #%increment_id werd geupdate met volgende status <strong>%order_status</strong>.",theme,frontend/Magento/luma
 "Invoice for your %store_name order","Factuur voor uw %store_name bestelling",theme,frontend/Magento/luma
@@ -15361,7 +15361,7 @@ formElements/*[name(.)=../../@formElement]/settings/title,module,Magento_Ui
 "Place Order","Plaats bestelling"
 "You can pay in the next step.","U kunt in de volgende stap betalen"
 "Ship Here","Selecteer dit adres"
-"New Address","Nieuw adres"
+"New Address","Nieuw adres aanmaken"
 "Volledige beschrijving","Lees meer",
 "You have no items in your quote cart.","U hebt geen offertes",
 "My Quote Cart","Mijn offertes",
