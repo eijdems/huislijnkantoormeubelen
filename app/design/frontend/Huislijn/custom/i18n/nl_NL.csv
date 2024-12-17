@@ -434,7 +434,7 @@ href=""https://dashboard.rjmetrics.com/v2/magento/signup/"">Magento BI Essential
 "Card Code Response","Kaart Code Antwoord",module,Magento_Authorizenet
 "CAVV Response","CAVV Antwoord",module,Magento_Authorizenet
 "Fraud Filters","Fraude Filters",module,Magento_Authorizenet
-"Place Order","Plaats bestelling",module,Magento_Authorizenet
+"Place Order","Verzenden",module,Magento_Authorizenet
 "Sorry, but something went wrong. Please contact the seller.","Er ging iets mis. Neem contact op met de verkoper.",module,Magento_Authorizenet
 "Authorize.net Direct Post","Authorize.net Directe Post",module,Magento_Authorizenet
 "Enabled","Ingeschakeld",module,Magento_Authorizenet
@@ -541,7 +541,7 @@ href=""https://dashboard.rjmetrics.com/v2/magento/signup/"">Magento BI Essential
 "Views","Weergaven",module,Magento_Backend
 "Revenue","Omzet",module,Magento_Backend
 "Tax","BTW",module,Magento_Backend
-"Shipping","Aflevering",module,Magento_Backend
+"Shipping","Levering",module,Magento_Backend
 "Images (.gif, .jpg, .png)","Afbeeldingen (.gif, .jpg, .png)",module,Magento_Backend
 "Media (.avi, .flv, .swf)","Media (.avi, .flv, .swf)",module,Magento_Backend
 "All Files","Alle bestanden",module,Magento_Backend
@@ -1221,7 +1221,7 @@ href=""https://dashboard.rjmetrics.com/v2/magento/signup/"">Magento BI Essential
 "Credit Card Information","Kredietkaart informatie",module,Magento_Braintree
 "What is this?","Wat is dit?",module,Magento_Braintree
 "Save for later use.","Opslaan voor later gebruik.",module,Magento_Braintree
-"Place Order","Plaats bestelling",module,Magento_Braintree
+"Place Order","Verzenden",module,Magento_Braintree
 "This payment is not available","Deze betaalwijze is niet beschikbaar",module,Magento_Braintree
 "MM","mm",module,Magento_Braintree
 "YY","jj",module,Magento_Braintree
@@ -3127,7 +3127,7 @@ Time in seconds between the widget updates.,module,Magento_CatalogWidget
 "Close","Sluiten",module,Magento_Checkout
 "of","of",module,Magento_Checkout
 "Items in Cart","Producten in winkelwagen",module,Magento_Checkout
-"Item in Cart","Product in winkelwagen",module,Magento_Checkout
+"Item in Cart","Producten in winkelwagen",module,Magento_Checkout
 "Recently added item(s)","Recently added item(s)",module,Magento_Checkout
 "View and Edit Cart","Bekijk en bewerk winkelwagen",module,Magento_Checkout
 "See Details","Bekijk details",module,Magento_Checkout
@@ -3139,7 +3139,7 @@ Time in seconds between the widget updates.,module,Magento_CatalogWidget
 "No Payment method available.","Geen betaalmethode beschikbaar.",module,Magento_Checkout
 "You can track your order status by creating an account.","Door het aanmaken van een account, kunt u de status van uw bestelling bijhouden.",module,Magento_Checkout
 "Create an Account","Create an Account",module,Magento_Checkout
-"Place Order","Plaats bestelling",module,Magento_Checkout
+"Place Order","Verzenden",module,Magento_Checkout
 "Forgot an Item?","Iets vergeten?",module,Magento_Checkout
 "Edit Your Cart","Ga terug naar uw winkelwagen",module,Magento_Checkout
 "Ship Here","Hier naartoe verzenden",module,Magento_Checkout
@@ -3153,7 +3153,7 @@ Time in seconds between the widget updates.,module,Magento_CatalogWidget
 "Shipping Methods","Shipping Methods",module,Magento_Checkout
 "Next","Next",module,Magento_Checkout
 "Sorry, no quotes are available for this order at this time","Sorry, no quotes are available for this order at this time",module,Magento_Checkout
-"Order Summary","Overzicht van bestelling",module,Magento_Checkout
+"Order Summary","Productoverzicht",module,Magento_Checkout
 "View Details","Bekijk details",module,Magento_Checkout
 "Provided Zip/Postal Code seems to be invalid.","Opgegeven postcode lijkt ongeldig.",module,Magento_Checkout
 " Example: "," Voorbeeld: ",module,Magento_Checkout
@@ -3163,9 +3163,9 @@ Time in seconds between the widget updates.,module,Magento_CatalogWidget
 "Something went wrong with your request. Please try again later.","Something went wrong with your request. Please try again later.",module,Magento_Checkout
 "Are you sure you want to remove all items from your shopping cart?","Are you sure you want to remove all items from your shopping cart?",module,Magento_Checkout
 "Are you sure you would like to remove this item from the shopping cart?","Weet u zeker dat u dit product wilt verwijderen uit de winkelwagen?",module,Magento_Checkout
-"Review & Payments","Overzicht & betalen",module,Magento_Checkout
+"Review & Payments","Overzicht & afronden",module,Magento_Checkout
 "Select a new payment method","Selecteer een nieuwe betaalmethode",module,Magento_Checkout
-"Shipping","Aflevering",module,Magento_Checkout
+"Shipping","Levering",module,Magento_Checkout
 "Save Address","Adres opslaan",module,Magento_Checkout
 "Please specify a regionId in shipping address.","Please specify a regionId in shipping address.",module,Magento_Checkout
 "Checkout Options","Betaalopties",module,Magento_Checkout
@@ -3992,7 +3992,7 @@ Your outstanding balance currently totals %outstanding_balance. You are %exceed_
 "Available Credit ","Beschikbaar krediet ",module,Magento_CompanyCredit
 "The Payment on Account method is not available in the selected currency. Please contact the seller.","Betaal op rekening is niet beschikbaar voor de geselecteerde valuta. Neem contact op met de verkoper.",module,Magento_CompanyCredit
 "Company credit account will be charged: ","Bedrijfskrediet wordt in rekening gebracht: ",module,Magento_CompanyCredit
-"Place Order","Plaats bestelling",module,Magento_CompanyCredit
+"Place Order","Verzenden",module,Magento_CompanyCredit
 "Cancel the Order","Annuleer bestelling",module,Magento_CompanyCredit
 "This is a required field.","Dit is een verplicht veld.",module,Magento_CompanyCredit
 "Please enter a valid number in this field.","Voer a.u.b. een geldig getal in dit veld in.",module,Magento_CompanyCredit
@@ -5381,7 +5381,7 @@ Email template chosen based on theme fallback when ""Default"" option is selecte
 "Customer Address %1","Klantadres %1",module,Magento_CustomerSegment
 "Default Address","Standaard Adres",module,Magento_CustomerSegment
 "Billing","Facturatie",module,Magento_CustomerSegment
-"Shipping","Aflevering",module,Magento_CustomerSegment
+"Shipping","Levering",module,Magento_CustomerSegment
 "Customer Address %1 Default %2 Address","Adres Klant %1 Standaard %2 Adres",module,Magento_CustomerSegment
 "Has State/Province","Heeft Staat/Provincie",module,Magento_CustomerSegment
 "If Customer Address %1 State/Province specified","Als Klantadres %1 Staat/Provincie opgegeven",module,Magento_CustomerSegment
@@ -5510,7 +5510,7 @@ Email template chosen based on theme fallback when ""Default"" option is selecte
 "Authorize and Capture","Autoriseren en vastleggen",module,Magento_Cybersource
 "Risk Factor Q","Risicofactor Q",module,Magento_Cybersource
 "Risk Factor V","Risicofactor V",module,Magento_Cybersource
-"Place Order","Plaats bestelling",module,Magento_Cybersource
+"Place Order","Verzenden",module,Magento_Cybersource
 "Cybersource","Cybersource",module,Magento_Cybersource
 "Enabled","Ingeschakeld",module,Magento_Cybersource
 "Payment Action","Betaling",module,Magento_Cybersource
@@ -7890,7 +7890,7 @@ it will make no affect on Price filter.",module,Magento_LayeredNavigation
 "Select Addresses","Adres selecteren",module,Magento_Multishipping
 "Shipping Information","Bezorg Informatie",module,Magento_Multishipping
 "Billing Information","Factuurinformatie",module,Magento_Multishipping
-"Place Order","Plaats bestelling",module,Magento_Multishipping
+"Place Order","Verzenden",module,Magento_Multishipping
 "Order Success","Bestelling succes",module,Magento_Multishipping
 "Order Results","Order Results",module,Magento_Multishipping
 "Default Billing","Standaard Factuuradres",module,Magento_Multishipping
@@ -8617,7 +8617,7 @@ information on installing the agent is available <a target=""_blank"" href=""%1"
 "Purchase Order Number: %1","Inkoopordernummer: %1",module,Magento_OfflinePayments
 "Make Check payable to","Maak overboeking naar",module,Magento_OfflinePayments
 "Send Check to","Maak overboeking naar",module,Magento_OfflinePayments
-"Place Order","Plaats bestelling",module,Magento_OfflinePayments
+"Place Order","Verzenden",module,Magento_OfflinePayments
 "Check / Money Order","Betaling door middel van Overboeking",module,Magento_OfflinePayments
 "Enabled","Ingeschakeld",module,Magento_OfflinePayments
 "New Order Status","Nieuwe orderstatus",module,Magento_OfflinePayments
@@ -8728,7 +8728,7 @@ If field is empty default value localhost will be saved.","IPs toegangslijst ges
 "The gateway response format was incorrect. Verify the format and try again.","The gateway response format was incorrect. Verify the format and try again.",module,Magento_Payment
 "The validator for the ""%1"" field doesn't exist.","The validator for the ""%1"" field doesn't exist.",module,Magento_Payment
 "Discount","Korting",module,Magento_Payment
-"Shipping","Aflevering",module,Magento_Payment
+"Shipping","Levering",module,Magento_Payment
 "All Allowed Countries","Alle toegestane landen",module,Magento_Payment
 "Specific Countries","Bepaalde landen",module,Magento_Payment
 "The payment method you requested is not available.","De betalingsmethode die u hebt aangevraagd is niet beschikbaar.",module,Magento_Payment
@@ -8765,7 +8765,7 @@ If field is empty default value localhost will be saved.","IPs toegangslijst ges
 "Card Verification Number Visual Reference","Visuele referentie Kaartverificatienummer",module,Magento_Payment
 "What is this?","Wat is dit?",module,Magento_Payment
 "Credit Card Information","Kredietkaart informatie",module,Magento_Payment
-"Place Order","Plaats bestelling",module,Magento_Payment
+"Place Order","Verzenden",module,Magento_Payment
 "Forgot an Item?","Iets vergeten?",module,Magento_Payment
 "Edit Your Cart","Ga terug naar uw winkelwagen",module,Magento_Payment
 "Please enter a valid credit card type number.","Geef a. u. b. een geldig creditcard-nummer op.",module,Magento_Payment
@@ -9200,7 +9200,7 @@ If field is empty default value localhost will be saved.","IPs toegangslijst ges
 "Edit Payment Information","Betalingsgegevens bewerken",module,Magento_Paypal
 "Items in Your Shopping Cart","Producten in uw winkelwagen",module,Magento_Paypal
 "Edit Shopping Cart","Winkelwagen bewerken",module,Magento_Paypal
-"Place Order","Plaats bestelling",module,Magento_Paypal
+"Place Order","Verzenden",module,Magento_Paypal
 "Submitting order information...","Informatie van de bestelling wordt opgeslagen...",module,Magento_Paypal
 "Item","Product",module,Magento_Paypal
 "Price","prijs",module,Magento_Paypal
@@ -9638,7 +9638,7 @@ or more. <a href=""https://financing.paypal.com/ppfinportal/content/forrester"" 
 "Grand Total","Eindtotaal",module,Magento_Quote
 "Shipping & Handling (%1)","Verzending & verwerking (%1)",module,Magento_Quote
 "Shipping & Handling","Verzending en verwerking",module,Magento_Quote
-"Shipping","Aflevering",module,Magento_Quote
+"Shipping","Levering",module,Magento_Quote
 "Subtotal","Subtotaal",module,Magento_Quote
 "We found an invalid item option format.","We vonden een ongeldig optie formaat.",module,Magento_Quote
 "An item option with code %1 already exists.","Een product optie met code %1 bestaad reeds.",module,Magento_Quote
@@ -9964,7 +9964,7 @@ target=""_blank"">DevDocs' Release Information</a>.,module,Magento_ReleaseNotifi
 "Sales Tax","BTW",module,Magento_Reports
 "Tax","BTW",module,Magento_Reports
 "Sales Shipping","Verkoop verzending",module,Magento_Reports
-"Shipping","Aflevering",module,Magento_Reports
+"Shipping","Levering",module,Magento_Reports
 "Canceled","Geannuleerd",module,Magento_Reports
 "Total Shipped Report","Rapportage Totaal Verzonden",module,Magento_Reports
 "Carrier/Method","Vervoeder/Methode",module,Magento_Reports
@@ -10963,7 +10963,7 @@ target=""_blank"">DevDocs' Release Information</a>.,module,Magento_ReleaseNotifi
 "We can't get the order instance right now.","Orderexemplaar kan niet worden verkregen.",module,Magento_Sales
 "Create New Order","Nieuwe bestelling aanmaken",module,Magento_Sales
 "Save Order Address","Bestelling-adres opslaan",module,Magento_Sales
-"Shipping","Aflevering",module,Magento_Sales
+"Shipping","Levering",module,Magento_Sales
 "Billing","Facturatie",module,Magento_Sales
 "Edit Order %1 %2 Address","Wijzig bestelling %1 %2 adres",module,Magento_Sales
 "Order Address Information","Bestelling adres-informatie",module,Magento_Sales
@@ -15358,7 +15358,7 @@ formElements/*[name(.)=../../@formElement]/settings/title,module,Magento_Ui
 "Enter your billing address to get a tax estimate.","Voer uw factuuradres in voor een schatting van de belasting."
 "Your shipping address will be updated automatically","Uw verzendadres wordt automatisch bijgewerkt"
 "No Questions","Geen vragen beschikbaar"
-"Place Order","Plaats bestelling"
+"Place Order","Verzenden"
 "You can pay in the next step.","U kunt in de volgende stap betalen"
 "Ship Here","Selecteer dit adres"
 "New Address","Nieuw adres aanmaken"
