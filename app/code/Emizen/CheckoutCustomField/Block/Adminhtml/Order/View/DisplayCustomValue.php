@@ -36,7 +36,7 @@ class DisplayCustomValue extends \Magento\Backend\Block\Template
             $fileNames = json_decode($customFiles, true);
 
             // Construct full paths if needed
-            $basePath = 'https://huislijnkantoormeubelen.ezxdemo.com/media/upload/';
+            $basePath = 'https://www.huislijnkantoormeubelen.nl/media/upload/';
             $fullPaths = array_map(function ($fileName) use ($basePath) {
                 return $basePath . $fileName;
             }, $fileNames);
