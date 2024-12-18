@@ -8,14 +8,39 @@
                  data-bind="value: referenceNumber, event: {keyup: onReferenceNumberChange}" />
       </div>
   </div>
-
+  <div class="field cimage_upload">
+      <div class="img-text-upload">
+        Voeg hier de aanvullende bestanden van uw bestelling toe.<br>
+        <span>(Zoals plattegrond, 3D-tekening, inhuisformulier etc.)</span>
+      </div>
+      <br>
+      <label for="upload_image" class="label">
+          <span>Bestand uploaden</span>
+      </label>
+      <div class="control">
+          <input type="file" name="upload_image[]" id="upload_image" 
+                 accept="image/*, .xls, .doc, .dwg, .pdf" 
+                 data-bind="event: { change: onImageUpload }" multiple />
+                 <span class="image-type-text">(jpg, png, xls, doc, dwg, pdf)</span>
+      </div>
+      <div id="file-list" class="file-list">
+          <!-- Render each file in the uploadedFiles observable array -->
+          <div data-bind="foreach: uploadedFiles">
+              <div>
+                  <span data-bind="text: name"></span> <!-- Display the file name -->
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="new-row-checkout">
   <div class="custom_field_quote">
       <span>
           <input type="radio" 
                  name="customCheckbox" 
                  value="quote" 
                  data-bind="checked: CheckVals, attr: {required: true}" /> 
-          Dit is een offerteaanvraag
+          Dit is een offerte aanvraag
       </span>
 
       <span>
@@ -28,3 +53,4 @@
       <div data-bind="validation: { message: 'Please select an option', validate: required }"></div>
   </div>
 </div>
+

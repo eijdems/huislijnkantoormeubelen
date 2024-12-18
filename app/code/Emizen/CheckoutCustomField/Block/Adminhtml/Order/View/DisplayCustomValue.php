@@ -24,4 +24,26 @@ class DisplayCustomValue extends \Magento\Backend\Block\Template
 
         return $order->getReferenceNumber();
     }
+    public function getCustomFile()
+    {
+        $orderId = $this->getRequest()->getParam('order_id');
+        $order = $this->orderInterface->load($orderId);
+
+        $customFiles = $order->getCustomFile(); // Retrieve JSON-encoded filenames
+
+        if ($customFiles) {
+            // Decode the JSON string into an array
+            $fileNames = json_decode($customFiles, true);
+
+            // Construct full paths if needed
+            $basePath = 'https://huislijnkantoormeubelen.ezxdemo.com/media/upload/';
+            $fullPaths = array_map(function ($fileName) use ($basePath) {
+                return $basePath . $fileName;
+            }, $fileNames);
+
+            return $fullPaths; // Return an array of full paths
+        }
+
+        return [];
+    }
 }

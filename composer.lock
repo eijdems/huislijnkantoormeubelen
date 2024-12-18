@@ -790,11 +790,11 @@
         },
         {
             "name": "colijn/product-configurator",
-            "version": "3.1.74",
+            "version": "3.1.75",
             "dist": {
                 "type": "zip",
-                "url": "https://webshop.colijn-it.nl/composer/packages/colijn-product-configurator-3.1.74.zip",
-                "shasum": "ad5a8e4ef9928771e2845b934249752cb1765e0a"
+                "url": "https://webshop.colijn-it.nl/composer/packages/colijn-product-configurator-3.1.75.zip",
+                "shasum": "911b420fccfbb780537906a6c68dc95b705f340b"
             },
             "require": {
                 "colijn/main": "^2.0.0",
@@ -882,11 +882,11 @@
         },
         {
             "name": "colijn/transactions",
-            "version": "2.3.33",
+            "version": "2.3.34",
             "dist": {
                 "type": "zip",
-                "url": "https://webshop.colijn-it.nl/composer/packages/colijn-transactions-2.3.33.zip",
-                "shasum": "7668c5ce1b90cacdfdccbbef436bf0f5e683958e"
+                "url": "https://webshop.colijn-it.nl/composer/packages/colijn-transactions-2.3.34.zip",
+                "shasum": "3e3f0dfd5dd619da6d11163bccb8b53635800168"
             },
             "require": {
                 "colijn/main": "^2.0.0",

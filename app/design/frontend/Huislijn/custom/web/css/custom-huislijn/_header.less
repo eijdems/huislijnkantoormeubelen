@@ -301,7 +301,7 @@ a:hover {
                     transition: all .3s;
                     display: block;
                     line-height: 28px;
-
+                    text-decoration: none;
                     &:hover {
                         background: #661d28;
                         color: #fff;
@@ -323,9 +323,9 @@ a:hover {
                         padding: 0 5px;
                     }
 
-                    @media(min-width: @screen-ipad) and (max-width: @screen-md-ipad) {
+                    @media(min-width: @screen-ipad) and (max-width: @screen-sm-laptop) {
                         font-size: 13px;
-                        padding: 8px;
+                        padding: 8px 15px 8px 8px;
                     }
 
                     @media (max-width: @screen-mobile) {
@@ -410,6 +410,88 @@ a:hover {
                                         }
                                     }
                                 }
+                            }
+                        }
+                    }
+                }
+                .over_menu {
+                    position: relative;
+                    .submenu_custom {
+                        display: none;
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        background: #ffffff;
+                        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.19);
+                        padding: 0;
+                        font-size: 14px;
+                        a {
+                            font-size: 16px;
+                            padding: 5px 30px 5px 20px !important;
+                        }
+                    }
+                    .ui-menu-icon.ui-icon.ui-icon-caret-1-e::after {
+                        font-size: 12px;
+                        line-height: 20px;
+                        color: inherit;
+                        content: '\e622';
+                        font-family: 'luma-icons';
+                        vertical-align: middle;
+                        display: inline-block;
+                        font-weight: normal;
+                        overflow: hidden;
+                        margin-left: 5px;
+                        @media (max-width: @screen-xl-ipad) {
+                            font-size: 1.6rem;
+                        }
+                        @media (min-width: @screen-ipad) and (max-width: @screen-sm-laptop) {
+                            font-size: 12px;
+                        }
+                    }
+                    &.hovered {
+                        .submenu_custom {
+                            display: block;
+                            @media (max-width: @screen-xl-ipad) {
+                                a {
+                                    font-weight: 300;
+                                    font-size: 20px;
+                                    text-transform: capitalize;
+                                    border-bottom: none;
+                                }
+                            }
+                        }
+                    }
+                    @media (max-width: @screen-xl-ipad) {
+                        a {
+                            .ui-menu-icon.ui-icon.ui-icon-caret-1-e.cusom_click {
+                                position: absolute;
+                                right: 10px;
+                                font-size: 1.6rem;
+                            }
+                        }
+                        &.hovered {
+                            .submenu_custom {
+                                display: none;
+                            }
+                            &.active {
+                                .submenu_custom {
+                                    display: block;
+                                }
+                            }
+                        }
+                        &.active {
+                            .submenu_custom {
+                                background: #6e1f26;
+                                position: relative;
+                                display:block;
+                            }
+                        }
+                    }
+
+                    a {
+                        .ui-menu-icon.ui-icon.ui-icon-caret-1-e.cusom_click {
+                            @media (min-width: @screen-ipad) and (max-width: @screen-sm-laptop) {
+                                right: 0;
                             }
                         }
                     }

@@ -15,7 +15,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
         $installer = $setup;
         $installer->startSetup();
 
-        if (version_compare($context->getVersion(), '1.0.2', '<')) {
+        if (version_compare($context->getVersion(), '1.0.5', '<')) {
             // Add reference_number field to the quote table
             $installer->getConnection()->addColumn(
                 $installer->getTable('quote'),
@@ -29,16 +29,42 @@ class UpgradeSchema implements UpgradeSchemaInterface
                 ]
             );
 
+            // Add custom_file field to the quote table
+            $installer->getConnection()->addColumn(
+                $installer->getTable('quote'),
+                'custom_file',
+                [
+                    'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+                    'length' => '64k',
+                    'nullable' => true,
+                    'default' => null,
+                    'comment' => 'Uploaded File Name'
+                ]
+            );
+
             // Add reference_number field to the sales_order table
             $installer->getConnection()->addColumn(
                 $installer->getTable('sales_order'),
                 'reference_number',
                 [
                     'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-                    'length' => 255,
+                    'length' => '255',
                     'nullable' => true,
                     'default' => null,
                     'comment' => 'Reference Number'
+                ]
+            );
+
+            // Add custom_file field to the sales_order table
+            $installer->getConnection()->addColumn(
+                $installer->getTable('sales_order'),
+                'custom_file',
+                [
+                    'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+                    'length' => '64k',
+                    'nullable' => true,
+                    'default' => null,
+                    'comment' => 'Uploaded File Name'
                 ]
             );
         }

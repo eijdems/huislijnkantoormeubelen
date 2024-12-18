@@ -10,3 +10,41 @@ if ($block->getReferenceNumber()) { ?>
 	<p> Referentienummer : <?php echo $block->getReferenceNumber(); ?></p>
 
 <?php } ?>
+<?php
+$fileNames = $block->getCustomFile(); // Get the custom file names array
+?>
+<style type="text/css">
+	.all-image {
+	    display: flex;
+	    gap: 0 10px;
+	    margin: 15px 0;
+	}
+	
+</style>
+<div class="all-image">
+	<?php
+	if (!empty($fileNames)) {
+	    foreach ($fileNames as $fileName) {
+	        // Generate the full URL by concatenating the base URL with the file path
+	        $fileUrl = 'https://www.huislijnkantoormeubelen.nl/media/upload/pdf.png';
+	        $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
+	        if ($fileExtension == 'pdf') { 
+	        	?>	<div class="all-img">
+			        	<a href="<?php echo $fileName; ?>" target="_blank">
+			                <img src="<?php echo $fileUrl; ?>" alt="Uploaded Image" style="width: 70px; height: 70px;" />
+			            </a>
+			        </div>
+	     		<?php   
+	     	}else{
+	     		?>
+			        <div class="all-img">
+			            <a href="<?php echo $fileName; ?>" target="_blank">
+			                <img src="<?php echo $fileName; ?>" alt="Uploaded Image" style="width: 70px; height: 70px;" />
+			            </a>
+			        </div>
+	        	<?php
+	     	}
+	    }
+	}
+	?>
+</div>
