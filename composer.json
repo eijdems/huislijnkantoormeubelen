@@ -36,6 +36,7 @@
         "magento/composer-root-update-plugin": "~2.0",
         "magento/product-community-edition": "2.4.6-p3",
         "mageplaza/module-smtp": "^4.7",
+        "magezon/module-email-attachments": "^1.0",
         "nitropack/magento2-extension": "^2.7",
         "phpoffice/phpspreadsheet": "^2.1"
     },

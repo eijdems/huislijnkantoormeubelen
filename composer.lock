@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "035147c5d5d2155b9211b244ff7f050e",
+    "content-hash": "448969629990602d1a3f13fe4f785a60",
     "packages": [
         {
             "name": "2tvenom/cborencode",
@@ -18455,6 +18455,59 @@
                 "source": "https://github.com/mageplaza/magento-2-smtp/tree/v4.7.13"
             },
             "time": "2024-08-19T09:45:37+00:00"
+        },
+        {
+            "name": "magezon/module-core",
+            "version": "101.3.6",
+            "dist": {
+                "type": "zip",
+                "url": "https://repo.magento.com/archives/magezon/module-core/magezon-module-core-101.3.6.0.zip",
+                "shasum": "47402dff7a27873e791311c678b8d7eb034a349d"
+            },
+            "require": {
+                "php": "~7.3.0||~7.4.0||~8.1.0||~8.2.0||~8.3.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Magezon\\Core\\": ""
+                }
+            },
+            "license": [
+                "OSL-3.0",
+                "AFL-3.0"
+            ],
+            "description": "N/A"
+        },
+        {
+            "name": "magezon/module-email-attachments",
+            "version": "1.0.5",
+            "dist": {
+                "type": "zip",
+                "url": "https://repo.magento.com/archives/magezon/module-email-attachments/magezon-module-email-attachments-1.0.5.0.zip",
+                "shasum": "a9ca730dc7fcf0f36010b0b41686fa1e1ec23e64"
+            },
+            "require": {
+                "magezon/module-core": "*",
+                "php": "~7.1.0|~7.2.0|~7.3.0|~7.4.0|~8.1.0|~8.2.0|~8.3.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Magezon\\EmailAttachments\\": ""
+                }
+            },
+            "license": [
+                "OSL-3.0",
+                "AFL-3.0"
+            ],
+            "description": "Display attachments on sales email"
         },
         {
             "name": "markbaker/complex",
