@@ -3,22 +3,25 @@ require(['jquery', 'Magento_Customer/js/customer-data'], function ($, customerDa
         // Get the customer data
         var customer = customerData.get('customer');
 
-        // Check if customer is logged in
-        if (customer().firstname) { 
-            // Show elements with the "show_after_login" class
-            $('.show_after_login').show();
-        } else {
-            // Hide elements if not logged in
-            $('.show_after_login').hide();
+        // Function to update the href dynamically
+        function updateHref(customer) {
+            if (customer && customer.firstname) {
+                // Set the correct absolute URL for downloads
+                $('.show_after_login a').attr('href', '/downloads'); // Correct relative path
+                $('.show_after_login').show(); // Ensure visibility
+            } else {
+                // Set the URL to the login page for unauthenticated users
+                $('.show_after_login a').attr('href', '/customer/account/login');
+                //$('.show_after_login').hide(); // Hide the element
+            }
         }
 
-        // Update on customer data change
-        customerData.get('customer').subscribe(function (customerData) {
-            if (customerData.firstname) {
-                $('.show_after_login').show();
-            } else {
-                $('.show_after_login').hide();
-            }
+        // Initial call to update the href
+        updateHref(customer());
+
+        // Subscribe to customer data changes
+        customer.subscribe(function (updatedCustomer) {
+            updateHref(updatedCustomer);
         });
         // Toggle 'active' class on both click and hover
         $('.over_menu').on('mouseenter', function () {
