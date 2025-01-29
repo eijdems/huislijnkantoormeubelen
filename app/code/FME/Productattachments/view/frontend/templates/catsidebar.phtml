@@ -32,7 +32,7 @@ if ($checkModule == 'catalog_category_view') {
 <?php $_helper = $this->helper("FME\Productattachments\Helper\Data"); ?>
 <?php
 $blockName = $block->getLayout()->createBlock('FME\Productattachments\Block\Productattachments');
-$this->_storeManager=$objectManager->create('Magento\Store\Model\StoreManagerInterface');
+$_storeManager=$objectManager->create('Magento\Store\Model\StoreManagerInterface');
 ?>
 <?php foreach ($_helper->getAllCategories() as $category) : ?>
     <?php
@@ -77,16 +77,16 @@ $this->_storeManager=$objectManager->create('Magento\Store\Model\StoreManagerInt
                            /** @noEscape */ echo '<a href="javascript:;" onclick="alert(\'You can not download because this attachment excceds the number of download\');">' . $item['file_icon'] . '&nbsp;<b>' . $item['title'] . '</b></a>  Size: (' . $item['file_size'] . ')';
                         } else {
                             if (($ext == 'pdf' || $ext == 'PDF') && $blockName->ispro_pdflink()) {
-                                echo '<a class="downloadlink" id="'.$item['productattachments_id'].'" counter="' . $this->_storeManager->getStore()->getUrl('productattachments') . 'index/counter?id=' . $item['productattachments_id'] . '" href="' . $item['download_link'] . '">' . $item['file_icon'] . '&nbsp;<b>' . $item['title'] . '</b></a>  Size: (' . $item['file_size'] . ')';
+                                echo '<a class="downloadlink" id="'.$item['productattachments_id'].'" counter="' . $_storeManager->getStore()->getUrl('productattachments') . 'index/counter?id=' . $item['productattachments_id'] . '" href="' . $item['download_link'] . '">' . $item['file_icon'] . '&nbsp;<b>' . $item['title'] . '</b></a>  Size: (' . $item['file_size'] . ')';
                             } else {
-                                echo '<a class="downloadlink" id="'.$item['productattachments_id'].'" counter="' . $this->_storeManager->getStore()->getUrl('productattachments') . 'index/counter?id=' . $item['productattachments_id'] . '" href="' . $this->_storeManager->getStore()->getUrl('productattachments') . 'index/download?id=' . $item['productattachments_id'] . '">' . $item['file_icon'] . '&nbsp;<b>' . $item['title'] . '</b></a>  Size: (' . $item['file_size'] . ')';
+                                echo '<a class="downloadlink" id="'.$item['productattachments_id'].'" counter="' . $_storeManager->getStore()->getUrl('productattachments') . 'index/counter?id=' . $item['productattachments_id'] . '" href="' . $_storeManager->getStore()->getUrl('productattachments') . 'index/download?id=' . $item['productattachments_id'] . '">' . $item['file_icon'] . '&nbsp;<b>' . $item['title'] . '</b></a>  Size: (' . $item['file_size'] . ')';
                             }
                         }
                     } else {
                         if (($ext == 'pdf' || $ext == 'PDF') && $blockName->ispro_pdflink()) {
-                            echo '<a class="downloadlink" id="'.$item['productattachments_id'].'" counter="' . $this->_storeManager->getStore()->getUrl('productattachments') . 'index/counter?id=' . $item['productattachments_id'] . '" href="' . $item['download_link'] . '">' . $item['file_icon'] . '&nbsp;<b>' . $item['title'] . '</b></a>  Size: (' . $item['file_size'] . ')';
+                            echo '<a class="downloadlink" id="'.$item['productattachments_id'].'" counter="' . $_storeManager->getStore()->getUrl('productattachments') . 'index/counter?id=' . $item['productattachments_id'] . '" href="' . $item['download_link'] . '">' . $item['file_icon'] . '&nbsp;<b>' . $item['title'] . '</b></a>  Size: (' . $item['file_size'] . ')';
                         } else {
-                            echo '<a class="downloadlink" id="'.$item['productattachments_id'].'" counter="' . $this->_storeManager->getStore()->getUrl('productattachments') . 'index/counter?id=' . $item['productattachments_id'] . '" href="' . $this->_storeManager->getStore()->getUrl('productattachments') . 'index/download?id=' . $item['productattachments_id'] . '">' . $item['file_icon'] . '&nbsp;<b>' . $item['title'] . '</b></a>  Size: (' . $item['file_size'] . ')';
+                            echo '<a class="downloadlink" id="'.$item['productattachments_id'].'" counter="' . $_storeManager->getStore()->getUrl('productattachments') . 'index/counter?id=' . $item['productattachments_id'] . '" href="' . $_storeManager->getStore()->getUrl('productattachments') . 'index/download?id=' . $item['productattachments_id'] . '">' . $item['file_icon'] . '&nbsp;<b>' . $item['title'] . '</b></a>  Size: (' . $item['file_size'] . ')';
                         }
                     }
 
