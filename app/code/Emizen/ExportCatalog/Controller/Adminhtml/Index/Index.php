@@ -89,18 +89,22 @@ class Index extends Action
                 // Fetch products for current category
                 $productCollection = $this->productCollectionFactory->create();
                 $productCollection->addCategoriesFilter(['eq' => $categoryId]);
-                $productCollection->addAttributeToSelect(['name', 'sku', 'price']); // Ensure product name and SKU are loaded
+                $productCollection->addAttributeToSelect(['name', 'sku', 'price', 'type']); // Ensure product name and SKU are loaded
                 $countProduct = count($productCollection);
                 $categoryPage = "Category";
 
                 
                 // Write category title in bold
-                $sheet->setCellValue('A' . $row, $categoryPage);
+                $sheet->setCellValue('A' . $row, 'Model');
                 $sheet->getStyle('A' . $row)->getFont()->setBold(true);
-                $sheet->setCellValue('B' . $row, strtoupper($categoryTitle));
+                $sheet->setCellValue('B' . $row, $categoryPage);
                 $sheet->getStyle('B' . $row)->getFont()->setBold(true);
-                $sheet->setCellValue('C' . $row, $countProduct);
+                $sheet->setCellValue('C' . $row, strtoupper($categoryTitle));
                 $sheet->getStyle('C' . $row)->getFont()->setBold(true);
+                $sheet->setCellValue('D' . $row, $countProduct);
+                $sheet->getStyle('D' . $row)->getFont()->setBold(true);
+                /*$sheet->setCellValue('D' . $row, $countProduct);
+                $sheet->getStyle('D' . $row)->getFont()->setBold(true);*/
                 $row++;
 
                 
@@ -108,11 +112,16 @@ class Index extends Action
                 foreach ($productCollection as $product) {
                     //var_dump($product->debug());die;
                     $productPage = $categoryTitle;
-                    $sheet->setCellValue('A' . $row, $productPage);
-                    $sheet->getStyle('A' . $row)->getFont()->setBold(true);
-                    $sheet->setCellValue('B' . $row, $product->getSku());
-                    $sheet->setCellValue('C' . $row, $product->getName());
-                    $sheet->setCellValue('D' . $row, $product->getPrice());                    
+                    $type = $product->getattributetext('type');
+                    if (is_array($type)) {
+                        $type = implode(', ', $type); // Convert the array to a comma-separated string
+                    }
+                    $sheet->setCellValue('A' . $row, $type); 
+                    $sheet->setCellValue('B' . $row, $productPage);
+                    $sheet->getStyle('B' . $row)->getFont()->setBold(true);
+                    $sheet->setCellValue('C' . $row, $product->getSku());
+                    $sheet->setCellValue('D' . $row, $product->getName());
+                    $sheet->setCellValue('E' . $row, $product->getPrice());                   
                     $row++;
                 }
 

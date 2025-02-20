@@ -35,6 +35,7 @@ $imageContainer = $block->getImageContainer();
 $showDropdown = $block->getShowDropdown();
 $showMeasurements = $block->getShowMeasurements();
 $product = $block->getProduct();
+//$categoryId = $product->getCategoryId();
 if ($block->getCustomCamera()) {
 	$customCamera = $product->getResource()->getAttribute('custom_camera')->getFrontend()->getValue($product);
 }
@@ -78,7 +79,17 @@ $custGrpid = $customerSession->getCustomerGroupId();
 				<button class="btn btn-config" id="btn_config">Configureren</button>
 			<?php endif; ?>
 		</div>
-		<div class="extra-content-button" style="font-size: 18px; margin-top: 15px; "><?php echo __("Voorraadproducten zijn aangeduid middels een groene stip bij de opties tijdens het samenstellen van het product.");?></div>
+		
+		<?php 
+		$typeCond = $product['type'];
+		$prodCategory = $product['prod_category'];
+
+		if ($prodCategory == 57 || ($prodCategory == 78 && ($typeCond == 236 || $typeCond == 244))): ?>
+			<div class="extra-content-button" style="font-size: 18px; margin-top: 15px; "><?php echo __("Voorraadproducten zijn aangeduid middels een groene stip bij de opties tijdens het samenstellen van het product.");?></div>
+		<?php else: ?>
+			<div class="extra-content-button" style="font-size: 18px; margin-top: 15px; "><?php echo __("Voorraadproducten zijn aangeduid middels een groene stip bij de opties tijdens het samenstellen van het product.
+<br>Overige RAL kleuren en Pulver hebben een meerprijs van 10%. Deze meerprijs wordt nog niet mee berekend in de totaalprijs.");?></div>
+		<?php endif; ?>
 	<?php endif; ?>
 	<?php if($onlyTwod): ?>
 		<threed-configurator id="threedconfigurator" <?php if ($onlyTwod): ?>style="display:none"<?php endif; ?>></threed-configurator>

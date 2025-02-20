@@ -3,4 +3,8 @@
     <!-- <event name="catalog_product_load_after">
         <observer name="set_additional_options" instance="Emizen\Download\Observer\SetAdditionalOptions"/>
     </event> -->
+    <event name="controller_action_predispatch_cms_page_view">
+        <observer name="restrict_cms_page_before_login"
+            instance="Emizen\Download\Observer\RestrictCmsPage"/>
+    </event>
 </config>

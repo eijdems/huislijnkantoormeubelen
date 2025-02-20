@@ -14,6 +14,9 @@ class saveInQuote extends Action
     protected $resultForwardFactory;
     protected $layoutFactory;
     protected $cart;
+    protected $checkoutSession;
+    protected $quoteRepository;
+    
 
     public function __construct(
         Context $context,
