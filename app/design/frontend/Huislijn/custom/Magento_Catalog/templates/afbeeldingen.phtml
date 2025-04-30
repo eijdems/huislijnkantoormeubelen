@@ -44,23 +44,11 @@
                 <div class="img-attachment">
                     <a href="<?php echo $attachment['download_link']; ?>" data-lightbox="gallery" data-title="<?php echo $attachment['title']; ?>">
                         <img src="<?php echo $attachment['download_link']; ?>" alt="<?php echo $attachment['title']; ?>">
-                        <span class="attach-text"><?php echo $attachment['title']; ?></span>
-                    </a>
-                </div>
-            <?php } else { ?>
-                <div class="img-dwg">
-                    <a href="<?php echo $attachment['download_link']; ?>" target="_blank">
-                        <?php 
-                        $blockObj= $block->getLayout()->createBlock('FME\Productattachments\Block\Productattachments');
-                        $fileIcon =  $blockObj->getnewicon($attachment['file_type']);
-                        //echo "<pre>";
-                        //print_r($attachment);
-                        echo $fileIcon."  ".$attachment['title']; ?>
                     </a>
                 </div>
             <?php }
         }
     } else {
-        echo "coming soon...";
+        echo "Binnenkort beschikbaar";
     }
 ?>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"
+      layout="2columns-left">
+      
+    <head>
+        <!-- Include your JS file -->
+        <script src="Emizen_CustomDownload::js/custom.js"/>
+        <css src="Emizen_CustomDownload::css/customdownload.css" rel="stylesheet" type="text/css"  />
+        <meta name="robots" content="NOINDEX, NOFOLLOW" />
+    </head>
+
+    <body>
+         <!-- Sidebar Filter Block -->
+        <referenceContainer name="sidebar.main">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="customdownload.sidebar"
+                   template="Emizen_CustomDownload::sidebar.phtml"/>
+        </referenceContainer>
+
+        <!-- Content Block Where AJAX Data Will Load -->
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="customdownload.result"
+                   template="Emizen_CustomDownload::result.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

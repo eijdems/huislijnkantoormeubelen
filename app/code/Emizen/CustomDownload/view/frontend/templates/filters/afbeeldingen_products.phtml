@@ -1,0 +1,17 @@
+<?php
+/** @var \Magento\Catalog\Model\ResourceModel\Product\Collection $productCollection */
+$productCollection = $block->getData('product_collection');
+?>
+
+<?php if ($productCollection->getSize() > 0): ?>
+    <?php foreach ($productCollection as $product): ?>
+        <div class="product-item">
+            <a href="<?php echo $this->helper('Magento\Catalog\Helper\Image')->init($product, 'product_base_image')->getUrl(); ?>" target="_blank" download>
+                    <img src="<?php echo $this->helper('Magento\Catalog\Helper\Image')->init($product, 'product_base_image')->getUrl(); ?>" alt="<?php echo $product->getName(); ?>" />
+                </a>
+        </div>
+    <?php endforeach; ?>
+<?php else: ?>
+    <p>No products found based on your selected models.</p>
+<?php endif; ?>
+

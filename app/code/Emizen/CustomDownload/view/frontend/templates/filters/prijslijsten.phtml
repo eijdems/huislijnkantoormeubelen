@@ -1,0 +1,17 @@
+<h2>Downloads</h2><br>
+<?php
+/** Load CMS Page with ID 9 */
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+
+/** @var \Magento\Cms\Model\Page $cmsPage */
+$cmsPage = $objectManager->create(\Magento\Cms\Model\Page::class);
+$page = $cmsPage->load(9); // Load by ID
+
+/** @var \Magento\Cms\Model\Template\FilterProvider $filterProvider */
+$filterProvider = $objectManager->get(\Magento\Cms\Model\Template\FilterProvider::class);
+
+/** Filter content to render widgets and directives */
+$content = $filterProvider->getPageFilter()->filter($page->getContent());
+
+echo $content;
+?>

@@ -1,0 +1,87 @@
+.customdownload-index-index h2 {
+    margin:0 0 10px;
+    font-weight: 500;
+    color: #333;
+    font-size: 30px;
+}
+.customdownload-index-index .inner-content.mgz-container {
+    max-width: 100%;
+    width: 100%;
+}
+.customdownload-index-index #maincontent .sidebar.sidebar-main .custom-filter-sidebar ul li.prijslijsten_active:after{
+    display: none;
+}
+.subcategory-heading h2 {
+    font-size: 18px;
+    color: #222;
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 20px;
+    font-weight: 600;
+}
+.attachments-list {
+    display: flex;
+    align-items: center;
+    margin-right: 1%;
+}
+.attachments-list .attachment-item {
+    margin-bottom: 25px;
+    margin-right: 1%;
+}
+.attachments-list .attachment-item h3 {
+    margin: 0;
+    font-weight: 300;
+}
+.attachment-item h3 a {
+    font-size: 17px;
+    color: #6e1f26;
+    line-height: normal;
+    text-decoration: underline;
+}
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+.product-item {
+    text-align: center;
+    border: 1px solid #e2e2e2;
+    padding: 15px;
+    border-radius: 4px;
+    background: #fff;
+}
+.product-item img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+.product-item h3 {
+    font-size: 16px;
+    margin: 10px 0;
+}
+.product-item p {
+    font-size: 14px;
+    color: #333;
+}
+.customdownload-index-index  input[type="checkbox"]:checked + span::after {
+    content: '';
+}
+@media(min-width : 1300px) and (max-width : 1440px){ 
+.customdownload-index-index #maincontent {
+    padding: 0 60px;
+}
+}
+@media(max-width : 1299px){
+.customdownload-index-index #maincontent {
+    padding: 0 15px;
+}
+}
+@media(max-width : 767px){
+.customdownload-index-index #maincontent .afbeeldingen-filter label {
+    margin-bottom: 10px;
+}
+.customdownload-index-index .product-grid .product-item {
+    padding: 10px;
+}
+}

@@ -1,0 +1,40 @@
+<h2>Downloads</h2><br>
+
+<?php
+// Get the block object
+$blockObj = $block->getLayout()->createBlock('Emizen\CustomDownload\Block\Attachments');
+
+// Fetch categories and their attachments (only child categories of category ID 3)
+$categoriesWithAttachments = $blockObj->getCategoryAttachments();
+?>
+
+<?php if ($categoriesWithAttachments): ?>
+    <?php
+    $currentCategoryName = '';
+    foreach ($categoriesWithAttachments as $categoryData):
+        // Check if there are any attachments for this category
+        if ($categoryData['attachment_title']): // If there's an attachment
+            // Check if the category name has changed (this is important to group attachments by category)
+            if ($currentCategoryName !== $categoryData['category_name']):
+                if ($currentCategoryName !== ''):
+                    echo '</div>'; // Close previous category's attachment list
+                endif;
+                $currentCategoryName = $categoryData['category_name'];
+                ?>
+                <div class="subcategory-heading">
+                    <h2><?php echo $categoryData['category_name']; ?></h2>
+                </div>
+                <div class="attachments-list">
+            <?php endif; ?>
+
+            <div class="attachment-item">
+                <h3><a href="<?php echo $categoryData['download_link']; ?>" target="_blank"><?php echo $categoryData['attachment_title']; ?></a></h3>
+            </div>
+
+        <?php endif; // End if there's an attachment ?>
+
+    <?php endforeach; ?>
+    </div> <!-- Close last category's attachment list -->
+<?php else: ?>
+    <p>No attachments found for this category.</p>
+<?php endif; ?>

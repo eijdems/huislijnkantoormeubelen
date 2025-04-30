@@ -1,0 +1,59 @@
+<div class="custom-download-page">
+    <aside class="sidebar-filters">
+        <form id="filter-form" method="post" action="#">
+            <?php
+                // List of filters (you can replace these options with real data)
+                $filters = [
+                    'Prijslijsten' => 'prijslijsten',
+                    'Marketing Pakketten' => 'marketing_pakketten',
+                    'DWG Bestanden' => 'dwg_bestanden',
+                    'Materialen' => 'materialen',
+                    'Afbeeldingen' => 'afbeeldingen',
+                    'Nieuwsbrieven' => 'nieuwsbrieven',
+                ];
+            ?>
+            
+            <?php foreach ($filters as $label => $name): ?>
+                <div class="filter-group">
+                    <label for="<?= $name ?>"><?= $label ?></label><br/>
+                    <select id="<?= $name ?>" name="<?= $name ?>[]" multiple="multiple" class="filter-select">
+                        <option value="option1"><?= $label ?> Option 1</option>
+                        <option value="option2"><?= $label ?> Option 2</option>
+                        <option value="option3"><?= $label ?> Option 3</option>
+                    </select>
+                </div>
+            <?php endforeach; ?>
+            <button type="submit" id="filter-submit">Toepassen</button>
+        </form>
+    </aside>
+
+    <!-- Container to display filtered content -->
+    <div id="filtered-content"></div>
+
+    <!-- Container for the custom CMS block -->
+    <div id="custom-cms-block"></div>
+</div>
+
+<script type="text/javascript">
+    require(['jquery'], function($) {
+        // Listen for form submission
+        $('#filter-form').on('submit', function(e) {
+            e.preventDefault();
+            
+            // Get filter data from the form
+            var filterData = $(this).serialize();
+            
+            $.ajax({
+                url: '<?= $block->getUrl("customdownload/index/ajax") ?>',  // Adjust URL to your controller action
+                type: 'POST',
+                data: filterData,
+                success: function(response) {
+                    // Update the filtered content
+                    $('#filtered-content').html(response.filtered_content);
+                    // Update the CMS block based on filter selection
+                    $('#custom-cms-block').html(response.cms_block_html);
+                }
+            });
+        });
+    });
+</script>

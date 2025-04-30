@@ -1,6 +1,6 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     require.config({
         paths: {
             'lightbox': 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min'
@@ -21,23 +21,23 @@
             });
         });
     });
-</script>
+</script> -->
 <?php
-	$product = $block->getProduct();
-	$pId = $product['entity_id'];
-	$_helper = $this->helper('FME\Productattachments\Helper\Data'); 
-	$attachmentData = $_helper->getProductAttachmentsById($pId);
+    $product = $block->getProduct();
+    $pId = $product['entity_id'];
+    $_helper = $this->helper('FME\Productattachments\Helper\Data'); 
+    $attachmentData = $_helper->getProductAttachmentsById($pId);
 
-	// Filter attachments by category ID
-	$categoryId = 2; // specify the category ID you want to filter by
-	$filteredAttachments = array_filter($attachmentData, function($attachment) use ($categoryId) {
-	    return $attachment['cat_id'] == $categoryId;
-	});
+    // Filter attachments by category ID
+    $categoryId = 2; // specify the category ID you want to filter by
+    $filteredAttachments = array_filter($attachmentData, function($attachment) use ($categoryId) {
+        return $attachment['cat_id'] == $categoryId;
+    });
 
-	$countAtt = count($filteredAttachments);
+    $countAtt = count($filteredAttachments);
 
-	if ($countAtt > 0) {
-	    foreach ($filteredAttachments as $attachment) {
+    if ($countAtt > 0) {
+        foreach ($filteredAttachments as $attachment) {
             $fileType = $attachment['file_type'];
             if ($fileType == "jpg" || $fileType == "jpeg" || $fileType == "png" ) { ?>
                 <div class="img-attachment">
@@ -59,7 +59,12 @@
                 </div>
             <?php }
         }
-	} else {
-	    echo "coming soon...";
-	}
+    } else { 
+        echo $this->getLayout()
+        ->createBlock(\Magento\Cms\Block\Block::class)
+        ->setBlockId('dWG_bestanden') //replace my_cmsblock_identifier with real CMS bock identifier
+        ->toHtml();
+        ?>
+        <!-- <span>Download de 3D DWG files via onze <a href="https://catalogs.pcon-solutions.com/#/brands/o-94a602d1ee454ceea0fa3a78bbfa1a6f" target="_blank">pCon catalogus</a> en <a href="https://download-center.pcon-solutions.com/?p=1762" target="_blank">Sketchup plugin</a> -->
+    <?php }
 ?>

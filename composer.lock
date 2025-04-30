@@ -907,11 +907,11 @@
         },
         {
             "name": "colijn/product-configurator",
-            "version": "3.1.75",
+            "version": "3.1.76",
             "dist": {
                 "type": "zip",
-                "url": "https://webshop.colijn-it.nl/composer/packages/colijn-product-configurator-3.1.75.zip",
-                "shasum": "911b420fccfbb780537906a6c68dc95b705f340b"
+                "url": "https://webshop.colijn-it.nl/composer/packages/colijn-product-configurator-3.1.76.zip",
+                "shasum": "8737b0e9a511ff4f85c0aa58d96fe56cb61b664f"
             },
             "require": {
                 "colijn/main": "^2.0.0",

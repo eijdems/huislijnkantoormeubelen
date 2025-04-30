@@ -12,7 +12,7 @@ body{
             font-weight:400;
             text-align: left;
             @media (max-width: 768px){
-            	font-size: 24px;
+                font-size: 24px;
             }
         }
     }
@@ -151,3 +151,136 @@ body{
         z-index: auto;
     }
 
+.customdownload-index-index {
+    #maincontent {
+        padding: 0 100px;
+        .sidebar.sidebar-main {
+            .custom-filter-sidebar {
+                ul {
+                    padding: 0;
+                    li {
+                        padding: 20px 20px;
+                        border-bottom: 1px solid #ccc;
+                        margin-bottom: 0;
+                        text-transform: uppercase;
+                        font-weight: 500;
+                        a{
+                            color: #000;
+                            font-size: 16px;
+                        }
+                        &:first-child{
+                            border-top: 1px solid #ccc;
+                        }
+                        &:after{
+                            font-size: 13px;
+                            content: '\e622';
+                            font-family: 'luma-icons';
+                            display: inline-block;
+                            font-weight: normal;
+                            background:#661d28;
+                            float: right;
+                            color: #fff;
+                            height: 25px;
+                            width: 25px;
+                            text-align: center;
+                            border-radius:50px;
+                            line-height: 27px;
+                        }
+                        &.active{
+                            a{
+                                color: #661d28;
+                            }
+                            &:after{
+                                content: '\e621';
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .afbeeldingen-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0 27px;
+            h2{
+                margin: 0 0 10px;
+                font-weight: 500;
+                color: #333;
+                font-size: 30px;
+            }
+            p {
+                width: 100%;
+                font-size: 18px;
+                color: #8a8a8a;
+                margin-bottom: 40px;
+                strong{
+                    font-weight: normal;
+                }
+            }
+           label {
+                display: flex;
+                align-items: center;
+                gap: 0 9px;
+                font-size: 16px;
+                color:  #8a8a8a;
+                position: relative;
+                padding-left: 20px;
+                input {
+                    top: 0;
+                    border-radius:0;
+                    margin-top: 0;
+                    height: 18px;
+                    width: 18px;
+                    left: 0;
+                }
+                input[type='checkbox'] {
+                    margin: 0;
+                    opacity: 0;
+                    overflow: hidden;
+                    padding: 0;
+                    position: absolute;
+                    &+span {
+                        &::after {
+                            background: url(../images/check.png) no-repeat center center;
+                            left: 3px;
+                            top: 2px;
+                            width: 13px;
+                            height: 13px;
+                            background-size: 100%;
+                            position: absolute;
+                        }
+                        &:before {
+                            height: 18px;
+                            border: 1px solid #a8a9aa;
+                            width: 18px;
+                            content: "";
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            border-radius: 2px;
+                        }
+                    }
+                }
+            }
+        }
+        .afbeelding-content {
+            margin-top: 10px;
+        }
+        .dwg_main{
+            .mgz-element-inner {
+                padding: 0;
+            }
+            .dwg_content {
+                p {
+                    color: #8a8a8a;
+                    font-size: 18px;
+                    font-weight: 300;
+                    a{
+                        color: #661d28;
+                        text-decoration:underline;
+                    }
+                }
+            }
+        }
+    }
+}
