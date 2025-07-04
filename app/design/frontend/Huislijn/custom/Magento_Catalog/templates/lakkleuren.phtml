@@ -2,15 +2,49 @@
 $helper = $this->helper('Emizen\Customsearch\Helper\Data');
 $checkLogin = $helper->getCustomLogin(); 
 ?>
+
 <?php if ($checkLogin) : ?>
+    
     <?php
-        $product = $block->getProduct();
-        $descriptionData = $product->getData('description_huilijn');
-        if ($descriptionData) {
-             echo $descriptionData;
-        }else{
-            echo "Binnenkort beschikbaar";
-        } 
-        
+    	$product = $block->getProduct();
+    	$descriptionData = $product->getData('description_huilijn'); 
+        echo $descriptionData."<br>";
+
+    	$pId = $product['entity_id'];
+    	$_helper = $this->helper('FME\Productattachments\Helper\Data'); 
+    	$attachmentData = $_helper->getProductAttachmentsById($pId);
+
+    	// Filter attachments by category ID
+    	$categoryId = 4; // specify the category ID you want to filter by
+    	$filteredAttachments = array_filter($attachmentData, function($attachment) use ($categoryId) {
+    	    return $attachment['cat_id'] == $categoryId;
+    	});
+
+    	$countAtt = count($filteredAttachments);
+
+    	if ($countAtt > 0) {
+    	    foreach ($filteredAttachments as $attachment) { ?>
+                <?php $fileType = $attachment['file_type']; ?>
+                    <?php if (in_array($fileType, ["jpg", "jpeg", "png"])) : ?>
+		                <div class="img-attachment">
+		                    <a href="<?php echo $attachment['download_link']; ?>" data-lightbox="gallery" data-title="<?php echo $attachment['title']; ?>" target="_blank">
+		                        <img src="<?php echo $attachment['download_link']; ?>" alt="<?php echo $attachment['title']; ?>" target="_blank">
+		                        <span class="attach-text"><?php echo $attachment['title']; ?></span>
+		                    </a>
+		                </div>
+                    <?php else : ?>
+                    	<div class="img-dwg">
+						    <a href="<?php echo $attachment['download_link']; ?>" target="_blank">
+						        <?php 
+						        
+						        $blockObj = $block->getLayout()->createBlock('FME\Productattachments\Block\Productattachments');
+						        $fileIcon = $blockObj->getnewicon($attachment['file_icon']); 
+						        //echo $fileIcon; 
+						        echo $attachment['title']; ?>
+						    </a>
+						</div>
+	                <?php endif; ?>
+            <?php }
+    	}
     ?>
 <?php endif; ?>

@@ -32,13 +32,25 @@ main#maincontent {
             top: 9%;
         }
     }
+    .home-custom-slider{
+        .mgz-element-column > {
+            .mgz-element-inner {
+                padding:0!important;
+            }
+        }
+    }
     .home-custom-slider .mgz-container {
         width: 100%;
         .mgz-element-column > {
             .mgz-element-inner {
-                padding:0!important;
+                @media (max-width:767px) {
+                    margin-bottom: 10px;
+                }
                 .custom-slider {
                     padding-bottom: 0;
+                    @media (max-width:991px) {
+                        padding-bottom:25px ;
+                    }
                     .owl-stage-outer {
                         padding:0;
                     }
@@ -49,6 +61,20 @@ main#maincontent {
                         .owl-dots {
                             text-align: right;
                             right: 20px;
+                            width: auto;
+                            @media (max-width:991px) {
+                                bottom: -30px;
+                            }
+                        }
+                    }
+                }
+                .banner-item {
+                    .content_slider{
+                        left: 0;
+                        bottom: 0;
+                        @media (max-width:991px) {
+                            position: static;
+                            width: 100%;
                         }
                     }
                 }
@@ -60,9 +86,11 @@ main#maincontent {
                     left: 0;
                     bottom: 0;
                     padding: 20px;
+                    text-align: left;
                     @media (max-width:991px) {
                         position: static;
-                        padding:20px 10px 0;
+                        padding: 10px 0 0;
+                        margin-top: 0;
                     }
                     h2.mgz-element-heading-text {
                             font-size: 36px;
@@ -76,9 +104,9 @@ main#maincontent {
                                 color: #6e1f26 !important;
                             }
                             @media (max-width:991px) {
-                                font-size: 28px;
-                                line-height: 40px;
-                                margin-bottom:0;
+                                font-size: 22px;
+                                line-height: 25px;
+                                margin: 5px 0 7px;
                             }
                             @media (min-width:992px) and (max-width:1199px) {
                                 font-size: 24px;
@@ -100,6 +128,11 @@ main#maincontent {
                         font-weight: 300;
                         line-height: 28px;
                         margin-bottom: 30px;
+                        @media (max-width:991px) {
+                            font-size: 15px;
+                            line-height: 23px;
+                            margin-bottom: 5px;
+                        }
                         & > a {
                             font-size: 18px;
                             color: #6e1f26;
@@ -109,6 +142,10 @@ main#maincontent {
                             @media (min-width:992px) and (max-width:1199px) {
                                 font-size: 14px;
                                 line-height: 19px;
+                            }
+                            @media (max-width:991px) {
+                                font-size: 15px;
+                                margin-top: 10px;
                             }
                             &:after {
                                 content: "";
@@ -129,10 +166,6 @@ main#maincontent {
                         }
                         &:last-child {
                             margin-bottom: 0;
-                        }
-                        @media (max-width:768px) {
-                            font-size: 16px;
-                            margin-bottom: 15px;
                         }
                         @media (min-width:992px) and (max-width:1199px) {
                             font-size: 14px;

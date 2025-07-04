@@ -381,7 +381,6 @@ return [
         'Magezon_PageBuilder' => 1,
         'Magezon_PageBuilderIconBox' => 1,
         'Magezon_PageBuilderPageableContainer' => 1,
-        'Magezon_PageBuilderPreview' => 1,
         'Nadeem0035_DisableCartCheckout' => 0,
         'NitroPack_NitroPack' => 0,
         'PayPal_Braintree' => 1,

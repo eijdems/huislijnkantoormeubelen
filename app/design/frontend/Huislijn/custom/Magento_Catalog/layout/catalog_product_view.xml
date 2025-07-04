@@ -48,6 +48,7 @@
         <referenceBlock name="reviews.tab" remove="true" />
         <referenceBlock name="product.attributes" remove="true" />
         <referenceBlock name="product.info.extrahint.qtyincrements" remove="true" />
+        <!-- <referenceBlock name="catalog.product.related" remove="true"/> -->
         
         <!-- <referenceBlock name="product.info.addtocart.additional" remove="true" /> -->
         
@@ -58,6 +59,7 @@
         <move element="product.info.overview" destination="product.info.main" after="product.info.stock.sku" />
         <move element="product.info.extrahint.configurator" destination="product.info.main" after="product.info.price" />
         <move element="product.info.details" destination="product.info.main" after="product.info.price"/>
+        <move element="catalog.product.related" destination="content.aside" after="-"/>
 
     <referenceBlock name="product.info.description" remove="true" />
     <referenceContainer name="product.info.overview" remove="true"/>

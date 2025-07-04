@@ -902,7 +902,7 @@ fieldset[disabled] .mgz-builder .product-item-actions .actions-secondary > butto
   text-decoration: underline;
 }
 .ui-dialog-titlebar-close:active {
-  color: #661d28;
+  color: #ff5501;
   text-decoration: underline;
 }
 .ui-dialog-titlebar-close:hover {
@@ -1144,7 +1144,7 @@ body.catalog-product-compare-index .action.print {
   position: relative;
   z-index: 2;
   -webkit-font-smoothing: antialiased;
-  color: #661d28;
+  color: #ff5501;
   font-family: 'icons-blank-theme';
   font-size: 28px;
   height: 28px;
@@ -1227,7 +1227,7 @@ body.catalog-product-compare-index .action.print {
   width: 1px;
 }
 .review-control-vote label:before {
-  color: #661d28;
+  color: #ff5501;
   font-family: 'icons-blank-theme';
   font-size: 28px;
   height: 28px;

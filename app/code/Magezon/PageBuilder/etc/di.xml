@@ -266,7 +266,7 @@
 					<item name="builder_description" xsi:type="string">{{ 'Show Pin counts: ' + element.show_pin_counts }}</item>
 					<item name="demo_link" xsi:type="string">http://192.168.1.107/magezon/pagebuilder/pinterest</item>
 				</item>
-				<item name="instagram" xsi:type="array">
+				<!-- <item name="instagram" xsi:type="array">
 					<item name="name" xsi:type="string" translate="true">Instagram</item>
 					<item name="class" xsi:type="string">Magezon\PageBuilder\Data\Element\Instagram</item>
 					<item name="block" xsi:type="string">Magezon\PageBuilder\Block\Element\Instagram</item>
@@ -280,7 +280,7 @@
 					</item>
 					<item name="description" xsi:type="string">Image feed from usename or hashtag</item>
 					<item name="demo_link" xsi:type="string">http://192.168.1.107/magezon/pagebuilder/instagram</item>
-				</item>
+				</item> -->
 				<item name="flickr" xsi:type="array">
 					<item name="name" xsi:type="string" translate="true">Flickr Widget</item>
 					<item name="class" xsi:type="string">Magezon\PageBuilder\Data\Element\Flickr</item>
@@ -494,7 +494,7 @@
 					<item name="icon" xsi:type="string">mgz-icon mgz-icon-magezon-pagebuilder</item>
 					<item name="icon_styles" xsi:type="array">
 						<item name="background-color" xsi:type="string">transparent</item>
-						<item name="color" xsi:type="string">#661d28</item>
+						<item name="color" xsi:type="string">#ff5501</item>
 						<item name="font-size" xsi:type="string">28px</item>
 					</item>
 					<item name="group" xsi:type="string">content</item>

@@ -22,7 +22,7 @@
 .attachments-list {
     display: flex;
     align-items: center;
-    margin-right: 1%;
+    margin-bottom: 20px;
 }
 .attachments-list .attachment-item {
     margin-bottom: 25px;
@@ -67,9 +67,93 @@
 .customdownload-index-index  input[type="checkbox"]:checked + span::after {
     content: '';
 }
+.customdownload-index-index #maincontent .sidebar.sidebar-main .custom-filter-sidebar ul li.afbeeldingen-tab .toggle-sub {
+    padding: 0 20px;
+}
+.customdownload-index-index #maincontent .sidebar.sidebar-main .custom-filter-sidebar ul li.afbeeldingen-tab {
+    position: relative;
+}
+.customdownload-index-index #maincontent .sidebar.sidebar-main .custom-filter-sidebar ul li.afbeeldingen-tab .sub-filter li {
+    padding: 15px 0 0;
+    border: none;
+    position: relative;
+}
+.customdownload-index-index #maincontent .sidebar.sidebar-main .custom-filter-sidebar ul li.afbeeldingen-tab .sub-filter {
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+    padding-top: 10px;
+}
+.customdownload-index-index #maincontent .sidebar.sidebar-main .custom-filter-sidebar ul li.afbeeldingen-tab.afbeeldingen-tab::after {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+}
+.customdownload-index-index #maincontent .sidebar.sidebar-main .custom-filter-sidebar ul li.afbeeldingen-tab .sub-filter li::after {
+    background: none;
+    color: #000;
+    border-radius: 0;
+    padding: 0;
+    height: auto;
+    position: absolute;
+    top: 10px;
+    right: 0;
+}
+.customdownload-index-index #maincontent .sidebar.sidebar-main .custom-filter-sidebar ul.sub-cat-level-2 {
+    padding-left: 15px;
+}
+.customdownload-index-index #maincontent .sidebar.sidebar-main .custom-filter-sidebar ul .sub-cat-level-3 {
+    padding-left: 15px;
+}
+.customdownload-index-index #maincontent .sidebar.sidebar-main .custom-filter-sidebar ul.sub-cat-level-4 {
+    padding-left: 15px;
+}
+.customdownload-index-index #maincontent .sidebar.sidebar-main .custom-filter-sidebar ul.sub-cat-level-1 li .category-toggle {
+    font-size: 14px;
+}
+.customdownload-index-index #maincontent .sidebar.sidebar-main .custom-filter-sidebar ul li.afbeeldingen-tab .sub-filter li.active:after{
+    color: #661d28;   
+}
+.customdownload-index-index #maincontent .sidebar.sidebar-main .custom-filter-sidebar ul li.afbeeldingen-tab a {
+    color: #000;
+    text-decoration: none !important;
+}
+.customdownload-index-index #maincontent .sidebar.sidebar-main .custom-filter-sidebar ul li.afbeeldingen-tab .sub-filter li.active a{
+    color:#661d28;
+}
+.customdownload-index-index #maincontent .sidebar.sidebar-main .custom-filter-sidebar ul li.afbeeldingen-tab .sub-filter li .sub-sub-filter li .subcat-link {
+    font-weight: normal;
+    color: #000;
+}
+.customdownload-index-index #maincontent .sidebar.sidebar-main .custom-filter-sidebar ul.sub-sub-filter li::after {
+    display: none;
+}
+.customdownload-index-index .subcategory-heading .attachments {
+    display: flex;
+    gap: 0 10px;
+    flex-wrap: wrap;
+}
+.customdownload-index-index .subcategory-heading .attachments .img-attachment {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 15px;
+}
 @media(min-width : 1300px) and (max-width : 1440px){ 
 .customdownload-index-index #maincontent {
     padding: 0 60px;
+}
+}
+@media(min-width : 769px) and (max-width : 1199px){
+.customdownload-index-index .sidebar.sidebar-main {
+    width: 30%;
+}
+.customdownload-index-index .column.main {
+    width: 69%;
+}
+.customdownload-index-index #maincontent .sidebar.sidebar-main .custom-filter-sidebar ul li {
+    padding: 15px 0;
+}
+.customdownload-index-index #maincontent .sidebar.sidebar-main .custom-filter-sidebar ul li a {
+    font-size: 15px;
 }
 }
 @media(max-width : 1299px){
@@ -83,5 +167,17 @@
 }
 .customdownload-index-index .product-grid .product-item {
     padding: 10px;
+}
+.attachments-list {
+    flex-wrap: wrap;
+}
+.attachments-list .attachment-item {
+    margin-right: 10px;
+}
+.prijslijsten_main .inner-content .mgz-col-md-3 {
+    width: 50%;
+}
+.customdownload-index-index .subcategory-heading .attachments .img-attachment {
+    width: 48%;
 }
 }

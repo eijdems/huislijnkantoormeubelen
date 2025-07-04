@@ -1,81 +1,66 @@
 <?php
-/** @var \Magento\Catalog\Model\ResourceModel\Product\Collection $productCollection */
-/** @var array $afbeeldingen_model_options */
-$productCollection = $block->getData('product_collection');
-$afbeeldingen_model_options = $block->getData('afbeeldingen_model_options');
+$_helper = $this->helper('FME\Productattachments\Helper\Data');
+$categoryId = 5; // Main category ID
+
+$subCategoryIds = [];
+$categoryNames = [];
+
+/**
+ * Recursively fetch subcategories and map ID to name
+ */
+function getSubCategoriesRecursive($categoryId, &$categoryNames, &$subCategoryIds, $_helper) {
+    $subCategories = $_helper->getSubCategories($categoryId);
+
+    foreach ($subCategories as $subCat) {
+        $id = $subCat->getCategoryId();
+        $name = $subCat->getCategoryName();
+
+        $subCategoryIds[] = $id;
+        $categoryNames[$id] = $name;
+
+        getSubCategoriesRecursive($id, $categoryNames, $subCategoryIds, $_helper);
+    }
+}
+
+// Get all subcategories
+getSubCategoriesRecursive($categoryId, $categoryNames, $subCategoryIds, $_helper);
+
+$attachmentsByCategory = [];
+
+if (!empty($subCategoryIds)) {
+    $allAttachments = $_helper->getProductAttachments();
+    $allAttachments->addFieldToFilter('main_table.cat_id', ['in' => $subCategoryIds]);
+
+    foreach ($allAttachments as $attachment) {
+        $catId = $attachment->getCatId();
+        $attachmentsByCategory[$catId][] = $attachment;
+    }
+}
 ?>
+<h2>Downloads</h2>
+<br>
+<?php if (!empty($attachmentsByCategory)): ?>
+    <?php foreach ($attachmentsByCategory as $catId => $attachments): ?>
+        <div class="subcategory-heading ">
+            <h2><?= htmlspecialchars($categoryNames[$catId] ?? 'No name available'); ?></h2>
 
-<div class="afbeeldingen-filter">
-    <h2>Downloads</h2>
-    <p><strong>Wil je het jezelf gemakkelijk maken? Maak hieronder een keuze.</strong></p>
-    <!-- Filter checkboxes (Optional: You can also show checkboxes here for another form of filtering) -->
-    <?php foreach ($afbeeldingen_model_options as $option): ?>
-        <?php if ($option['value']): ?>
-            <label for="afbeelding_<?php echo $option['value']; ?>">
-                <input type="checkbox" name="afbeeldingen_model[]" value="<?php echo $option['value']; ?>" id="afbeelding_<?php echo $option['value']; ?>" class="afbeeldingen-checkbox"/><span></span>
-                <?php echo $option['label']; ?>
-            </label>
-        <?php endif; ?>
-    <?php endforeach; ?>
-</div>
+            <div class="attachments">
+                <?php foreach ($attachments as $attachment): ?>
 
-<!-- Product Grid -->
-<div class="product-grid">
-    <?php if ($productCollection->getSize() > 0): ?>
-        <?php foreach ($productCollection as $product): ?>
-            <div class="product-item">
-                <a href="<?php echo $this->helper('Magento\Catalog\Helper\Image')->init($product, 'product_base_image')->getUrl(); ?>" target="_blank" download>
-                    <img src="<?php echo $this->helper('Magento\Catalog\Helper\Image')->init($product, 'product_base_image')->getUrl(); ?>" alt="<?php echo $product->getName(); ?>" />
-                </a>
+                    <div class="img-attachment">
+                        <a href="<?= $attachment->getDownloadLink(); ?>"
+                           download
+                           title="<?= htmlspecialchars($attachment->getTitle() ?? 'No title available'); ?>">
+                            <img src="<?= $attachment->getDownloadLink(); ?>"
+                                 alt="<?= htmlspecialchars($attachment->getTitle() ?? 'No title available'); ?>" 
+                                 style="max-width:150px;">
+                        </a>
+                    </div>
+
+                <?php endforeach; ?>
             </div>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <p>No products found in this category based on your selection.</p>
-    <?php endif; ?>
-</div>
-<script type="text/javascript">
-    require(['jquery'], function($) {
-    $(document).on('change', '.afbeeldingen-checkbox', function() {
-        var selected = [];
-        $('.afbeeldingen-checkbox:checked').each(function() {
-            selected.push($(this).val());
-        });
-
-        console.log("Selected models:", selected.join(', '));
-
-        if (selected.length > 0) {
-            $.ajax({
-                url: '/customdownload/index/ajax', 
-                type: 'POST',
-                data: {
-                    filter: 'afbeeldingen', 
-                    afbeeldingen_model: selected
-                },
-                success: function(response) {
-                    $('.product-grid').html(response);
-                },
-                error: function() {
-                    alert('Error filtering products.');
-                }
-            });
-        } else {
-            console.log("No models selected.");
-            $.ajax({
-                url: '/customdownload/index/ajax',
-                type: 'POST',
-                data: {
-                    filter: 'afbeeldingen',
-                    models_selected: true
-                },
-                success: function(response) {
-                    $('.product-grid').html(response);
-                },
-                error: function() {
-                    alert('Error filtering products.');
-                }
-            });
-        }
-    });
-});
-
-</script>
+        </div>
+    <?php endforeach; ?>
+<?php else: ?>
+    <p>No images available for subcategories.</p>
+<?php endif; ?>

@@ -1762,7 +1762,7 @@ en de productbeschrijving kan oplopen tot 18, 14 of 9 tekens (met een * tussen e
 "ALL GROUPS","ALLE GROEPEN",module,Magento_Catalog
 "Add Price","Prijs toevoegen",module,Magento_Catalog
 "Default Values","standaardwaarden",module,Magento_Catalog
-"Related Products","Gerelateerde producten",module,Magento_Catalog
+"Related Products","Ook interessant",module,Magento_Catalog
 "Up-sells","verkoop van duurdere producten",module,Magento_Catalog
 "Cross-sells","Kruis-verkopen",module,Magento_Catalog
 "Size for %1","Afmeting voor %1",module,Magento_Catalog
@@ -13366,7 +13366,7 @@ We steunen onze goedkeuringen met 100% terugboekingsbescherming en betalen u het
 "We can't rebuild the index for an undefined product.","We kunnen geen index herbouwen voor een ongedefinieerd product.",module,Magento_TargetRule
 "Could not rebuild index for empty products array","Kan index voor lege producten niet opnieuw opbouwen",module,Magento_TargetRule
 "-- Please Select --","-- Selecteer --",module,Magento_TargetRule
-"Related Products","Gerelateerde producten",module,Magento_TargetRule
+"Related Products","Ook interessant",module,Magento_TargetRule
 "Up-sells","verkoop van duurdere producten",module,Magento_TargetRule
 "Cross-sells","Kruis-verkopen",module,Magento_TargetRule
 "The attribute's model class name is invalid. Verify the name and try again.","The attribute's model class name is invalid. Verify the name and try again.",module,Magento_TargetRule

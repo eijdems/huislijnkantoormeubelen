@@ -1,0 +1,26 @@
+<?php
+//echo "4444444444444444444444444444444444444";
+/** @var \Magento\Framework\View\Element\Template $block */
+$attachments = $block->getData('attachments');
+?>
+<h2>Downloads</h2>
+<div class="subcategory-heading ">
+<br>
+<?php if ($attachments && count($attachments)): ?>
+    <div class="attachments">
+        <?php foreach ($attachments as $attachment): ?>
+            <div class="img-attachment">
+                <a href="<?= $attachment->getDownloadLink(); ?>"
+                   download
+                   data-title="<?= htmlspecialchars($attachment->getTitle() ?? 'No title available'); ?>">
+                    <img src="<?= $attachment->getDownloadLink(); ?>"
+                         alt="<?= htmlspecialchars($attachment->getTitle() ?? 'No title available'); ?>" 
+                         style="max-width:150px;">
+                </a>
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php else: ?>
+    <p>No attachments found.</p>
+<?php endif; ?>
+</div>

@@ -1,12 +1,99 @@
+<?php
+/** @var \FME\Productattachments\Helper\Data $_helper */
+$_helper = $this->helper('FME\Productattachments\Helper\Data');
+$parentCategoryId = 5; // Change to your actual parent ID
+$maxDepth = 4;
+
+/**
+ * Recursive function to render subcategories as nested UL > LI
+ */
+function renderCategoryTree($helper, $parentId, $maxDepth, $currentDepth = 1)
+{
+    if ($currentDepth > $maxDepth) return;
+
+    $subCats = $helper->getSubCategories($parentId);
+    if (empty($subCats)) return;
+
+    echo '<ul class="sub-cat-level-' . $currentDepth . '">';
+    foreach ($subCats as $cat) {
+        $catId = $cat->getCategoryId();
+        $catName = $cat->getCategoryName();
+
+        echo '<li>';
+        echo '<a href="#" class="category-toggle" data-filter="' . $catId . '" data-id="' . $catId . '">' . $catName . '</a>';
+
+        // Recursive call for children
+        renderCategoryTree($helper, $catId, $maxDepth, $currentDepth + 1);
+
+        echo '</li>';
+    }
+    echo '</ul>';
+}
+?>
+
 <div class="custom-filter-sidebar">
     <ul id="custom-filters">
         <li class="prijslijsten_active"><a href="#" data-filter="prijslijsten">Prijslijsten</a></li>
         <li class="prijslijsten_active"><a href="#" data-filter="materialen">Materialen</a></li>
         <li class="prijslijsten_active"><a href="#" data-filter="dwg">DWG Bestanden</a></li>
-        <!-- <li><a href="#" data-filter="afbeeldingen" data-cat="62">Afbeeldingen</a></li>
-        <li><a href="#" data-filter="nieuwsbrieven">Nieuwsbrieven</a></li>
-        <li><a href="#" data-filter="marketingpakketten">Marketing Pakketten</a></li> -->
+
+        <li class="afbeeldingen-tab">
+            <a href="#" data-filter="afbeeldingen">Afbeeldingen</a>
+            <div class="sub-filter" style="display: none;">
+                <?php renderCategoryTree($_helper, $parentCategoryId, $maxDepth); ?>
+            </div>
+        </li>
+
+        <li class="prijslijsten_active"><a href="#" data-filter="nieuwsbrieven">Nieuwsbrieven</a></li>
+        <li class="prijslijsten_active"><a href="#" data-filter="marketingpakketten">Marketing Pakketten</a></li>
     </ul>
 </div>
 
 <div id="filter-result"></div>
+
+<!-- JavaScript for Toggle -->
+<script type="text/javascript">
+require(['jquery'], function($) {
+    $(document).ready(function () {
+
+        // Toggle nested categories
+        $('.category-toggle').on('click', function (e) {
+            e.preventDefault();
+
+            var $this = $(this);
+            var $nextUl = $this.next('ul');
+
+            // Collapse others at same level
+            $this.closest('ul').find('ul').not($nextUl).slideUp().removeClass('open');
+
+            // Toggle the submenu
+            if ($nextUl.length) {
+                $nextUl.stop(true, true).slideToggle().toggleClass('open');
+            }
+
+            // Update active classes
+            $('.category-toggle').removeClass('active');
+            $this.addClass('active');
+            $this.closest('ul').find('li').removeClass('active');
+            $this.closest('li').addClass('active');
+        });
+
+        // Toggle Afbeeldingen tab
+        $('.afbeeldingen-tab > a').on('click', function (e) {
+            e.preventDefault();
+
+            var $tab = $(this).closest('.afbeeldingen-tab');
+            var $subFilter = $tab.find('.sub-filter');
+
+            $subFilter.stop(true, true).slideToggle();
+            $tab.toggleClass('active');
+        });
+
+    });
+});
+</script>
+
+
+
+
+<!-- Optional CSS for styling -->
