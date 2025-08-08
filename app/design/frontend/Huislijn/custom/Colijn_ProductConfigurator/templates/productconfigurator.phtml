@@ -81,15 +81,24 @@ $custGrpid = $customerSession->getCustomerGroupId();
 		</div>
 		
 		<?php 
-		$typeCond = $product['type'];
-		$prodCategory = $product['prod_category'];
-
-		if ($prodCategory == 57 || ($prodCategory == 78 && ($typeCond == 236 || $typeCond == 244))): ?>
-			<div class="extra-content-button" style="font-size: 18px; margin-top: 15px; "><?php echo __("Voorraadproducten zijn aangeduid middels een groene stip bij de opties tijdens het samenstellen van het product.");?></div>
-		<?php else: ?>
-			<div class="extra-content-button" style="font-size: 18px; margin-top: 15px; "><?php echo __("Voorraadproducten zijn aangeduid middels een groene stip bij de opties tijdens het samenstellen van het product.
-<br>Overige RAL kleuren en Pulver hebben een meerprijs van 10%. Deze meerprijs wordt nog niet mee berekend in de totaalprijs.");?></div>
-		<?php endif; ?>
+		$typeCond 		= $product['type'];
+		$prodCategory 	= $product['prod_category'];
+		$brand 			= $product->getAttributeText('brand');		
+		$skip_forSku 	= ['HSC0110S','HSC0111S','HSC0112S','HSC0113S','HSC0210S','HSC0211S','HSC0212S','HSC0213S','HFC4202S','HFC4422S','HFC4212S','HLSDR-VXM'];
+		?>
+		<div class="extra-content-button" style="font-size: 18px; margin-top: 15px;">
+		    <?php if (!($prodCategory == 57 || ($prodCategory == 78 && ($typeCond == 236 || $typeCond == 244)))): ?>
+		        <?php if ($brand == 'Feltouch'): ?>
+		            Voor overige producten uit de collectie, ga naar de website van <a target="_blank" href='https://www.feltouch.tr/nl/'>Feltouch</a>
+		        <?php elseif ($brand == 'Deberenn'): ?>
+		            Voor overige producten uit de collectie, ga naar de website van  <a target="_blank" href='https://www.berenn.com/nl'>DeBerenn</a>.
+		            Stoffering in meerdere kleuren heeft een meerprijs van 3% (2 kleuren) of 6% (3 kleuren of meer). Deze meerprijs wordt nog niet mee berekend in de totaalprijs.
+		        <?php elseif (!in_array($sku, $skip_forSku)): ?>
+		        	Voorraadproducten zijn aangeduid middels een groene stip bij de opties tijdens het samenstellen van het product.
+		            <br>Overige RAL kleuren en Pulver hebben een meerprijs van 10%. Deze meerprijs wordt nog niet mee berekend in de totaalprijs.
+		        <?php endif; ?>
+		    <?php endif; ?>
+		</div>
 	<?php endif; ?>
 	<?php if($onlyTwod): ?>
 		<threed-configurator id="threedconfigurator" <?php if ($onlyTwod): ?>style="display:none"<?php endif; ?>></threed-configurator>
