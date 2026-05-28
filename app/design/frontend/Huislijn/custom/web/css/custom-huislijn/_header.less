@@ -39,6 +39,9 @@ a:hover {
                     position: absolute;
                     top: 9px;
                     right: 104px;
+                    &.loggedin{
+                        right: 134px;
+                    }
                 }
                 &.amquote-cart-wrapper {
                     @media (min-width: 1301px) {
@@ -1117,6 +1120,15 @@ a:hover {
         position: absolute;
         top: 10px;
         right: 62px;
+    }
+    &.loggedin {
+        .wishlist-link {
+            display: inline-block;
+            margin-right: 6px;
+            img {
+                width: 26px;
+            }
+        }
     }
     @media (min-width: 1200px) and (max-width: 1349px) {
         margin-left:25px;

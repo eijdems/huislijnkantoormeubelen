@@ -64,7 +64,12 @@
     <referenceBlock name="product.info.description" remove="true" />
     <referenceContainer name="product.info.overview" remove="true"/>
     <referenceContainer name="custom.desc" remove="true"/>
-
+    <referenceContainer name="content">
+            <block class="Magento\Catalog\Block\Product\View" 
+               name="custom.related.id" 
+               template="Magento_Catalog::custom_related.phtml"/>        
+    </referenceContainer>
+        <move element="custom.related.id" destination="content.aside" after="-"/>
 
     </body>
 

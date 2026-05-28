@@ -1,0 +1,440 @@
+<style>
+
+.timeline-wrapper {
+    margin: auto;
+    padding: 60px 45px;
+}
+
+.timeline-layout{
+    display:flex;
+    gap:40px;
+}
+
+/* SWIPERS */
+.leftSwiper {
+    height:670px;
+    padding: 1px 1px !important;
+    width: 45%;
+}
+.rightSwiper {
+    height: 780px;
+    width: 45%;
+    padding: 1px 1px !important;
+}
+/* SLIDE */
+.swiper-slide{
+    height:auto !important;
+    display:flex;
+    align-items:center;
+}
+
+/* CARD */
+.timeline-card{
+    width:100%;
+    background:#fff;
+    border-radius:12px;
+    padding:20px;
+    display:flex;
+    gap:20px;
+    align-items:center;
+    box-shadow: 0 0 3px 0 #ccc;
+    flex-wrap: wrap;
+}
+
+.timeline-content {
+    max-width: 60%;
+    flex: 0 0 60%;
+}
+.timeline-year {
+    font-size: 24px;
+    color: #5b1f2d;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.leftSwiper .timeline-year {
+    text-align: right;
+}
+.timeline-text {
+    font-size: 18px;
+    line-height: 30px;
+    color: #6c6c6c;
+    font-weight: 300;
+}
+.timeline-image {
+    max-width: 36%;
+    flex: 0 0 36%;
+}
+
+.timeline-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* CENTER PROGRESS */
+.progress-wrapper{
+    position:relative;
+    width:30px;
+    height:780px;
+    display:flex;
+    justify-content:center;
+}
+.timeline-wrapper .swiper-slide {
+    margin-bottom: 85px !important;
+}
+.timeline-wrapper .swiper.rightSwiper .swiper-slide {
+    margin-bottom: 20px !important;
+    margin-top: 90px;
+}
+.progress-bar{
+    width:14px;
+    height:100%;
+    background:#ddd;
+    border-radius:20px;
+    position:relative;
+}
+
+.progress-fill{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:0%;
+    background:#5b1f2d;
+    border-radius:20px;
+}
+
+.progress-dot {
+    background: #5b1f2d;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%,-50%);
+    cursor: pointer;
+    width: 14px;
+    height: 35px;
+    text-align: center;
+}
+.progress-dot::before {
+    font-size: 10px;
+    content: '\e622';
+    font-family: 'luma-icons';
+    display: inline-block;
+    color: #fff;
+    vertical-align: bottom;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* MOBILE */
+@media(min-width: 1440px) and (max-width:1650px ){
+.timeline-content {
+    max-width: 59%;
+    flex: 0 0 59%;
+}
+.leftSwiper {
+    height: 615px;
+}
+.progress-wrapper {
+    height: 680px;
+}
+.rightSwiper {
+    height: 680px;
+}
+}
+@media(max-width:768px){
+.timeline-wrapper {
+    padding: 0;
+    margin: 50px 0;
+    position: relative;
+}
+.timeline-wrapper .swiper.rightSwiper .swiper-slide {
+    margin-top: 0;
+}
+.timeline-wrapper .swiper-slide {
+    margin-bottom: 20px !important;
+}
+.timeline-content, .timeline-image {
+    max-width: 100%;
+    flex: 100%;
+}
+.timeline-layout{
+    flex-direction:column;
+}
+
+.progress-wrapper {
+    height: 100%;
+    right: -7px;
+    top: 16px;
+    position: absolute;
+    display: none;
+}
+.timeline-year {
+    margin-bottom: 0;
+}
+.leftSwiper, .rightSwiper {
+    width: 100%;
+    height: auto;
+}
+
+    .timeline-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+.timeline-text {
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.timeline-wrapper.desktop-view{
+        display: none;
+    } 
+}
+
+
+@media(min-width: 769px){
+    .timeline-wrapper.mobile-view{
+        display: none;
+    } 
+}
+</style>
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+<div class="timeline-wrapper desktop-view">
+
+    <div class="timeline-layout">
+
+        <!-- LEFT -->
+        <div class="swiper leftSwiper">
+            <div class="swiper-wrapper">
+
+                <?php for($i=1995;$i<=2005;$i++): ?>
+
+                    <div class="swiper-slide">
+
+                        <div class="timeline-card">
+                            <div class="timeline-year"><?= $i ?></div>
+                            <div class="timeline-content">
+                                
+
+                                <div class="timeline-text">
+                                    Left section timeline content for year <?= $i ?>.
+                                    Company growth and expansion started here.
+                                </div>
+                            </div>
+
+                            <div class="timeline-image">
+                                <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                <?php endfor; ?>
+
+            </div>
+        </div>
+
+        <!-- PROGRESS -->
+        <div class="progress-wrapper">
+
+            <div class="progress-bar" id="progressBar">
+
+                <div class="progress-fill" id="progressFill"></div>
+
+                <div class="progress-dot" id="progressDot"></div>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT -->
+        <div class="swiper rightSwiper">
+            <div class="swiper-wrapper">
+
+                <?php for($i=1995;$i<=2005;$i++): ?>
+
+                    <div class="swiper-slide">
+
+                        <div class="timeline-card">
+                             <div class="timeline-year"><?= $i ?></div>
+                            <div class="timeline-content">
+                               
+
+                                <div class="timeline-text">
+                                    Right section timeline content for year <?= $i ?>.
+                                    New offices and employee growth.
+                                </div>
+                            </div>
+
+                            <div class="timeline-image">
+                                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                <?php endfor; ?>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="timeline-wrapper mobile-view" >
+
+    <div class="timeline-layout">
+
+ 
+        <div class="swiper leftSwiper">
+            <div class="swiper-wrapper">
+
+                <?php for($i=1995;$i<=2005;$i++): ?>
+
+                    <div class="swiper-slide">
+
+                        <div class="timeline-card">
+                            <div class="timeline-year"><?= $i ?></div>
+                            <div class="timeline-content">
+                                
+
+                                <div class="timeline-text">
+                                    Left section timeline content for year <?= $i ?>.
+                                    Company growth and expansion started here.
+                                </div>
+                            </div>
+
+                            <div class="timeline-image">
+                                <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                <?php endfor; ?>
+
+            </div>
+        </div>
+
+ 
+
+       
+
+    </div>
+
+</div>
+
+
+
+<script>
+require(['jquery'], function ($) {
+
+    $(document).ready(function () {
+
+        function initTimeline() {
+
+            if (!window.Swiper) {
+                setTimeout(initTimeline, 100);
+                return;
+            }
+
+            /* LEFT SWIPER */
+            const leftSwiper = new window.Swiper(".leftSwiper", {
+                direction: "vertical",
+                slidesPerView: 3,
+                spaceBetween: 30,
+                mousewheel: true,
+                freeMode: true,
+                watchSlidesProgress: true,
+            });
+
+            /* RIGHT SWIPER */
+            const rightSwiper = new window.Swiper(".rightSwiper", {
+                direction: "vertical",
+                slidesPerView: 3,
+                spaceBetween: 30,
+                mousewheel: true,
+                freeMode: true,
+                watchSlidesProgress: true,
+            });
+
+            /* SYNC BOTH */
+            leftSwiper.controller.control = rightSwiper;
+            rightSwiper.controller.control = leftSwiper;
+
+            const bar = document.getElementById("progressBar");
+            const fill = document.getElementById("progressFill");
+            const dot = document.getElementById("progressDot");
+
+            function updateProgress(progress) {
+
+                const max = bar.offsetHeight - dot.offsetHeight;
+
+                const y = progress * max;
+
+                dot.style.top = y + "px";
+
+                fill.style.height = (progress * 100) + "%";
+            }
+
+            /* UPDATE ON SWIPE */
+            leftSwiper.on("progress", function () {
+                updateProgress(leftSwiper.progress);
+            });
+
+            updateProgress(0);
+
+            /* DRAG SUPPORT */
+            let dragging = false;
+
+            dot.addEventListener("mousedown", function () {
+                dragging = true;
+            });
+
+            document.addEventListener("mouseup", function () {
+                dragging = false;
+            });
+
+            document.addEventListener("mousemove", function (e) {
+
+                if (!dragging) return;
+
+                const rect = bar.getBoundingClientRect();
+
+                let y = e.clientY - rect.top;
+
+                const max = rect.height - dot.offsetHeight;
+
+                y = Math.max(0, Math.min(y, max));
+
+                const percent = y / max;
+
+                dot.style.top = y + "px";
+
+                fill.style.height = (percent * 100) + "%";
+
+                /* MOVE BOTH SWIPERS */
+                leftSwiper.setProgress(percent);
+                rightSwiper.setProgress(percent);
+
+            });
+
+        }
+
+        initTimeline();
+
+    });
+
+});
+</script>

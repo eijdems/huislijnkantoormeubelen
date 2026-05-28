@@ -20,9 +20,13 @@ $viewModel = $block->getViewModel();
         data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>"
         data-mage-init='{"validation":{}}'>
       <fieldset class="fieldset">
-          <legend class="legend"><span><?= $block->escapeHtml(__('Write Us')) ?></span></legend><br />
+         <!-- <legend class="legend"><span></span></legend>--><br />
           <div class="field note no-label">
-              <?= $block->escapeHtml(__('Jot us a note and we’ll get back to you as quickly as possible.')) ?>
+              <?php //echo  $block->escapeHtml(__('Jot us a note and we’ll get back to you as quickly as possible.')); ?>
+ 	      <?= $block->escapeHtml(__('Heb je een vraag en/of opmerking?'))?>
+		<br/>
+	      <?= $block->escapeHtml(__('Vul het contactformulier in en we nemen zo speding mogelijk contact met je op.'))?>
+
           </div>
           <div class="field name required">
               <label class="label" for="name"><span><?= $block->escapeHtml(__('Name')) ?></span></label>
@@ -37,11 +41,11 @@ $viewModel = $block->getViewModel();
               </div>
           </div>
           <div class="field email required">
-              <label class="label" for="email"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
+              <label class="label" for="email"><span><?= $block->escapeHtml(__('Email Address')) ?></span></label>
               <div class="control">
                   <input name="email"
                          id="email"
-                         title="<?= $block->escapeHtmlAttr(__('Email')) ?>"
+                         title="<?= $block->escapeHtmlAttr(__('Email Address')) ?>"
                          value="<?= $block->escapeHtmlAttr($viewModel->getUserEmail()) ?>"
                          class="input-text"
                          type="email"
@@ -61,14 +65,50 @@ $viewModel = $block->getViewModel();
                          type="tel" />
               </div>
           </div>
+	  <div class="field place required">
+              <label class="label" for="name"><span><?= $block->escapeHtml(__('Operates')) ?></span></label>
+              <div class="control">
+                  <input name="operates"
+                         id="operates"
+                         title="<?= $block->escapeHtmlAttr(__('Operates')) ?>"
+                         value=""
+                         class="input-text"
+                         type="text"
+                         data-validate="{required:true}"/>
+              </div>
+          </div>
+	  <div class="field place required">
+              <label class="label" for="name"><span><?= $block->escapeHtml(__('Place')) ?></span></label>
+              <div class="control">
+                  <input name="place"
+                         id="place"
+                         title="<?= $block->escapeHtmlAttr(__('Place')) ?>"
+                         value=""
+                         class="input-text"
+                         type="text"
+                         data-validate="{required:true}"/>
+              </div>
+          </div>
+	  <div class="field place required">
+              <label class="label" for="name"><span><?= $block->escapeHtml(__('Subject')) ?></span></label>
+              <div class="control">
+                  <input name="subject"
+                         id="subject"
+                         title="<?= $block->escapeHtmlAttr(__('Subject')) ?>"
+                         value=""
+                         class="input-text"
+                         type="text"
+                         data-validate="{required:true}"/>
+              </div>
+          </div>
           <div class="field comment required">
               <label class="label" for="comment">
-                  <span><?= $block->escapeHtml(__('What’s on your mind?')) ?></span>
+                  <span><?= $block->escapeHtml(__('Message')) ?></span>
               </label>
               <div class="control">
                   <textarea name="comment"
                             id="comment"
-                            title="<?= $block->escapeHtmlAttr(__('What’s on your mind?')) ?>"
+                            title="<?= $block->escapeHtmlAttr(__('Message')) ?>"
                             class="input-text"
                             cols="5"
                             rows="3"

@@ -1,4 +1,21 @@
-<div class="account-dd">
+<?php
+$customerSession = \Magento\Framework\App\ObjectManager::getInstance()->get(\Magento\Customer\Model\Session::class);
+?>
+<div class="account-dd <?php if ($customerSession->isLoggedIn()){echo "loggedin";}?>">
+	<?php
+		if ($customerSession->isLoggedIn()) {
+		   ?>
+		   	<a href="<?= $block->getUrl('wishlist') ?>" class="wishlist-link">	<img
+				    src="<?= $block->getViewFileUrl('images/wishlist-icon.png'); ?>"
+				    alt="Wishlist"
+				    width="24"
+				    height="24"
+				/> </a>
+		   <?php
+		} 
+	?>
+	
+
 	<div class="account-ddown mv-account" id="mv-redirect"></div>
 	</div>
 </div>
@@ -25,4 +42,8 @@
 	});
 </script>
 
-
+<style type="text/css">
+	.customer-account-index .box.box-newsletter {
+	    display: none;
+	}
+</style>

@@ -64,14 +64,14 @@
                         endif; 
                         ?>
                     <?php if ($firstFilter && $filter->getRequestVar() =='collectie' ){ ?>
-                        <div data-role="collapsible" class="filter-options-item">
+                        <div data-role="collapsible" class="filter-options-item filter-<?= $block->escapeHtmlAttr($filter->getRequestVar()) ?>">
                             <div data-role="title" class="filter-options-title"><?php echo __("Type"); ?></div>
                             <div data-role="content" class="filter-options-content"><?= /* @noEscape */ $block->getChildBlock('renderer')->render($filter) ?></div>
                         </div>
                     <?php
                     $firstFilter = false;
                      } else{ ?>
-                        <div data-role="collapsible" class="filter-options-item">
+                        <div data-role="collapsible" class="filter-options-item filter-<?= $block->escapeHtmlAttr($filter->getRequestVar()) ?>">
                             <div data-role="title" class="filter-options-title"><?= $block->escapeHtml(__($filter->getName())) ?></div>
                             <div data-role="content" class="filter-options-content"><?= /* @noEscape */ $block->getChildBlock('renderer')->render($filter) ?></div>
                         </div>

@@ -1,0 +1,252 @@
+<?php
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ *
+ * Glory to Ukraine! Glory to the heroes!
+ */
+?>
+<?php
+/**
+ * Blog post list template
+ *
+ * @var $block \Magefan\Blog\Block\Post\PostList
+ */
+?>
+<?php
+$_postCollection = $block->getPostCollection();
+$width = (int)$block->getBackgroundImageWidth() ?: 350;
+$imageHelper = $this->helper(\Magefan\Blog\Helper\Image::class);
+?>
+
+<?= $this->getLayout()
+    ->createBlock(\Magento\Cms\Block\Block::class)
+    ->setBlockId('blog_page_banner')
+    ->toHtml(); ?>
+
+<?php if (!$_postCollection->count()): ?>
+    <div class="message info empty">
+        <div>
+            <?= $block->escapeHtml(__('We can\'t find posts matching the selection.')) ?>
+        </div>
+    </div>
+<?php else: ?>
+
+    <?= $block->getStyleViewModel()->getStyle('Magefan_Blog::css/bootstrap-4.4.1-custom-min.css') ?>
+    <?= $block->getAdditionalHtml() ?>
+    
+    <div class="post-list-wrapper">
+        <h4>Nieuws en updates</h4>
+        <?php $iterator = 1; ?>
+        <ol class="post-list modern">
+            <?php foreach ($_postCollection as $_post): ?>
+                <?php
+                    $_postUrl = $block->escapeUrl($_post->getPostUrl());
+                    $_postName = $block->escapeHtml($_post->getTitle());
+                ?>
+                <li class="post-item post-holder post-holder-<?= (int)$_post->getId() ?>">
+
+                    <div class="post-container">
+                      
+                        <!-- block info -->
+                        <div class="post-info">  
+
+                            <!-- post description -->
+                            <div class="post-description mb-4">
+                                <?= /*@noEscape*/ $_post->getShortFilteredContent() ?>
+                            </div>
+
+                            <!-- read more -->
+                            <div class="post-read-more">
+                                <a class="action primary" href="<?= /*@noEscape*/ $_postUrl ?>" title="<?= /*@noEscape*/ $_postName ?>">
+                                    <?= $block->escapeHtml(__('Read more')) ?>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ol>
+    </div>
+
+    <?= $block->getToolbarHtml() ?>
+    <?= $block->getChildHtml('addthisJs'); ?>
+<?php endif; ?>
+
+<h4 class="silder-blog-heading"><?=__("Nileuws categorie")?></h4>
+
+<?php
+/**Show blog category slider */
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$resource = $objectManager->get(\Magento\Framework\App\ResourceConnection::class);
+$obj_post = $objectManager->get('Magefan\Blog\Model\Post');
+$connection = $resource->getConnection();
+// table name with prefix support
+$tableName = $resource->getTableName('magefan_blog_category');
+$query = "SELECT * FROM " . $tableName;
+$categories = $connection->fetchAll($query);
+
+$images = [];
+$category_title= [];
+$i=0;
+foreach ($categories as $category) {  
+    if($category['is_active']==1){   
+        $blog_url = $block->getBaseUrl()."blog/category/".$category['identifier'];
+        $images[$i] = $obj_post->getShortContentExtractor()->execute($category['content'], null, null);
+        $category_title[$i] = "<a href='{$blog_url}'>".$category['title']."</a>";
+        $i++;
+    }    
+}
+
+?>
+
+
+<div class="silder-blog-section">
+<div class="swiper mySwiper silder-blog">
+  <div class="swiper-wrapper">
+
+    <?php   $i=0; foreach ($images as $image): ?>
+        <div class="swiper-slide">
+            <?php echo $image;?>
+            <?php echo $category_title[$i];?>
+        </div>
+    <?php $i++; endforeach; ?>
+  </div>
+</div>
+  <div class="progress-bar" id="bar">
+  <div class="progress-dot" id="dot"></div>
+</div>
+<div class="nav-buttons">
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
+
+</div>
+
+
+
+
+<script>
+require([
+    'jquery',
+    'swiper'
+], function ($, Swiper) {
+
+    'use strict';
+
+    $(document).ready(function () {
+
+        console.log('ddd');
+
+        const bar = document.getElementById('bar');
+        const dot = document.getElementById('dot');
+
+        if (!bar || !dot) {
+            return;
+        }
+
+        const swiper = new Swiper('.mySwiper', {
+
+            slidesPerView: 5.4,
+            spaceBetween: 30,
+            freeMode: true,
+            grabCursor: true,
+
+
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            },
+            breakpoints: {
+                320: {
+                    slidesPerView: 1.2,
+                    spaceBetween: 10
+                },
+
+                576: {
+                    slidesPerView: 2.2,
+                    spaceBetween: 15
+                },
+
+                768: {
+                    slidesPerView: 3.2,
+                    spaceBetween: 20
+                },
+
+                992: {
+                    slidesPerView: 4.2,
+                    spaceBetween: 25
+                },
+                1200: {
+                    slidesPerView: 5.4,
+                    spaceBetween: 30
+                }
+            }
+
+        });
+
+        function updateDotByProgress(progress) {
+
+            const barWidth = bar.offsetWidth - dot.offsetWidth;
+
+            dot.style.left = (progress * barWidth) + 'px';
+        }
+
+        // Swiper Progress Event
+        swiper.on('progress', function () {
+
+            updateDotByProgress(swiper.progress);
+
+        });
+
+        // Resize Event
+        swiper.on('resize', function () {
+
+            updateDotByProgress(swiper.progress);
+
+        });
+
+        // Initial Position
+        updateDotByProgress(swiper.progress);
+
+        // Drag Functionality
+        let isDragging = false;
+
+        dot.addEventListener('mousedown', function () {
+
+            isDragging = true;
+
+        });
+
+        document.addEventListener('mouseup', function () {
+
+            isDragging = false;
+
+        });
+
+        document.addEventListener('mousemove', function (e) {
+
+            if (!isDragging) {
+                return;
+            }
+
+            const rect = bar.getBoundingClientRect();
+
+            let x = e.clientX - rect.left;
+
+            const max = rect.width - dot.offsetWidth;
+
+            x = Math.max(0, Math.min(x, max));
+
+            dot.style.left = x + 'px';
+
+            const percent = x / max;
+
+            swiper.setProgress(percent);
+
+        });
+
+    });
+
+});
+</script>

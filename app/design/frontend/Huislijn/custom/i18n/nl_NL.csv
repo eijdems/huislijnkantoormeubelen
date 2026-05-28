@@ -1092,7 +1092,7 @@ href=""https://dashboard.rjmetrics.com/v2/magento/signup/"">Magento BI Essential
 "Time","Tijd",module,Magento_Backup
 "Name","Naam",module,Magento_Backup
 "Size(bytes)","Grootte(bytes)",module,Magento_Backup
-"Type","Soort",module,Magento_Backup
+"Type","Collectie",module,Magento_Backup
 "Download","Downloads",module,Magento_Backup
 "Action","Actie",module,Magento_Backup
 "Dynamic Blocks","Dynamische blokken",module,Magento_Banner
@@ -1338,7 +1338,7 @@ href=""https://dashboard.rjmetrics.com/v2/magento/signup/"">Magento BI Essential
 "Created At","Aangemaakt Op",module,Magento_Braintree
 "Transaction ID","Transactie-ID",module,Magento_Braintree
 "Order ID","Bestelling ID",module,Magento_Braintree
-"Type","Soort",module,Magento_Braintree
+"Type","Collectie",module,Magento_Braintree
 "Amount","Aantal",module,Magento_Braintree
 "Settlement Code","Regelingscode",module,Magento_Braintree
 "Settlement Response Text","Regelingsreactietekst",module,Magento_Braintree
@@ -1580,7 +1580,7 @@ en de productbeschrijving kan oplopen tot 18, 14 of 9 tekens (met een * tussen e
 "Select...","Selecteer...",module,Magento_Bundle
 "Status","status",module,Magento_Bundle
 "Thumbnail","Mini-afbeelding",module,Magento_Bundle
-"Type","Soort",module,Magento_Bundle
+"Type","Collectie",module,Magento_Bundle
 "Special Price","Special Price",module,Magento_Bundle
 """option_id"" and ""parent_id"" values should be specified","De waarden van ""option_id"" en ""parent_id"" moeten worden opgegeven",module,Magento_BundleGraphQl
 """sku"" value should be specified","De waarde ""sku"" moet worden opgegeven",module,Magento_BundleGraphQl
@@ -1593,7 +1593,7 @@ en de productbeschrijving kan oplopen tot 18, 14 of 9 tekens (met een * tussen e
 "ID","ID",module,Magento_BundleStaging
 "Thumbnail","Thumbnail",module,Magento_BundleStaging
 "Name","Naam",module,Magento_BundleStaging
-"Type","Soort",module,Magento_BundleStaging
+"Type","Collectie",module,Magento_BundleStaging
 "Quantity","Aantal",module,Magento_BundleStaging
 "Price","Prijs",module,Magento_BundleStaging
 "Always","Altijd",module,Magento_Captcha
@@ -1748,7 +1748,7 @@ en de productbeschrijving kan oplopen tot 18, 14 of 9 tekens (met een * tussen e
 "Last Notified","Laatste melding",module,Magento_Catalog
 "Send Count","Telling versturen",module,Magento_Catalog
 "New Attribute","Nieuw attribuut",module,Magento_Catalog
-"Type","Soort",module,Magento_Catalog
+"Type","Collectie",module,Magento_Catalog
 "Attribute Set","Attributenset",module,Magento_Catalog
 "Add New Option","Optie toevoegen",module,Magento_Catalog
 "Import Options","Import opties",module,Magento_Catalog
@@ -2708,7 +2708,7 @@ Time in seconds between the widget updates.,module,Magento_Catalog
 "Conditions","Voorwaarden",module,Magento_CatalogRule
 "Conditions (don't add conditions if rule is applied to all products)","Voorwaarden (voeg geen voorwaarden toe als de regel toegewezen is aan alle producten)",module,Magento_CatalogRule
 "ID","ID",module,Magento_CatalogRule
-"Type","Soort",module,Magento_CatalogRule
+"Type","Collectie",module,Magento_CatalogRule
 "Attribute Set","Attributenset",module,Magento_CatalogRule
 "Product","Product",module,Magento_CatalogRule
 "Promotions","Promoties",module,Magento_CatalogRule
@@ -2941,7 +2941,7 @@ Time in seconds between the widget updates.,module,Magento_Catalog
 "AttributeSetText","Attributesettekst",module,Magento_CatalogStaging
 "Status","status",module,Magento_CatalogStaging
 "StatusText","Statustekst",module,Magento_CatalogStaging
-"Type","Soort",module,Magento_CatalogStaging
+"Type","Collectie",module,Magento_CatalogStaging
 "Price","Prijs",module,Magento_CatalogStaging
 "Remove Product from Update","Verwijder product van update",module,Magento_CatalogStaging
 "Images","Afbeeldingen",module,Magento_CatalogStaging
@@ -5044,7 +5044,7 @@ Email template chosen based on theme fallback when ""Default"" option is selecte
 "Billing Lastname","Facturering achternaam",module,Magento_Customer
 "Account Lock","Account-blokkade",module,Magento_Customer
 "Last Activity","Laatste activiteit",module,Magento_Customer
-"Type","Soort",module,Magento_Customer
+"Type","Collectie",module,Magento_Customer
 "Customer Information","Klantgegevens",module,Magento_Customer
 "If your Magento installation has multiple websites, you can edit the scope to associate the customer with a specific site.","Als uw Magento installatie meerdere websites heeft, dan kunt u de scope aanpassen om een klant te associëren met een specifieke website.",module,Magento_Customer
 "Disable Automatic Group Change Based on VAT ID","Automatische verandering van groep a.h.v. BTW-nummer uitschakelen",module,Magento_Customer
@@ -6698,7 +6698,7 @@ Email template chosen based on theme fallback when ""Default"" option is selecte
 "Registrant Name Search","Registreerder Naam Zoeken",module,Magento_GiftRegistry
 "Registrant Email Search","Registreerder Email Zoeken",module,Magento_GiftRegistry
 "Gift Registry ID Search","Verlanglijst-ID zoeken",module,Magento_GiftRegistry
-"Type","Soort",module,Magento_GiftRegistry
+"Type","Collectie",module,Magento_GiftRegistry
 "Owner","Eigenaar",module,Magento_GiftRegistry
 "Created on","Aangemaakt Op",module,Magento_GiftRegistry
 "Shipping Address","Bezorgadres",module,Magento_GiftRegistry
@@ -6990,7 +6990,7 @@ Email template chosen based on theme fallback when ""Default"" option is selecte
 "Grouped product items","Gegroepeerde productitems",module,Magento_GroupedProduct
 "Grouped Product Image","Afbeelding gegroepeerd product",module,Magento_GroupedProduct
 "Select...","Selecteer...",module,Magento_GroupedProduct
-"Type","Soort",module,Magento_GroupedProduct
+"Type","Collectie",module,Magento_GroupedProduct
 "Quantity","Aantal",module,Magento_GroupedProduct
 "AttributeSetText","Attributesettekst",module,Magento_GroupedProduct
 "StatusText","Statustekst",module,Magento_GroupedProduct
@@ -7000,7 +7000,7 @@ Email template chosen based on theme fallback when ""Default"" option is selecte
 "ID","ID",module,Magento_GroupedProductStaging
 "Thumbnail","Mini-afbeelding",module,Magento_GroupedProductStaging
 "Name","Naam",module,Magento_GroupedProductStaging
-"Type","Soort",module,Magento_GroupedProductStaging
+"Type","Collectie",module,Magento_GroupedProductStaging
 "SKU","Artikelnummer",module,Magento_GroupedProductStaging
 "Quantity","Aantal",module,Magento_GroupedProductStaging
 "Price","Prijs",module,Magento_GroupedProductStaging
@@ -8596,7 +8596,7 @@ information on installing the agent is available <a target=""_blank"" href=""%1"
 "CSV","CSV",module,Magento_Newsletter
 "Excel XML","Excel XML",module,Magento_Newsletter
 "Email","E-mail",module,Magento_Newsletter
-"Type","Soort",module,Magento_Newsletter
+"Type","Collectie",module,Magento_Newsletter
 "Guest","Bezoeker",module,Magento_Newsletter
 "Customer","Klant",module,Magento_Newsletter
 "Customer First Name","Voornaam klant",module,Magento_Newsletter
@@ -8675,7 +8675,7 @@ information on installing the agent is available <a target=""_blank"" href=""%1"
 "Handling Fee","Verwerkingskosten",module,Magento_OfflineShipping
 "Sort Order","Sorteervolgorde",module,Magento_OfflineShipping
 "Title","Titel",module,Magento_OfflineShipping
-"Type","Soort",module,Magento_OfflineShipping
+"Type","Collectie",module,Magento_OfflineShipping
 "Ship to Applicable Countries","Verzenden naar landen die van toepassing zijn",module,Magento_OfflineShipping
 "Ship to Specific Countries","Verzenden naar bepaalde landen",module,Magento_OfflineShipping
 "Show Method if Not Applicable","Laat verzendmethode zien indien niet van toepassing",module,Magento_OfflineShipping
@@ -10259,7 +10259,7 @@ target=""_blank"">DevDocs' Release Information</a>.,module,Magento_ReleaseNotifi
 "ID","ID",module,Magento_Review
 "Created","Aangemaakt",module,Magento_Review
 "Title","Titel",module,Magento_Review
-"Type","Soort",module,Magento_Review
+"Type","Collectie",module,Magento_Review
 "SKU","Artikelnummer",module,Magento_Review
 "Action","Actie",module,Magento_Review
 "Edit","Bewerken",module,Magento_Review
@@ -10377,7 +10377,7 @@ target=""_blank"">DevDocs' Release Information</a>.,module,Magento_ReleaseNotifi
 "Nickname","Uw naam",module,Magento_ReviewStaging
 "Review","Review",module,Magento_ReviewStaging
 "Visibility","Zichtbaarheid",module,Magento_ReviewStaging
-"Type","Soort",module,Magento_ReviewStaging
+"Type","Collectie",module,Magento_ReviewStaging
 "Product","Product",module,Magento_ReviewStaging
 "SKU","Artikelnummer",module,Magento_ReviewStaging
 "Reward Points","Spaarpunten",module,Magento_Reward
@@ -10840,7 +10840,7 @@ target=""_blank"">DevDocs' Release Information</a>.,module,Magento_ReleaseNotifi
 "Packages","Pakketten",module,Magento_Rma
 "Close Window","sluit venster",module,Magento_Rma
 "Package","Pakket",module,Magento_Rma
-"Type","Soort",module,Magento_Rma
+"Type","Collectie",module,Magento_Rma
 "Length","Lengte",module,Magento_Rma
 "Total Weight","Totaalgewicht",module,Magento_Rma
 "Width","Breedte",module,Magento_Rma
@@ -12557,7 +12557,7 @@ configuring in shared catalogs will not be restricted to customers.","U moet de 
 "This action cannot be undone. Are you sure you want to delete this catalog(s)?","Deze actie kan niet ongedaan worden gemaakt. Weet u zeker dat u wilt verwijderen van deze catalogus?",module,Magento_SharedCatalog
 "Delete items","Items verwijderen",module,Magento_SharedCatalog
 "Name","Naam",module,Magento_SharedCatalog
-"Type","Soort",module,Magento_SharedCatalog
+"Type","Collectie",module,Magento_SharedCatalog
 "Created At","Aangemaakt Op",module,Magento_SharedCatalog
 "Created By","Aangemaakt door",module,Magento_SharedCatalog
 "Select","Selecteer",module,Magento_SharedCatalog
@@ -12649,7 +12649,7 @@ configuring in shared catalogs will not be restricted to customers.","U moet de 
 "Use origin weight (few requests)","Use origin weight (few requests)",module,Magento_Shipping
 "Packages","Pakketten",module,Magento_Shipping
 "Package","Pakket",module,Magento_Shipping
-"Type","Soort",module,Magento_Shipping
+"Type","Collectie",module,Magento_Shipping
 "Length","Lengte",module,Magento_Shipping
 "Signature Confirmation","Handtekening controle",module,Magento_Shipping
 "Customs Value","Douanewaarde",module,Magento_Shipping
@@ -13182,7 +13182,7 @@ We steunen onze goedkeuringen met 100% terugboekingsbescherming en betalen u het
 "Website","Website",module,Magento_Support
 "Duplicate Users By Email","Dubbele gebruikers op E-Mail",module,Magento_Support
 "Email","E-mail",module,Magento_Support
-"Type","Soort",module,Magento_Support
+"Type","Collectie",module,Magento_Support
 "Parent","Bovenliggende",module,Magento_Support
 "Adminhtml Themes List","Lijst adminhtml Thema's",module,Magento_Support
 "Frontend Themes List","Lijst Frontend thema's",module,Magento_Support
@@ -13347,7 +13347,7 @@ We steunen onze goedkeuringen met 100% terugboekingsbescherming en betalen u het
 "Invalid product list type","Ongeldig type productlijst",module,Magento_TargetRule
 "Invalid rotation mode type","Ongeldige rotatiemodus soort",module,Magento_TargetRule
 "Conditions Combination","Voorwaardencombinatie",module,Magento_TargetRule
-"Type","Soort",module,Magento_TargetRule
+"Type","Collectie",module,Magento_TargetRule
 "Product %1%2%3%4%5%6%7","Product %1%2%3%4%5%6%7",module,Magento_TargetRule
 "Constant Value","Constante waarde",module,Magento_TargetRule
 "the Same as Matched Product Categories","hetzelfde als gelijkwaardige product categoriën",module,Magento_TargetRule
@@ -14573,7 +14573,7 @@ formElements/*[name(.)=../../@formElement]/settings/title,module,Magento_Ui
 "No payment tokens are available for the specified order payment.","No payment tokens are available for the specified order payment.",module,Magento_Vault
 "Card Number","Kaartnummer",module,Magento_Vault
 "Expiration Date","Vervaldatum",module,Magento_Vault
-"Type","Soort",module,Magento_Vault
+"Type","Collectie",module,Magento_Vault
 "You have no stored payment methods.","U hebt geen opgeslagen betaalmethoden.",module,Magento_Vault
 "ending","einde",module,Magento_Vault
 "Actions","Acties",module,Magento_Vault
@@ -14896,7 +14896,7 @@ formElements/*[name(.)=../../@formElement]/settings/title,module,Magento_Ui
 "Page Layouts","Pagina-indelingen",module,Magento_Widget
 "Please Select Container First","Selecteer eerst een container",module,Magento_Widget
 "Storefront Properties","Eigenschappen winkelaanzicht",module,Magento_Widget
-"Type","Soort",module,Magento_Widget
+"Type","Collectie",module,Magento_Widget
 "Design Package/Theme","Ontwerp Pakket/Thema",module,Magento_Widget
 "Widget Title","Widget titel",module,Magento_Widget
 "Assign to Store Views","Aan Winkelaanzichten toewijzen",module,Magento_Widget
@@ -15391,3 +15391,5 @@ formElements/*[name(.)=../../@formElement]/settings/title,module,Magento_Ui
 "Please contact us via E","Neem dan contact met ons op via E ",
 "In winkelwagen","In winkelwagen/offerteaanvraag"
 "Remarks","Stel hier uw vraag en/of voorkeur voor leverdatum"
+"Show (%1) more","Toon (%1) meer"
+"Less","Minder"
