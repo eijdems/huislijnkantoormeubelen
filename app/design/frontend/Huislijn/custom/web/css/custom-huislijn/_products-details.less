@@ -282,6 +282,10 @@
         .force-expand {
             z-index: 9999;
         }
+        .fotorama__stage .fotorama__arr {
+            opacity: 1;
+            transform: inherit !important;
+        }
     }
     .product.info {
         .product.data {
@@ -752,6 +756,82 @@
                             left: 5px;
                         }
                     }
+                }
+            }
+        }
+    }
+    .category-main-related {
+        width: 100%;
+        display: inline-block;
+        .Customblock-heading {
+            h2 {
+                font-size: 27px;
+                line-height: normal;
+                color: #191919;
+                font-weight: 400;
+                letter-spacing: 1px;
+                border-bottom: 1px solid #ccc;
+                padding-bottom: 30px;
+                width: 100%;
+                display: inline-block;
+                margin: 0 0 30px;
+            }
+        }
+        .mgz-container {
+            display: flex;
+            flex-wrap: wrap;
+            height: 100%;
+            width: 100%;
+        }
+        .mgz-element-inner {
+            padding: 0;
+        }
+        .cat_related_id {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom:20px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            margin-right: 20px;
+            width:19.1%;
+            &:nth-child(5n){
+                margin-right: 0;
+            }
+            @media (min-width: 1280px) and (max-width: 1720px) {
+                width: 18.6%;
+            }
+            @media (min-width: @screen-lg-ipad) and (max-width: 1279px) {
+                width: 18.3%;
+             }
+            @media (min-width: @screen-ipad) and (max-width: @screen-md-ipad) {
+                width: 18.3%;
+                margin-right: 15px;
+            }
+            @media (max-width: @screen-mobile) {
+                width: 100%;
+                height: auto;
+            }
+            .mgz-element-inner{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                height: 100%;
+            }
+            .related-category-id{
+                width: 100%;
+                margin-top: auto;
+                a {
+                    line-height: 25px;
+                    color: #661d28;
+                    font-size: 16px;
+                    padding-right:5px;
+                    text-decoration: underline;
+                    width: 100%;
+                    display: block;
+                    text-align: center;
+                    padding-top: 10px;
+                    margin-top: auto;
                 }
             }
         }

@@ -1,0 +1,11 @@
+<?php
+/** @var \Magento\Catalog\Block\Product\View $block */
+$product = $block->getProduct();
+$relatedProductBlockId = $product->getRelatedCategoryId(); // custom attribute
+
+if ($relatedProductBlockId) {
+    ?>
+    <div class="category-main-related ">
+	    <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($relatedProductBlockId)->toHtml(); // ?>
+	</div>
+<?php } ?>

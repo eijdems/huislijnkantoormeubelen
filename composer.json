@@ -25,7 +25,7 @@
         "colijn/dashboard": "^2.0",
         "colijn/import": "^2.0",
         "colijn/main": "^2.0",
-        "colijn/product-configurator": "^3.1",
+        "colijn/product-configurator": "3.1.76",
         "colijn/stock": "^2.0",
         "colijn/tags": "^2.0",
         "colijn/transactions": "^2.3",

@@ -5,7 +5,7 @@
         <move element="category.view.container" destination="content" before="-" />
         <move element="page.main.title" destination="category.view.container" before="-" />
         <referenceBlock name="category.product.addto.compare" remove="true"/>
-        <referenceBlock name="category.product.addto.wishlist" remove="true" />
+        <referenceBlock name="category.product.addto.wishlist" remove="false" />
         <referenceBlock name="category.description" remove="true" />
         
         <!-- <referenceBlock name="category.product.addto" remove="true"/> --> <!-- This is used only for remove add to cart if something wrong remove false-->

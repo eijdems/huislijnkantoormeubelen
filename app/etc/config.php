@@ -350,6 +350,7 @@ return [
         'Amasty_ShopbyPro' => 1,
         'Amasty_GroupedOptions' => 1,
         'Amasty_ShopbySubscriptionPackagePro' => 1,
+        'Bafmaamy_FieldValidator' => 1,
         'Bold_OrderComment' => 1,
         'Colijn_BundledProducts' => 1,
         'Colijn_Categories' => 1,

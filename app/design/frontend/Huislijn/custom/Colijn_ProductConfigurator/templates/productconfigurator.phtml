@@ -89,13 +89,43 @@ $custGrpid = $customerSession->getCustomerGroupId();
 		<div class="extra-content-button" style="font-size: 18px; margin-top: 15px;">
 		    <?php if (!($prodCategory == 57 || ($prodCategory == 78 && ($typeCond == 236 || $typeCond == 244)))): ?>
 		        <?php if ($brand == 'Feltouch'): ?>
-		            Voor overige producten uit de collectie, ga naar de website van <a target="_blank" href='https://www.feltouch.tr/nl/'>Feltouch</a>
+
+		        	<?php
+					    echo $this->getLayout()
+					        ->createBlock(\Magento\Cms\Block\Block::class)
+					        ->setBlockId('brand_feltouch') //replace my_cmsblock_identifier with real CMS bock identifier
+					        ->toHtml();
+					?>
+					<style>
+					    .catalog-product-view .product-info-main .extra-content-button:before {
+					        display:none !important;
+					    }
+					    .catalog-product-view .product-info-main .extra-content-button {
+					        padding-left: 0;
+					    }
+					</style>
 		        <?php elseif ($brand == 'Deberenn'): ?>
-		            Voor overige producten uit de collectie, ga naar de website van  <a target="_blank" href='https://www.berenn.com/nl'>DeBerenn</a>.
-		            Stoffering in meerdere kleuren heeft een meerprijs van 3% (2 kleuren) of 6% (3 kleuren of meer). Deze meerprijs wordt nog niet mee berekend in de totaalprijs.
+		            <?php
+					    echo $this->getLayout()
+					        ->createBlock(\Magento\Cms\Block\Block::class)
+					        ->setBlockId('brand_deberenn') //replace my_cmsblock_identifier with real CMS bock identifier
+					        ->toHtml();
+					?>
+					<style>
+					    .catalog-product-view .product-info-main .extra-content-button:before {
+					        display:none !important;
+					    }
+					    .catalog-product-view .product-info-main .extra-content-button {
+					        padding-left: 0;
+					    }
+					</style>
 		        <?php elseif (!in_array($sku, $skip_forSku)): ?>
-		        	Voorraadproducten zijn aangeduid middels een groene stip bij de opties tijdens het samenstellen van het product.
-		            <br>Overige RAL kleuren en Pulver hebben een meerprijs van 10%. Deze meerprijs wordt nog niet mee berekend in de totaalprijs.
+		        	<?php
+					    echo $this->getLayout()
+					        ->createBlock(\Magento\Cms\Block\Block::class)
+					        ->setBlockId('other_brand') //replace my_cmsblock_identifier with real CMS bock identifier
+					        ->toHtml();
+					?>
 		        <?php endif; ?>
 		    <?php endif; ?>
 		</div>

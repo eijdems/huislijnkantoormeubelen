@@ -131,6 +131,7 @@ class Ajax extends Action
                 'dwg' => 'Emizen_CustomDownload::filters/dwg.phtml',
                 'marketingpakketten' => 'Emizen_CustomDownload::filters/marketingpakketten.phtml',
                 'afbeeldingen' => 'Emizen_CustomDownload::filters/afbeeldingen.phtml',
+                'inhuisformulieren' => 'Emizen_CustomDownload::filters/inhuisformulieren.phtml',
             ];
 
             if (isset($templateMap[$filter])) {
