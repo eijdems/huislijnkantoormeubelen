@@ -111,7 +111,7 @@
     left: 50%;
     top: 0;
     transform: translate(-50%,-50%);
-    cursor: pointer;
+    cursor: default;
     width: 14px;
     height: 35px;
     text-align: center;
@@ -338,40 +338,82 @@ href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
 
 <script>
+/*
+ * Load the FULL Swiper bundle through RequireJS under a dedicated alias.
+ * The global `window.Swiper` is unreliable here: in this RequireJS page the
+ * UMD bundle does not reliably populate the global, and the `swiper` AMD
+ * alias is mapped (by Amasty) to a CORE build that has no Controller /
+ * Mousewheel / FreeMode modules. Pulling the bundle by its own alias
+ * guarantees every module this timeline depends on is present.
+ */
 require(['jquery'], function ($) {
+
+    require.config({
+        paths: {
+            swiperBundle: 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min'
+        }
+    });
 
     $(document).ready(function () {
 
-        function initTimeline() {
+        require(['swiperBundle'], function (Swiper) {
 
-            if (!window.Swiper) {
-                setTimeout(initTimeline, 100);
+            initTimeline(Swiper || window.Swiper);
+        });
+
+        function initTimeline(SwiperClass) {
+
+            if (!SwiperClass) {
+                setTimeout(function () { initTimeline(window.Swiper); }, 100);
+                return;
+            }
+
+            const swiperOptions = {
+                direction: "vertical",
+                slidesPerView: 3,
+                spaceBetween: 30,
+                mousewheel: true,
+                freeMode: true,
+                watchSlidesProgress: true,
+            };
+
+            /* The selector ".leftSwiper" matches BOTH the desktop and mobile
+               markup, and Swiper returns an ARRAY of instances when a selector
+               matches more than one node. Instantiate against specific
+               elements so we always get a single instance. */
+            const leftEl = document.querySelector(".desktop-view .leftSwiper");
+            const rightEl = document.querySelector(".desktop-view .rightSwiper");
+
+            if (!leftEl || !rightEl) {
                 return;
             }
 
             /* LEFT SWIPER */
-            const leftSwiper = new window.Swiper(".leftSwiper", {
-                direction: "vertical",
-                slidesPerView: 3,
-                spaceBetween: 30,
-                mousewheel: true,
-                freeMode: true,
-                watchSlidesProgress: true,
-            });
+            const leftSwiper = new SwiperClass(leftEl, swiperOptions);
 
             /* RIGHT SWIPER */
-            const rightSwiper = new window.Swiper(".rightSwiper", {
-                direction: "vertical",
-                slidesPerView: 3,
-                spaceBetween: 30,
-                mousewheel: true,
-                freeMode: true,
-                watchSlidesProgress: true,
-            });
+            const rightSwiper = new SwiperClass(rightEl, swiperOptions);
 
-            /* SYNC BOTH */
-            leftSwiper.controller.control = rightSwiper;
-            rightSwiper.controller.control = leftSwiper;
+            /* MOBILE SWIPER (separate, un-synced) */
+            const mobileLeftEl = document.querySelector(".mobile-view .leftSwiper");
+            if (mobileLeftEl) {
+                new SwiperClass(mobileLeftEl, swiperOptions);
+            }
+
+            /* SYNC BOTH — use the Controller module when available, otherwise
+               fall back to a manual progress sync so a missing module can
+               never abort the rest of the initialisation. */
+            if (leftSwiper.controller && rightSwiper.controller) {
+                leftSwiper.controller.control = rightSwiper;
+                rightSwiper.controller.control = leftSwiper;
+            } else {
+                leftSwiper.on("progress", function () {
+                    rightSwiper.setProgress(leftSwiper.progress);
+                });
+                rightSwiper.on("progress", function () {
+                    leftSwiper.setProgress(rightSwiper.progress);
+                });
+            }
 
             const bar = document.getElementById("progressBar");
             const fill = document.getElementById("progressFill");
@@ -388,51 +430,16 @@ require(['jquery'], function ($) {
                 fill.style.height = (progress * 100) + "%";
             }
 
-            /* UPDATE ON SWIPE */
+            /* The dot is read-only: it only reflects the scroll position.
+               The timeline is moved with the mouse-wheel, and the dot/fill
+               stay in sync via Swiper's "progress" event. */
             leftSwiper.on("progress", function () {
                 updateProgress(leftSwiper.progress);
             });
 
             updateProgress(0);
 
-            /* DRAG SUPPORT */
-            let dragging = false;
-
-            dot.addEventListener("mousedown", function () {
-                dragging = true;
-            });
-
-            document.addEventListener("mouseup", function () {
-                dragging = false;
-            });
-
-            document.addEventListener("mousemove", function (e) {
-
-                if (!dragging) return;
-
-                const rect = bar.getBoundingClientRect();
-
-                let y = e.clientY - rect.top;
-
-                const max = rect.height - dot.offsetHeight;
-
-                y = Math.max(0, Math.min(y, max));
-
-                const percent = y / max;
-
-                dot.style.top = y + "px";
-
-                fill.style.height = (percent * 100) + "%";
-
-                /* MOVE BOTH SWIPERS */
-                leftSwiper.setProgress(percent);
-                rightSwiper.setProgress(percent);
-
-            });
-
         }
-
-        initTimeline();
 
     });
 
