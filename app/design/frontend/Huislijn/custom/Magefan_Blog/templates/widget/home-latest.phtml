@@ -1,0 +1,115 @@
+<?php
+/**
+ * Home page "latest blog posts" widget template.
+ *
+ * Renders the most recent posts using the same markup as the blog list
+ * (app/design/frontend/Huislijn/custom/Magefan_Blog/templates/post/list-modern.phtml)
+ * so it looks identical on a CMS / home page.
+ *
+ * Used via the Magefan Recent Posts widget, e.g. in a CMS page:
+ *   {{widget type="Magefan\Blog\Block\Widget\Recent"
+ *            title="Nieuws en updates"
+ *            number_of_posts="3"
+ *            custom_template="Magefan_Blog::widget/home-latest.phtml"}}
+ *
+ * @var \Magefan\Blog\Block\Widget\Recent $block
+ */
+
+$_postCollection = $block->getPostCollection();
+if (!$_postCollection || !$_postCollection->count()) {
+    return;
+}
+
+$title = $block->getTitle() ?: __('Nieuws en updates');
+$arrowUrl = $block->getViewFileUrl('images/arrow-right.png');
+?>
+<div class="home-latest-posts">
+    <div class="post-list-wrapper">
+        <?php if ($title): ?>
+            <h4><?= $block->escapeHtml($title) ?></h4>
+        <?php endif; ?>
+        <ol class="post-list modern">
+            <?php foreach ($_postCollection as $_post): ?>
+                <?php
+                    $_postUrl = $block->escapeUrl($_post->getPostUrl());
+                    $_postName = $block->escapeHtml($_post->getTitle());
+                ?>
+                <li class="post-item post-holder post-holder-<?= (int)$_post->getId() ?>">
+                    <div class="post-container">
+                        <!-- block info -->
+                        <div class="post-info home-post">
+                            <!-- post description -->
+                            <div class="post-description mb-4">
+                                <?= /* @noEscape */ $_post->getShortFilteredContent() ?>
+                            </div>
+                            <!-- read more -->
+                            <div class="post-read-more">
+                                <a class="action primary" href="<?= /* @noEscape */ $_postUrl ?>" title="<?= /* @noEscape */ $_postName ?>">
+                                    <?= $block->escapeHtml(__('Lees meer')) ?>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ol>
+        <div class="btn-col-sec">
+            <a class="action primary" href="https://huislijnkant.ezxdemo.com/blog">Bekijk ons nieuwsarchief </a>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Self-contained copy of the blog card styling (blog CSS is scoped to .blog-page,
+       so it does not reach the home/CMS page). Mirrors _about-us.less. */
+    .home-latest-posts .post-list-wrapper {
+        padding: 0 30px 0 60px;
+    }
+    .home-latest-posts h4 {
+        font-size: 24px;
+        color: #611c27;
+        font-weight: 400;
+        margin: 0 auto 32px;
+        text-align: left;
+    }
+    
+    .home-latest-posts .post-item h3 {
+        margin-top: 0;
+    }
+    .home-latest-posts .post-item h3 strong {
+        font-weight: 400;
+    }
+    .home-latest-posts .post-item p {
+        font-weight: 300;
+    }
+    .home-latest-posts .post-container .post-info {
+        width: 100%;
+        max-width: 100%;
+        flex: 100%;
+        padding: 0;
+    }
+    .home-latest-posts .post-read-more .action.primary {
+        color: #611c27;
+        font-size: 19px;
+        background: none;
+        border: none;
+        padding: 0 0 0 10px;
+        font-weight: 400;
+    }
+    .home-latest-posts .post-read-more .action.primary:after {
+        content: "";
+        display: inline-block;
+        background: url("<?= $block->escapeUrl($arrowUrl) ?>") no-repeat;
+        height: 8px;
+        width: 16px;
+        margin-left: 8px;
+        vertical-align: middle;
+    }
+    @media (max-width: 1300px) {
+        .home-latest-posts .post-list-wrapper { padding: 0 15px; }
+        .home-latest-posts .post-list.modern { padding: 0; }
+    }
+    @media (max-width: 768px) {
+        .home-latest-posts .post-list.modern .post-item { width: 100%; }
+    }
+</style>

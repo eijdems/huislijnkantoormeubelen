@@ -99,7 +99,7 @@
 			.post-bottom {
 				margin-top: 40px;
 			}
-			.post-list, .post-content {
+			.post-list {
 				display: flex;
 				gap: 0 25px;
 				padding: 0 40px;
@@ -110,7 +110,7 @@
 				@media (max-width: 768px) {
 					flex-wrap: wrap;
 				}
-				.post-item, ._post-description {
+				.post-item {
 					width: 31%;
 					background: #f8f8f8;
 					padding: 15px;
@@ -130,6 +130,10 @@
 					}
 					p {
 						font-weight: 300;
+						display: -webkit-box;
+						-webkit-box-orient: vertical;
+						-webkit-line-clamp: 5;
+						overflow: hidden;
 					}
 					.post-container {
 						.post-info {
@@ -374,6 +378,117 @@
 				padding: 15px 0 0 0;
 				a {
 					color: #661d28;
+				}
+			}
+		}
+	}
+}
+.blog-post-view {
+	#maincontent {
+		._post-view {
+			.post-content {
+				._post-description {
+					width: 100%;
+					border: none;
+					.post-section-blog  {
+						> .mgz-element-inner {
+							display: flex;
+							flex-direction: row-reverse;
+							justify-content: space-between;
+							width: 100%;
+							padding: 0;
+							@media (max-width: 768px) {
+								flex-wrap: wrap;
+							}
+							.img-post {
+								flex: 0 0 48%;
+								max-width: 48%;
+								@media (max-width: 768px) {
+									max-width: 100%;
+									flex: 100%;
+								}
+								.mgz-single-image-wrapper {
+									width: 100%;
+									.mgz-hover-main {
+									  width: 100%;
+									}
+								}
+								> .mgz-element-inner {
+									margin-bottom: 0;
+								}
+							}
+							.post-content-sec {
+								max-width: 48%;
+								flex: 48%;
+								background: #fafafa;
+								border-radius: 30px;
+								padding: 30px;
+								margin-right: 100px;
+								@media (max-width: 768px) {
+									margin-right: 0;
+									max-width: 100%;
+									flex: 100%;
+									margin-top: 15px;
+									padding: 30px 15px;
+								}
+							}
+						}
+					}
+					.mgz-hover-main{
+						margin:0 ;
+					}
+					h3 {
+						margin-top: 0;
+						span{
+							color: #611c27 !important;
+						}
+						strong {
+							font-weight: 400;
+						}
+					}
+					p {
+						font-weight: 300;
+						display: -webkit-box;
+						-webkit-box-orient: vertical;
+						-webkit-line-clamp: 5;
+						overflow: hidden;
+					}
+					.post-container {
+						.post-info {
+							width: 100%;
+							max-width: 100%;
+							flex: 100%;
+							padding: 0;
+							h3 {
+								margin-top: 0;
+								strong{
+									font-weight: 400;
+								}
+							}
+							p {
+								font-weight: 300;
+							}
+							.post-read-more {
+								.action.primary {
+									color: #611c27;
+									font-size: 19px;
+									background: no-repeat;
+									border: none;
+									padding: 0 0 0 10px;
+									font-weight: 400;
+									&:after{
+										content: "";
+										display: inline-block;
+										background: url(../images/arrow-right.png);
+										height: 8px;
+										width: 16px;
+										margin-left: 8px;
+										vertical-align: middle;
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 		}

@@ -1,0 +1,17 @@
+{
+    "emizen_attachment_project_image": {
+        "column": {
+            "entity_id": true,
+            "attachment_id": true,
+            "image": true,
+            "position": true
+        },
+        "index": {
+            "EMIZEN_ATTACHMENT_PROJECT_IMAGE_ATTACHMENT_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "EMIZEN_ATTACHMENT_PROJECT_IMAGE_ATTACHMENT_ID_PRODUCTATTACHMENTS_ID": true
+        }
+    }
+}

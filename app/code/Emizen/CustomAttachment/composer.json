@@ -1,0 +1,15 @@
+{
+    "name": "emizen/module-custom-attachment",
+    "description": "Adds Project Images to FME Product Attachments and renders them on the product page.",
+    "type": "magento2-module",
+    "license": "GPL-3.0",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Emizen\\CustomAttachment\\": ""
+        }
+    }
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Emizen_CustomAttachment
+ *
+ * Merged into FME_Productattachments admin form to add the "Project Images" field.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="general">
+        <field name="project_images">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Project Images</item>
+                    <item name="formElement" xsi:type="string">fileUploader</item>
+                    <item name="source" xsi:type="string">productattachments</item>
+                    <item name="dataScope" xsi:type="string">project_images</item>
+                    <item name="sortOrder" xsi:type="number">13</item>
+                    <item name="isMultipleFiles" xsi:type="boolean">true</item>
+                    <item name="maxFileSize" xsi:type="number">10485760</item>
+                    <item name="allowedExtensions" xsi:type="string">jpg jpeg png gif webp</item>
+                    <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
+                    <item name="notice" xsi:type="string" translate="true">Upload one or more images shown on the product page. Clicking an image downloads this attachment's file.</item>
+                    <item name="uploaderConfig" xsi:type="array">
+                        <item name="url" xsi:type="url" path="customattachment/image/upload"/>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

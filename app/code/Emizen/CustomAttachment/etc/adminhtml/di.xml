@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="FME\Productattachments\Model\ResourceModel\Productattachments">
+        <plugin name="emizen_save_project_images" type="Emizen\CustomAttachment\Plugin\SaveProjectImagesPlugin" sortOrder="10"/>
+    </type>
+    <type name="FME\Productattachments\Model\Productattachments\DataProvider">
+        <plugin name="emizen_load_project_images" type="Emizen\CustomAttachment\Plugin\DataProviderPlugin" sortOrder="10"/>
+    </type>
+</config>

@@ -6,6 +6,7 @@ main#maincontent {
    max-width: 1920px;
     position: relative;
     padding: 0;
+    margin:0 auto;
     &:before {
         // content: "";
         // position: absolute;
@@ -823,6 +824,8 @@ li {
         }
         .banner-content-section {
             text-align:center;
+            transition: all 0.4s ease-in-out;
+            -webkit-transition: all 0.4s ease-in-out;
             .mgz-element-inner {
                 padding: 0;
                 margin-bottom: 0;
@@ -836,8 +839,13 @@ li {
                 max-width: 700px;
                 color: #fff;
                 text-align: center;
+                opacity: 0;
+                transition: all 0.4s ease-in-out;
+                -webkit-transition: all 0.4s ease-in-out;
+                z-index: 1;
                 @media (max-width: 768px) {
                     padding: 0 15px;
+                    opacity: 1;
                 }
                 h1 {
                     text-align:center;
@@ -894,14 +902,51 @@ li {
                     }
                 }
             }
-            .mgz-hover-main {
-                @media(min-width: 769px) and (max-width:1199px ){
-                    height: 380px;
-                    object-fit: cover;
+            .mgz-image-hovers {
+                .mgz-single-image-wrapper {
+                    width: 100%;
+                    .mgz-hover-main {
+                        width: 100%;
+                        @media(min-width: 769px) and (max-width:1199px ){
+                            height: 380px;
+                            object-fit: cover;
+                        }
+                        @media (max-width: 768px) {
+                            height: 600px;
+                            object-fit: cover;
+                        }
+                    }
                 }
-                @media (max-width: 768px) {
-                    height: 600px;
-                    object-fit: cover;
+            }
+             @media (max-width: 768px) {
+               &:before {
+                    background: rgba(0, 0, 0, 0.6);
+                    width: 100%;
+                    content: "";
+                    height: 100%;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    z-index: 1;
+                    transition: all 0.4s ease-in-out;
+                    -webkit-transition: all 0.4s ease-in-out;
+                } 
+            }
+            &:hover {
+                .banner-hover {
+                    opacity: 1;
+                }
+                &:before {
+                    background: rgba(0, 0, 0, 0.6);
+                    width: 100%;
+                    content: "";
+                    height: 100%;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    z-index: 1;
+                    transition: all 0.4s ease-in-out;
+                    -webkit-transition: all 0.4s ease-in-out;
                 }
             }
         }
@@ -1034,144 +1079,93 @@ li {
         }
     }
     .product-colm2-section {
-        margin-bottom: 150px;
-        @media (max-width: 1023px) {
-            margin-bottom: 50px;
-        }
-        .product-left-section {
-            .mgz-element-inner {
-                padding: 0;
+        margin-top:150px;
+        .home-latest-posts {
+            .post-list {
+                margin-bottom: 0;
+                .post-item {
+                    padding-bottom: 0;
+                    margin-bottom: 35px;
+                }
             }
-            .product-section-img {
+            .btn-col-sec {
+                text-align: right;
+                .action.primary {
+                    background: #611c27;
+                    border-color: #611c27;
+                    font-size: 18px;
+                    font-weight: 400;
+                    padding: 0 50px;
+                    border-radius: 30px;
+                    height: 54px;
+                    line-height: 50px;
+                    margin-right: 0;
+                    font-family: 'Ubuntu';
+                    letter-spacing: 1px;
+                    @media (max-width: 1023px) {
+                        margin-bottom: 50px;
+                        padding: 0 40px;
+                    }
+                    &:after{
+                        font-size: 12px;
+                        line-height: 20px;
+                        color: inherit;
+                        content: '\e608';
+                        font-family: 'luma-icons';
+                        font-weight: normal;
+                        overflow: hidden;
+                        margin-left: 5px;
+                    }
+                }
+            }
+        }
+        .post-info.home-post {
+            .post-section-blog {
                 > .mgz-element-inner {
                     display: flex;
-                    gap: 0 50px;
-                    flex-wrap:wrap;
-                    margin-bottom:45px;
-                    align-items: center;
-                    @media (max-width: 1199px) {
-                        gap: 0 20px;
+                    @media (max-width: 768px) {
+                        flex-wrap: wrap;
                     }
-                    .heading {
-                      width: 100%;
-                    }
-                    .left-section {
-                        width: 35%;
-                        @media (max-width: 768px) {
-                            width: 100%;
-                            margin-bottom: 15px;
-                        }
-                        .mgz-element-inner {
-                            margin-bottom: 0;
-                            .mgz-single-image-wrapper{
-                                width: 100%;
-                                img{
-                                    width: 100%;
-                                }
-                            }
-                        }
-                    }
-                    .right-section {
-                        width: 58%;
-                        @media (max-width: 768px) {
-                            width: 100%;
-                            .mgz-element-inner {
-                                margin-bottom: 0;
-                            }
-                         }
-                        h3{
-                            margin-top: 0;
-                            font-weight: 500;
-                            font-family: 'Roboto';
-                            margin-bottom: 24px;
-                            @media (max-width: 1500px) {
-                                margin-bottom: 15px;
-                            }
-                        }
+                    .post-content-sec {
+                        padding-left: 50px;
+                        flex: 0 0 60%;
+                        max-width: 0 0 60%;
                         p {
-                            font-weight: 300;
-                            line-height: 31px;
-                            @media (max-width: 1500px) {
-                                line-height:25px;
-                                span{
-                                    font-size: 16px !important;
-                                }
+                            span {
+                                display: inline-block;
+                            }
+                            br {
+                              display: none;
                             }
                         }
-                        a {
-                            margin-top: 15px;
-                            display: inline-block;
-                            margin-right: 5px;
-                            font-family: 'Ubuntu';
-                            letter-spacing:1px;
-                            font-weight:400;
-                            @media (max-width: 1500px) {
-                                margin-top: 0;
-                            }
-                            &:after {
-                                font-size: 12px;
-                                line-height: 20px;
-                                color: inherit;
-                                content: '\e608';
-                                font-family: 'luma-icons';
-                                font-weight: normal;
-                                overflow: hidden;
-                                margin-left: 5px;
-                            }
+                        @media (max-width: 1199px) {
+                            padding-left: 15px;
                         }
-                        .mgz-element-inner {
-                            margin-bottom: 0;
-                        }
-                    }
-                    .btn-less {
-                        width: 100%;
-                        text-align: right;
-                        margin-right: 50px;
                         @media (max-width: 768px) {
-                            margin:15px 0 15px;
-                            text-align: left;
-                        }
-                        a {
-                            border-radius: 40px;
-                            height: 55px;
-                            line-height: 53px;
-                            padding: 0 40px;
-                            font-size: 18px;
-                            font-family: 'Ubuntu';
-                            letter-spacing:1px;
-                            font-weight:400;
-                            &:after {
-                                font-size: 12px;
-                                line-height: 20px;
-                                color: inherit;
-                                content: '\e608';
-                                font-family: 'luma-icons';
-                                font-weight: normal;
-                                overflow: hidden;
-                                margin-left: 5px;
-                            }
-                        }
+                            padding-left: 0;
+                         }
                     }
-                    &:before {
-                        display: none;
-                    }
-                    &:after {
-                        display: none;
-                    }
-                }
-                &:last-child > .mgz-element-inner {
-                  margin-bottom: 0;
-                  @media (max-width: 768px) {
-                    margin-bottom: 40px;
-                  }
-                }
-                &:before {
-                    display: none;
-                }
-                &:after {
-                    display: none;
                 }
             }
+            .post-read-more {
+                margin-left: auto;
+                display: block;
+                text-align: center;
+                padding-right: 60px;
+                @media (max-width: 1550px) {
+                    text-align: right;
+                    padding-right: 0;
+                }
+                @media (max-width: 768px) {
+                    text-align: left;
+                    .action.primary{
+                        padding-left: 0;
+                    }
+                }
+            }
+        }
+        @media (max-width: 1023px) {
+            margin-bottom: 50px;
         }
         .right-section-product {
             .banner-content-hover {
@@ -1183,6 +1177,7 @@ li {
                 text-align: center;
                 color: #fff;
                 font-weight: 300;
+                opacity: 1;
                 @media (max-width: 768px) {
                     bottom: 60px;
                 }

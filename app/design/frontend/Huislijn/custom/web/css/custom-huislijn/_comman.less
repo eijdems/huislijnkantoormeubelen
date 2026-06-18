@@ -135,7 +135,7 @@ body{
     }   
     .cms-page-view {
         .breadcrumbs {
-            margin: 0 0 20px;
+            margin: 0 auto 20px;
         }
         .amcform-submit.action.submit.primary {
             background: #661d28;
@@ -438,11 +438,23 @@ body{
                 margin: 0 0 50px;
             }
             .hover-img-colm {
+                 transition: all 0.4s ease-in-out;
+                -webkit-transition: all 0.4s ease-in-out;
+                display:flex;
+                > .mgz-element-inner{
+                    width: 100%;
+                }
                 .hover-section {
                     bottom: auto;
                     top: 35px;
+                    opacity: 0;
+                    transition: all 0.4s ease-in-out;
+                    -webkit-transition: all 0.4s ease-in-out;
                     @media(min-width: 1440px) and (max-width:1650px ){
                         padding: 0 15px;
+                    }
+                    @media (max-width: 768px) {
+                        opacity: 1;
                     }
                     h3 {
                         font-weight: 500;
@@ -479,11 +491,17 @@ body{
                         }
                     }
                 }
+                &:hover{
+                    .hover-section {
+                        opacity: 1;
+                    }
+                }
             }
             .mgz-single-image-wrapper{
                 width: 100%;
                 .mgz-hover-main{
                     width: 100%;
+                    max-height: 772px;
                 }
             }
         }
@@ -605,6 +623,8 @@ body{
     .banner-content-section {
         text-align:center;
         position: relative;
+        ransition: all 0.4s ease-in-out;
+        -webkit-transition: all 0.4s ease-in-out;
         .mgz-element-inner {
             padding: 0;
             margin-bottom: 0;
@@ -624,8 +644,13 @@ body{
             max-width: 900px;
             color: #fff;
             text-align: center;
+            opacity: 0;
+           transition: all 0.4s ease-in-out;
+           z-index: 1;
+            -webkit-transition: all 0.4s ease-in-out;
             @media (max-width: 768px) {
                 padding: 0 15px;
+                opacity: 1;
             }
             h1 {
                 text-align:center;
@@ -644,10 +669,51 @@ body{
                 }
             }
         }
-        .mgz-hover-main {
-            @media (max-width: 768px) {
-                height: 600px;
-                object-fit: cover;
+        @media (max-width: 768px) {
+           &:before {
+                background: rgba(0, 0, 0, 0.6);
+                width: 100%;
+                content: "";
+                height: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 1;
+                transition: all 0.4s ease-in-out;
+                -webkit-transition: all 0.4s ease-in-out;
+            } 
+        }
+        &:hover{
+            .banner-hover {
+              opacity: 1;
+            }
+            &:before {
+                background: rgba(0, 0, 0, 0.6);
+                width: 100%;
+                content: "";
+                height: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 1;
+                transition: all 0.4s ease-in-out;
+                -webkit-transition: all 0.4s ease-in-out;
+            }
+        }
+        .mgz-image-hovers {
+            .mgz-single-image-wrapper {
+                width: 100%;
+                .mgz-hover-main {
+                    width: 100%;
+                    @media(min-width: 769px) and (max-width:1199px ){
+                        height: 380px;
+                        object-fit: cover;
+                    }
+                    @media (max-width: 768px) {
+                        height: 600px;
+                        object-fit: cover;
+                    }
+                }
             }
         }
     }
